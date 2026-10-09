@@ -1,0 +1,28 @@
+---
+import { experts } from '../data/site';
+import Icon from './Icon.astro';
+import Img from './Img.astro';
+import CarouselControls from './CarouselControls.astro';
+interface Props { detailed?: boolean; tone?: 'light' | 'dark'; exclude?: string }
+const { detailed = false, tone = 'dark', exclude } = Astro.props;
+const list = experts.filter((expert) => expert.slug !== exclude);
+---
+<div class:list={['carousel', detailed && 'experts-detailed']} data-carousel>
+  <ul class:list={['expert-track carousel-track', tone === 'dark' && 'on-dark']} tabindex="0" aria-label="Expert panel">
+    {list.map((expert, i) => (
+      <li class="expert-card" data-reveal style={`--i:${i}`}>
+        <a href={`/expert-panel/${expert.slug}/`}>
+          <span class="expert-photo"><Img name={expert.image} alt={`${expert.name}, ${expert.role}`} sizes="(max-width: 700px) 70vw, (max-width: 1100px) 34vw, 18vw" /></span>
+          <span class="expert-body">
+            <span class="expert-focus">{expert.focus}</span>
+            <h3>{expert.name}</h3>
+            <span class="expert-role">{expert.role}</span>
+            {detailed && <p>{expert.text}</p>}
+            <span class="expert-more">View profile <Icon name="arrow" size={16} /></span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <CarouselControls label="expert" tone={tone} />
+</div>

@@ -1,0 +1,28 @@
+---
+import Img from './Img.astro';
+interface Props { title: string; eyebrow: string; intro?: string; image: string; crumbs?: [string, string][]; portrait?: string; portraitAlt?: string; compact?: boolean }
+const { title, eyebrow, intro, image, crumbs = [], portrait, portraitAlt = '', compact = false } = Astro.props;
+---
+<section class:list={['page-hero', compact && 'page-hero--compact', portrait && 'page-hero--portrait']}>
+  <Img name={image} class="page-hero-bg" priority={!portrait} decorative sizes="100vw" />
+  <div class="page-hero-shade" aria-hidden="true"></div>
+  <div class="wrap page-hero-inner">
+    <div class="page-hero-copy">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          {crumbs.map(([url, label]) => <li><a href={url}>{label}</a></li>)}
+          <li aria-current="page">{eyebrow}</li>
+        </ol>
+      </nav>
+      <h1 set:html={title} />
+      {intro && <p class="page-hero-intro">{intro}</p>}
+      <slot />
+    </div>
+    {portrait && (
+      <figure class="page-hero-portrait">
+        <Img name={portrait} alt={portraitAlt} priority sizes="(max-width: 900px) 80vw, 30vw" />
+      </figure>
+    )}
+  </div>
+</section>

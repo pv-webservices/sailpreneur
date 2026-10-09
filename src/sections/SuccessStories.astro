@@ -1,0 +1,21 @@
+---
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Stories from '../components/Stories.astro';
+import Stats from '../components/Stats.astro';
+---
+<section class="section">
+  <div class="wrap">
+    <SectionHeading eyebrow="From dreamers to global professionals" title="Four students. <em>Four cruise lines.</em>" text="Each started with a question — Where do I begin? Each found the answer through preparation, persistence and mentorship." />
+    <Stories layout="grid" />
+    <p class="fine-print">Stories and quotes as shared by AKMICS students. Every journey is individual and hiring decisions rest with employers.</p>
+  </div>
+</section>
+
+<section class="section section--navy">
+  <div class="wrap">
+    <SectionHeading align="center" tone="dark" eyebrow="Your story could be next" title="20+ careers launched — <em>and counting.</em>" />
+    <div data-countup><Stats /></div>
+    <div class="center-cta"><Button href="/contact/">Start your story</Button></div>
+  </div>
+</section>

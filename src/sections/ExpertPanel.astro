@@ -1,0 +1,22 @@
+---
+import Img from '../components/Img.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Experts from '../components/Experts.astro';
+---
+<section class="section">
+  <div class="wrap">
+    <a class="founder-strip" href="/our-mentor/" data-reveal>
+      <span class="founder-strip-photo"><Img name="ankur-portrait" alt="Ankur Kumar Mishra" sizes="160px" /></span>
+      <span class="founder-strip-copy">
+        <span class="eyebrow">Founder &amp; lead mentor</span>
+        <strong>Ankur Kumar Mishra</strong>
+        <span>12 years at sea · 50 countries · 65 islands — leads every student’s journey alongside the panel.</span>
+      </span>
+      <span class="btn btn--outline btn--sm"><span>Meet Ankur</span></span>
+    </a>
+    <SectionHeading eyebrow="The people behind the guidance" title="Knowledge shared. <em>Confidence built.</em>" text="Open a profile to see each expert’s focus areas and how they contribute to your preparation." />
+    <Experts detailed tone="light" />
+    <div class="center-cta"><Button href="/contact/" variant="navy">Learn with our experts</Button></div>
+  </div>
+</section>

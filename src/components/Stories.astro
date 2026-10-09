@@ -1,0 +1,32 @@
+---
+import { stories } from '../data/site';
+import Icon from './Icon.astro';
+import Img from './Img.astro';
+import CarouselControls from './CarouselControls.astro';
+interface Props { layout?: 'carousel' | 'grid' }
+const { layout = 'carousel' } = Astro.props;
+const grid = layout === 'grid';
+---
+<div class:list={['carousel', grid && 'is-grid']} data-carousel={grid ? undefined : ''}>
+  <ul class:list={['story-track', grid ? 'story-grid' : 'carousel-track']} tabindex={grid ? undefined : 0} aria-label="Student success stories">
+    {stories.map((story, i) => (
+      <li class="story-card" id={story.slug} data-reveal style={`--i:${i}`}>
+        <div class="story-media">
+          {story.image
+            ? <Img name={story.image} alt={`${story.name} from ${story.from}`} sizes="(max-width: 700px) 80vw, 240px" />
+            : <span class="story-monogram" aria-hidden="true"><Icon name="ship" size={56} stroke={1.1} /><span>{story.name.charAt(0)}</span></span>}
+          <span class="story-line"><Icon name="anchor" size={14} />{story.cruiseLine}</span>
+        </div>
+        <div class="story-body">
+          <p class="story-from">{story.name} <span>from {story.from}</span></p>
+          <h3>{story.headline}</h3>
+          <p class="story-dept">{story.department}</p>
+          <ul class="story-points">{story.points.map((point) => <li><Icon name="check-circle" size={18} /><span>{point}</span></li>)}</ul>
+          {story.quote && <blockquote><p>“{story.quote}”</p></blockquote>}
+          {story.meta && <p class="story-meta">— {story.meta}</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+  {!grid && <CarouselControls label="story" />}
+</div>

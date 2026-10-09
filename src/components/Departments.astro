@@ -1,0 +1,24 @@
+---
+import { departments } from '../data/site';
+import Icon from './Icon.astro';
+import Img from './Img.astro';
+import CarouselControls from './CarouselControls.astro';
+---
+<div class="carousel" data-carousel>
+  <ul class="dept-track carousel-track" tabindex="0" aria-label="Cruise career departments">
+    {departments.map((dept, i) => (
+      <li class="dept-card" data-reveal style={`--i:${i}`}>
+        <a href={`/career-pathways/#${dept.slug}`}>
+          <Img name={dept.image} sizes="(max-width: 700px) 78vw, (max-width: 1100px) 40vw, 20vw" />
+          <span class="dept-overlay">
+            <span class="dept-index">0{i + 1}</span>
+            <h3>{dept.name}</h3>
+            <p>{dept.short}</p>
+            <span class="dept-more">Explore pathway <Icon name="arrow-up-right" size={16} /></span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <CarouselControls label="departments" />
+</div>

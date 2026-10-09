@@ -1,0 +1,38 @@
+---
+import { brand, tel, mapsUrl, services } from '../data/site';
+import Icon from './Icon.astro';
+const quick: [string, string][] = [['/', 'Home'], ['/about/', 'About Us'], ['/mentorship-program/', 'Our Programs'], ['/career-pathways/', 'Cruise Departments'], ['/success-stories/', 'Success Stories'], ['/our-mentor/', 'Our Mentor'], ['/expert-panel/', 'Expert Panel'], ['/faq/', 'FAQs'], ['/contact/', 'Contact']];
+---
+<footer class="footer">
+  <div class="footer-wave" aria-hidden="true"></div>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="/" class="brand brand--lg" aria-label="AKMICS Sailpreneur Academy — home">
+        <img src="/media/emblem-120.webp" width="72" height="68" alt="" loading="lazy" />
+        <span class="brand-text"><strong>AKMICS</strong><small>Sailpreneur Academy</small></span>
+      </a>
+      <p class="footer-company">{brand.company}</p>
+      <p class="footer-tagline">{brand.tagline}.</p>
+      <a class="btn btn--gold" href="/contact/"><span>Start Your Cruise Journey</span><Icon name="arrow" size={18} /></a>
+    </div>
+    <div class="footer-col">
+      <h2>Quick Links</h2>
+      <ul>{quick.map(([url, label]) => <li><a href={url}>{label}</a></li>)}</ul>
+    </div>
+    <div class="footer-col">
+      <h2>Programs</h2>
+      <ul>{services.slice(0, 7).map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}<li><a href="/mentorship-program/">All programs →</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h2>Visit &amp; Connect</h2>
+      <a class="footer-contact" href={mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" size={18} /><span>{brand.address}</span></a>
+      {brand.phones.map((phone) => <a class="footer-contact" href={tel(phone)}><Icon name="phone" size={18} /><span>{phone}</span></a>)}
+      <h2 class="footer-follow">Follow Us</h2>
+      {brand.instagram.map((account) => <a class="footer-contact" href={account.url} target="_blank" rel="noopener noreferrer"><Icon name="instagram" size={18} /><span>{account.handle}</span></a>)}
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© {new Date().getFullYear()} {brand.company} (AKMICS — Sailpreneur Academy). All rights reserved.</p>
+    <div><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-and-conditions/">Terms &amp; Conditions</a><a href="#main" class="to-top">Back to top <Icon name="anchor" size={16} /></a></div>
+  </div>
+</footer>

@@ -1,0 +1,13 @@
+---
+import { trust } from '../data/site';
+import Icon from './Icon.astro';
+---
+<ul class="trust-grid">
+  {trust.map((item, i) => (
+    <li class="trust-item" data-reveal style={`--i:${i}`}>
+      <span class="trust-icon"><Icon name={item.icon} size={28} stroke={1.3} /></span>
+      <h3>{item.title}</h3>
+      <p>{item.text}</p>
+    </li>
+  ))}
+</ul>

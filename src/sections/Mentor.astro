@@ -1,0 +1,54 @@
+---
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Stories from '../components/Stories.astro';
+const timeline = [
+  { icon: 'pin', title: 'Dehradun', text: 'Where the journey began — and where the academy is today.' },
+  { icon: 'wheel', title: '12 years at sea', text: 'Real experience onboard international cruise ships.' },
+  { icon: 'globe', title: '50 countries · 65 islands', text: 'Travelled as crew — not as a tourist. This was work.' },
+  { icon: 'compass', title: 'Now guiding you', text: 'Founder & mentor of AKMICS — Sailpreneur Academy.' },
+];
+const areas = [
+  { icon: 'compass', title: 'Career direction', text: 'Profile assessment, department choice and a personal roadmap built on how ships really work.' },
+  { icon: 'chat', title: 'Interview mastery', text: 'Realistic mock interviews and feedback, so the real interview feels familiar.' },
+  { icon: 'document', title: 'Documents & joining', text: 'Step-by-step guidance through CDC, STCW, medical, visa and pre-embarkation.' },
+  { icon: 'ship', title: 'Life at sea', text: 'Honest insight into crew life, routines and growing your career onboard.' },
+];
+---
+<section class="section">
+  <div class="wrap split split--reverse">
+    <figure class="split-media framed" data-reveal>
+      <Img name="ankur-uniform" alt="Ankur Kumar Mishra in uniform on a cruise ship deck" sizes="(max-width: 900px) 90vw, 40vw" />
+      <figcaption>“Your mentor has actually done it.”</figcaption>
+    </figure>
+    <div class="split-copy" data-reveal>
+      <p class="eyebrow">From Dehradun to Miami</p>
+      <h2>Ankur Kumar Mishra — <em>your career captain.</em></h2>
+      <p class="lead">Cruise Career Specialist · Mentor · Industry Guide</p>
+      <p>Ankur spent twelve years working onboard international cruise ships, travelling to fifty countries and sixty-five islands. Not as a tourist — this was his work: the routines, the guests, the teams and the standards that make a ship run.</p>
+      <p>Today he brings that first-hand experience to every student at AKMICS — helping them choose the right department, present themselves with confidence, prepare for interviews and understand exactly what life at sea involves.</p>
+      <ol class="mentor-timeline">
+        {timeline.map((item) => <li><span><Icon name={item.icon} size={20} /></span><div><strong>{item.title}</strong><p>{item.text}</p></div></li>)}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="wrap">
+    <SectionHeading eyebrow="How Ankur mentors" title="A profile. A plan. <em>A professional mindset.</em>" href="/mentorship-program/" linkText="See all programs" />
+    <ul class="feature-grid">
+      {areas.map((area, i) => <li data-reveal style={`--i:${i}`}><Icon name={area.icon} size={30} stroke={1.3} /><h3>{area.title}</h3><p>{area.text}</p></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <SectionHeading eyebrow="Students he has guided" title="Proof in <em>every journey.</em>" href="/success-stories/" linkText="All success stories" />
+    <Stories />
+    <div class="center-cta"><Button href="/contact/" variant="navy">Talk to Ankur’s team</Button></div>
+  </div>
+</section>

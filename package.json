@@ -1,0 +1,27 @@
+{
+  "name": "akmics-sailpreneur-academy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build && node scripts/curate-build.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check",
+    "verify": "node scripts/verify.mjs",
+    "images:generate": "node --env-file=.env scripts/images/generate.mjs",
+    "images:optimize": "python scripts/optimize-images.py"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@fontsource/cormorant-garamond": "^5.2.0",
+    "@fontsource/manrope": "^5.2.0",
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@axe-core/playwright": "^4.10.0",
+    "playwright": "^1.55.0",
+    "typescript": "^5.9.0"
+  }
+}

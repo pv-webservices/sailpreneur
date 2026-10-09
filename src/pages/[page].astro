@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Button from '../components/Button.astro';
+import CTA from '../components/CTA.astro';
+import { routeTitles, brand, tel } from '../data/site';
+import About from '../sections/About.astro';
+import Mentor from '../sections/Mentor.astro';
+import Program from '../sections/Program.astro';
+import Pathways from '../sections/Pathways.astro';
+import ExpertPanel from '../sections/ExpertPanel.astro';
+import SuccessStories from '../sections/SuccessStories.astro';
+import JourneyPage from '../sections/JourneyPage.astro';
+import FaqPage from '../sections/FaqPage.astro';
+import Contact from '../sections/Contact.astro';
+import Privacy from '../sections/Privacy.astro';
+import Terms from '../sections/Terms.astro';
+
+interface PageConfig { title: string; intro: string; image: string; portrait?: string; portraitAlt?: string; actions?: boolean; cta?: boolean; compact?: boolean; body: unknown }
+
+export function getStaticPaths() {
+  return Object.keys(routeTitles).map((page) => ({ params: { page } }));
+}
+
+const pages: Record<string, PageConfig> = {
+  about: { title: 'Navigating careers. <em>Anchoring futures.</em>', image: 'ship-atrium', actions: true, body: About,
+    intro: 'A Dehradun-based cruise career academy built on twelve years of real sea experience — preparing aspiring professionals for life and work on international cruise ships.' },
+  'our-mentor': { title: 'A mentor who has <em>actually done it.</em>', image: 'bridge-dusk', portrait: 'ankur-portrait', portraitAlt: 'Ankur Kumar Mishra, founder and cruise career mentor', actions: true, body: Mentor,
+    intro: 'Meet Ankur Kumar Mishra — cruise career specialist, mentor and industry guide. From Dehradun to Miami, and now guiding your cruise career.' },
+  'mentorship-program': { title: 'Cruise career programs, <em>mentor-led.</em>', image: 'mentorship-session', actions: true, body: Program,
+    intro: 'Eleven focused areas of guidance — from your career roadmap and CV to interviews, STCW, visa and joining — brought together in one structured mentorship.' },
+  'career-pathways': { title: 'Many roles. <em>One incredible world.</em>', image: 'ship-atrium', body: Pathways,
+    intro: 'A cruise ship is a floating city. Discover the departments onboard, what each role involves and how AKMICS prepares you for it.' },
+  'expert-panel': { title: 'Learn from <em>industry experts.</em>', image: 'bridge-dusk', body: ExpertPanel,
+    intro: 'Five specialists with 35+ years of combined experience across cruise hospitality, hotel operations, language and personal development.' },
+  'success-stories': { title: 'Real people. <em>Real journeys.</em>', image: 'hero-ship', body: SuccessStories,
+    intro: 'From Delhi, Dehradun and Himachal to Norwegian, Princess, MSC and Carnival — meet students who turned a dream into a career at sea.' },
+  'cruise-career-journey': { title: 'Seven steps to a <em>global career.</em>', image: 'journey-ocean', body: JourneyPage,
+    intro: 'A structured, proven path from your first questions to stepping onboard — and growing long after you join.' },
+  faq: { title: 'Good questions. <em>Honest answers.</em>', image: 'ship-atrium', compact: true, body: FaqPage,
+    intro: 'Everything students and parents usually ask before starting a cruise career with AKMICS.' },
+  contact: { title: 'Start your <em>cruise journey.</em>', image: 'dehradun-valley', cta: false, compact: true, body: Contact,
+    intro: 'A good next step starts with a conversation. Call, visit the academy in Dehradun or prepare your enquiry below.' },
+  'privacy-policy': { title: 'Privacy Policy', image: 'journey-ocean', cta: false, compact: true, body: Privacy,
+    intro: 'How this website handles enquiry information and what to consider when contacting the academy.' },
+  'terms-and-conditions': { title: 'Terms &amp; Conditions', image: 'journey-ocean', cta: false, compact: true, body: Terms,
+    intro: 'The scope of this website and the cruise career guidance presented here.' },
+};
+
+const { page } = Astro.params as { page: string };
+const config = pages[page];
+const Body = config.body as typeof About;
+const plainTitle = routeTitles[page];
+---
+<Layout title={plainTitle} description={config.intro} preload={config.portrait ? undefined : config.image}>
+  <PageHero title={config.title} eyebrow={plainTitle} intro={config.intro} image={config.image} portrait={config.portrait} portraitAlt={config.portraitAlt} compact={config.compact}>
+    {config.actions && (
+      <div class="btn-row">
+        <Button href="/contact/">Start Your Cruise Journey</Button>
+        <Button href={tel(brand.phones[0])} variant="ghost" icon="phone">Call {brand.phones[0]}</Button>
+      </div>
+    )}
+  </PageHero>
+  <Body />
+  {config.cta !== false && <CTA />}
+</Layout>

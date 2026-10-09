@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import Img from '../components/Img.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Stats from '../components/Stats.astro';
+import Journey from '../components/Journey.astro';
+import Services from '../components/Services.astro';
+import Departments from '../components/Departments.astro';
+import Experts from '../components/Experts.astro';
+import Stories from '../components/Stories.astro';
+import Trust from '../components/Trust.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import { brand, tel, mapsUrl, departments, services } from '../data/site';
+const marquee = [...departments.map((d) => d.name), ...services.slice(0, 7).map((s) => s.name)];
+const milestones = [
+  { icon: 'book', title: 'Learn & Prepare', text: 'Profile assessment and a personal plan' },
+  { icon: 'graduation', title: 'Get Industry Ready', text: 'Hospitality, USPH & personal development' },
+  { icon: 'document', title: 'Clear Interviews & Documents', text: 'Mock interviews, CDC, STCW, visa' },
+  { icon: 'ship', title: 'Step Onboard Your Dream Ship', text: 'Joining guidance & lifetime support' },
+];
+---
+<Layout home preload="hero-ship" title="Cruise Career Mentorship in Dehradun" description="From dreaming on land to thriving at sea. AKMICS — Sailpreneur Academy in Dehradun prepares you for a career on international cruise ships with mentorship, interview training and joining guidance.">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <Img name="hero-ship" class="hero-bg" priority sizes="100vw" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span></span>AKMICS — Sailpreneur Academy · Dehradun</p>
+        <h1 id="hero-title"><span class="hero-line">From Dreaming on Land</span><span class="hero-line">to <em>Thriving at Sea.</em></span></h1>
+        <p class="hero-sub">Guidance. Training. Mentorship.<br />For your global cruise career.</p>
+        <p class="hero-desc">AKMICS — Sailpreneur Academy, under {brand.company}, helps you build a career on international cruise ships with expert guidance, real industry experience and lifetime support.</p>
+        <div class="btn-row">
+          <Button href="/contact/">Start Your Cruise Journey</Button>
+          <Button href="/our-mentor/" variant="ghost">Meet Your Mentor</Button>
+        </div>
+      </div>
+      <div class="hero-aside" aria-hidden="true">
+        <div class="hero-badge">
+          <svg viewBox="0 0 200 200"><defs><path id="badge-circle" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0" /></defs><text><textPath href="#badge-circle">NAVIGATING CAREERS • ANCHORING FUTURES • </textPath></text></svg>
+          <Icon name="anchor" size={46} stroke={1.2} />
+        </div>
+      </div>
+    </div>
+    <div class="wrap hero-stats" data-countup><Stats /></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {[0, 1].map(() => <div class="marquee-group">{marquee.map((item) => <span><Icon name="anchor" size={14} />{item}</span>)}</div>)}
+    </div>
+  </div>
+
+  <!-- DEHRADUN TO THE WORLD -->
+  <section class="world section" aria-labelledby="world-title">
+    <div class="wrap">
+      <div class="world-head" data-reveal>
+        <p class="eyebrow">It starts here</p>
+        <h2 id="world-title">From Dehradun <em>to the World.</em></h2>
+        <p class="lead">A journey of guidance, growth and global opportunities — the same road our founder travelled, from Dehradun to Miami.</p>
+      </div>
+    </div>
+    <div class="world-stage">
+      <figure class="world-photo world-photo--home" data-reveal>
+        <Img name="dehradun-valley" sizes="(max-width: 900px) 100vw, 34vw" />
+        <figcaption><Icon name="pin" size={18} /><span><small>Your point of departure</small>Dehradun, India</span></figcaption>
+      </figure>
+      <div class="world-route">
+        <ol>
+        {milestones.map((m, i) => (
+          <li data-reveal style={`--i:${i}`}><span class="route-icon"><Icon name={m.icon} size={22} /></span><strong>{m.title}</strong><span>{m.text}</span></li>
+        ))}
+        </ol>
+      </div>
+      <figure class="world-photo world-photo--sea" data-reveal>
+        <Img name="hero-ship" sizes="(max-width: 900px) 100vw, 34vw" alt="A cruise ship at sea — the destination of the AKMICS journey" />
+        <figcaption><Icon name="globe" size={18} /><span><small>Explore the world</small>Build your career at sea</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder" aria-labelledby="founder-title">
+    <div class="founder-grid">
+      <figure class="founder-photo" data-reveal>
+        <Img name="ankur-uniform" alt="Ankur Kumar Mishra in cruise officer uniform on a ship deck at sunset" sizes="(max-width: 900px) 100vw, 32vw" />
+      </figure>
+      <div class="founder-copy" data-reveal>
+        <p class="eyebrow">Meet our founder &amp; mentor</p>
+        <h2 id="founder-title">Ankur Kumar Mishra</h2>
+        <p class="founder-role">Cruise Career Specialist · Mentor · Industry Guide</p>
+        <p>From Dehradun to Miami: twelve years working at sea, fifty countries and sixty-five islands — not as a tourist, but as crew. Today Ankur brings that first-hand experience to every student he mentors.</p>
+        <ul class="founder-facts">
+          <li><Icon name="wheel" size={26} stroke={1.2} /><strong>12+</strong><span>Years at sea</span></li>
+          <li><Icon name="globe" size={26} stroke={1.2} /><strong>50</strong><span>Countries</span></li>
+          <li><Icon name="map" size={26} stroke={1.2} /><strong>65</strong><span>Islands</span></li>
+          <li><Icon name="users" size={26} stroke={1.2} /><strong>35+</strong><span>Yrs expert panel</span></li>
+          <li><Icon name="infinity" size={26} stroke={1.2} /><strong>For life</strong><span>Mentor support</span></li>
+        </ul>
+        <blockquote class="founder-quote"><p>“Not a tourist — this was my work. Now I’m guiding your cruise career.”</p><cite>Ankur Kumar Mishra</cite></blockquote>
+        <div class="btn-row"><Button href="/our-mentor/">Meet Your Mentor</Button><Button href={tel(brand.phones[0])} variant="ghost" icon="phone">{brand.phones[0]}</Button></div>
+      </div>
+      <figure class="founder-side" data-reveal>
+        <Img name="bridge-dusk" decorative sizes="22vw" />
+        <figcaption>Real experience.<br />Real guidance.<br /><em>Real results.</em></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey section" aria-labelledby="journey-title">
+    <Img name="journey-ocean" class="journey-bg" decorative sizes="100vw" />
+    <div class="wrap">
+      <SectionHeading align="center" tone="dark" eyebrow="A structured, proven path" title="Your Cruise Career Journey — <em>7 Steps</em> to a Global Career" text="From aspiration to a successful career onboard international cruise ships." />
+      <Journey />
+      <div class="center-cta"><Button href="/cruise-career-journey/" variant="ghost">See the full journey</Button></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs section" aria-labelledby="programs-heading">
+    <div class="wrap">
+      <SectionHeading eyebrow="Our cruise career programs" title="Everything you need to <em>get onboard.</em>" text="Structured guidance for a successful and fulfilling career at sea — eleven focused areas, one mentor-led journey." href="/mentorship-program/" linkText="View all programs" />
+      <Services />
+    </div>
+  </section>
+
+  <!-- DEPARTMENTS -->
+  <section class="departments section section--tint" aria-label="Cruise career departments">
+    <div class="wrap">
+      <SectionHeading eyebrow="Many roles. One incredible world." title="Explore cruise career <em>departments.</em>" text="Discover a wide range of career opportunities onboard luxury cruise ships — and the preparation each one needs." href="/career-pathways/" linkText="All departments" />
+      <Departments />
+    </div>
+  </section>
+
+  <!-- EXPERTS -->
+  <section class="experts section" aria-label="Expert panel">
+    <Img name="bridge-dusk" class="experts-bg" decorative sizes="100vw" />
+    <div class="wrap">
+      <SectionHeading align="center" tone="dark" eyebrow="35+ years of combined experience" title="Learn from <em>industry experts.</em>" text="Get mentored by experienced professionals across cruise hospitality, hotel operations, language and personal development." />
+      <Experts />
+      <div class="center-cta"><Button href="/expert-panel/" variant="ghost">Meet the full panel</Button></div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section class="stories section" aria-label="Success stories">
+    <div class="wrap">
+      <SectionHeading eyebrow="Real people. Real journeys. Real results." title="From dreamers to <em>global professionals.</em>" text="Our students are now working with international cruise lines around the world." href="/success-stories/" linkText="View all stories" />
+      <Stories />
+      <p class="fine-print">Stories and quotes as shared by AKMICS students. Every journey is individual and hiring decisions rest with employers.</p>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust section section--tint" aria-label="Why students and parents trust AKMICS">
+    <div class="wrap">
+      <SectionHeading align="center" eyebrow="Building careers at sea · Building trust at home" title="Why students &amp; parents <em>trust AKMICS.</em>" text="A mentorship-driven institute with a strong foundation of experience, transparency and results." />
+      <Trust />
+    </div>
+  </section>
+
+  <!-- FAQ + CONTACT -->
+  <section class="faq-home section" aria-labelledby="faq-title">
+    <div class="wrap faq-home-grid">
+      <div class="faq-home-intro" data-reveal>
+        <p class="eyebrow">Before you set sail</p>
+        <h2 id="faq-title">Good questions. <br /><em>Honest answers.</em></h2>
+        <p class="lead">Still deciding? Visit the academy or call us — parents are always welcome to join the conversation.</p>
+        <div class="contact-card">
+          {brand.phones.map((phone) => <a href={tel(phone)}><Icon name="phone" size={20} /><span><small>Call the academy</small>{phone}</span></a>)}
+          <a href={mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" size={20} /><span><small>Visit us</small>{brand.address}</span></a>
+        </div>
+        <a class="text-link" href="/faq/">Read all FAQs <Icon name="arrow" size={16} /></a>
+      </div>
+      <FAQ limit={5} />
+    </div>
+  </section>
+
+  <CTA />
+</Layout>

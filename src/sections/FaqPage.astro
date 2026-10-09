@@ -1,0 +1,20 @@
+---
+import Icon from '../components/Icon.astro';
+import Button from '../components/Button.astro';
+import FAQ from '../components/FAQ.astro';
+import { brand, tel } from '../data/site';
+---
+<section class="section">
+  <div class="wrap faq-home-grid">
+    <aside class="faq-home-intro" data-reveal>
+      <p class="eyebrow">Still have a question?</p>
+      <h2>Let’s talk <em>it through.</em></h2>
+      <p class="lead">Ask about your background, the current batch and the guidance you need. Parents are welcome too.</p>
+      <div class="contact-card">
+        {brand.phones.map((phone) => <a href={tel(phone)}><Icon name="phone" size={20} /><span><small>Call the academy</small>{phone}</span></a>)}
+      </div>
+      <Button href="/contact/" variant="navy">Contact our team</Button>
+    </aside>
+    <FAQ />
+  </div>
+</section>

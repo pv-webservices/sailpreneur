@@ -1,0 +1,69 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileBar from '../components/MobileBar.astro';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/components.css';
+import '../styles/home.css';
+import '../styles/pages.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/cormorant-garamond/latin-600.css';
+import '@fontsource/cormorant-garamond/latin-700.css';
+import '@fontsource/cormorant-garamond/latin-500-italic.css';
+import '@fontsource/manrope/latin-400.css';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/latin-700.css';
+import { brand } from '../data/site';
+import { media } from '../lib/media';
+interface Props { title: string; description: string; home?: boolean; preload?: string }
+const { title, description, home = false, preload } = Astro.props;
+const site = import.meta.env.PUBLIC_SITE_URL;
+const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
+const shareImage = media('hero-ship');
+const ogImage = site ? new URL(shareImage.src, site).href : undefined;
+const preloadImage = preload ? media(preload) : undefined;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'EducationalOrganization', name: brand.name, legalName: brand.company, alternateName: brand.academy,
+  description: 'Cruise career mentorship, interview preparation and joining guidance in Dehradun.',
+  telephone: brand.phones[0],
+  address: { '@type': 'PostalAddress', streetAddress: '43, D.A.V. PG College Road', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
+  sameAs: brand.instagram.map((account) => account.url),
+  ...(site ? { url: site, logo: new URL(media('logo-card').src, site).href } : {}),
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
+  <title>{title} | AKMICS · Sailpreneur Academy</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#071a30" />
+  <meta name="robots" content={site ? 'index,follow' : 'noindex,nofollow'} />
+  {canonical && <link rel="canonical" href={canonical} />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={`${title} | AKMICS`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="AKMICS · Sailpreneur Academy" />
+  {canonical && <meta property="og:url" content={canonical} />}
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | AKMICS`} />
+  <meta name="twitter:description" content={description} />
+  {ogImage && <meta name="twitter:image" content={ogImage} />}
+  {preloadImage && <link rel="preload" as="image" imagesrcset={preloadImage.srcset} imagesizes="100vw" fetchpriority="high" />}
+  <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
+</head>
+<body class:list={[home && 'is-home']}>
+  {home && <div class="loader" aria-hidden="true"><img src="/media/emblem-120.webp" width="120" height="113" alt="" /></div>}
+  <Header />
+  <main id="main" tabindex="-1"><slot /></main>
+  <Footer />
+  <MobileBar />
+  <script src="../scripts/site.ts"></script>
+</body>
+</html>

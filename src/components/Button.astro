@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+interface Props { href: string; variant?: 'gold' | 'navy' | 'ghost' | 'outline'; icon?: string; class?: string; external?: boolean }
+const { href, variant = 'gold', icon = 'arrow', class: className, external = false } = Astro.props;
+---
+<a class:list={['btn', `btn--${variant}`, className]} href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}><span><slot /></span><Icon name={icon} size={18} /></a>

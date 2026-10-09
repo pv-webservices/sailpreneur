@@ -1,17 +1,17 @@
 # AKMICS · Sailpreneur Academy
 
-A static, multi-page cruise-career mentorship website built with Astro, TypeScript and structured CSS. The design uses the supplied brand mark, founder and expert photographs, cruise imagery, self-hosted Cormorant Garamond and Manrope fonts, and a navy, ivory and champagne-gold palette.
+Static, multi-page marketing website for AKMICS — Sailpreneur Academy (Ankur Kumar Mishra Institute of Cruise Studies Pvt. Ltd., Dehradun). Built with Astro and TypeScript, using self-hosted Cormorant Garamond and Manrope and a navy / champagne-gold / ivory palette taken from the Sailpreneur logo card.
 
 ## Local development
 
-Use Node.js 24 LTS (the tested runtime is 24.19.0).
+Use Node.js 24 LTS (tested on 24.19.0) and Python 3 with Pillow for image processing.
 
 ```powershell
 npm ci
 npm run dev
 ```
 
-Production preview:
+Production build and preview:
 
 ```powershell
 npm run check
@@ -19,54 +19,56 @@ npm run build
 npm run preview -- --port 4321
 ```
 
-The publishable output is `dist/`. `npm run build` preserves all client originals in `public/`, then removes original JPEG promotional materials from `dist/`; only selected WebP derivatives are referenced by the site. Do not deploy the source `public/` directory directly. Raw promotional posters include claims that have not been approved.
+Deploy the `dist/` folder. `npm run build` removes the raw client JPEG posters and any unreferenced media from `dist/`; the originals stay untouched in `public/`.
 
-## Content and maintenance
+## Project structure
 
-- `src/data/site.ts`: brand identity, contact numbers, navigation, departments, all eleven services, seven journey steps, expert profiles and FAQ answers.
-- `src/pages/index.astro`: the complete homepage.
-- `src/pages/[page].astro`: primary and legal pages.
-- `src/pages/services/[slug].astro`: eleven service detail pages.
-- `src/pages/expert-panel/[slug].astro`: five expert profiles.
-- `src/layouts/Layout.astro`: shared layout, metadata and Organization schema.
-- `src/components/`: reusable navigation, footer, buttons, journey, services, experts, FAQ, enquiry form and CTA.
-- `src/styles/global.css`: visual and responsive design system, motion and reduced-motion behavior.
-- `src/scripts/site.ts`: progressive interactions, enquiry handling and scroll progression.
-- `scripts/prepare-assets.py`: selected asset conversion using Pillow; leaves originals intact.
+| Path | Purpose |
+| --- | --- |
+| `src/data/site.ts` | All business content: contact details, stats, services, journey steps, departments, experts, success stories, trust points, FAQs. |
+| `src/pages/index.astro` | Homepage. |
+| `src/pages/[page].astro` | Router for inner pages; each page's body lives in `src/sections/`. |
+| `src/pages/services/[slug].astro`, `src/pages/expert-panel/[slug].astro` | Eleven program pages and five expert profiles. |
+| `src/components/` | Header, footer, mobile quick-contact bar, page hero, buttons, carousels, cards, journey timeline, FAQ, enquiry form, CTA. |
+| `src/styles/` | `tokens.css` (design tokens) → `base.css` → `components.css` → `home.css` → `pages.css`. |
+| `src/scripts/` | Menu, scroll reveals, count-ups, carousels, journey progress, enquiry form. |
+| `src/lib/media.ts`, `src/components/Img.astro` | Responsive `srcset` images from `src/data/media.json`. |
 
-## Public URL and SEO
+## Images
 
-Copy `.env.example` to `.env` and set `PUBLIC_SITE_URL` to the approved HTTPS origin before the final production build. The build then emits canonical URLs, absolute share-image URLs, an Organization URL, sitemap files and an indexable robots configuration.
+Two kinds of imagery are used:
 
-Without the public origin, the site deliberately builds with `noindex,nofollow` and robots `Disallow: /`. No domain is invented. A separate test build under `output/seo-build/` uses `https://qa.example.invalid` solely to exercise the SEO configuration; it must not be deployed.
+1. **Client imagery** (`public/*.jpeg`): founder and expert portraits, logo card, and student portraits cropped from the success-story posters.
+2. **AI imagery**: twelve images generated for specific placements (hero, departments, journey, experts backdrop, CTA, etc.).
+
+### Generating AI images (server-side only)
+
+Image generation runs as a local Node script. The browser never sees it. Set `OPENAI_API_KEY` in `.env` (git-ignored; never prefix it with `PUBLIC_`).
+
+```powershell
+npm run images:generate                     # generates only missing images
+node --env-file=.env scripts/images/generate.mjs --only=hero-ship --force
+node --env-file=.env scripts/images/generate.mjs --upgrade=dept-hotel   # retry on the premium model
+npm run images:optimize                     # writes WebP variants + src/data/media.json
+```
+
+`scripts/images/config.mjs` holds the image-generation settings in one place: models (`gpt-image-2.5-flare` by default, `gpt-image-2.5-sunburst` for premium), quality tiers, sizes, and each image's prompt, placement and alt text. Environment overrides are listed in `.env.example`. Lossless originals are saved to `assets-src/generated/` (git-ignored) together with a manifest of the model and quality used for each image.
 
 ## Enquiry delivery
 
-The default form validates inputs and prepares a text download in the visitor's browser. It does not send data, store it in browser storage, or claim delivery. The visitor is directed to call the team. When JavaScript is unavailable, the submission button is disabled and phone contact remains available.
+The form prepares a downloadable enquiry in the visitor's browser. It doesn't send anything until a provider is configured. To enable delivery, set `PUBLIC_FORM_ENDPOINT` to an approved HTTPS endpoint that accepts form-urlencoded POSTs. The endpoint must validate and rate-limit submissions, reject the honeypot `website` field, and return `{ "success": true }`. Then rebuild.
 
-To enable delivery, configure `PUBLIC_FORM_ENDPOINT` with an approved HTTPS endpoint and rebuild. It must:
+## Public URL and SEO
 
-1. Accept form-urlencoded POST requests and permit the site's origin through CORS when needed.
-2. Validate and sanitise inputs on the server, enforce rate limiting, and reject the honeypot `website` field.
-3. Accept `name`, `phone`, optional `email`, `profession`, optional `department`, `message`, and `consent`.
-4. Return JSON `{ "success": true }` only after receipt is acknowledged. HTTP errors, invalid JSON or an unacknowledged response show failure and preserve form input.
-5. Apply the business-approved privacy, retention and deletion arrangements.
-
-Use a server-side secret if the provider requires one; never place private keys in a `PUBLIC_` variable. No provider, email inbox or WhatsApp destination is configured. Before claiming live delivery, submit an approved real enquiry and verify receipt in the destination. Browser-intercepted QA responses are only simulations.
+Set `PUBLIC_SITE_URL` (HTTPS) before the production build to turn on canonical URLs, share images, sitemap and indexing. Without it the build is `noindex` and `robots.txt` disallows crawling.
 
 ## Verification
 
 ```powershell
 npx playwright install chromium --only-shell
 npm run preview -- --port 4321
-# In a second terminal:
+# second terminal
 npm run verify
 ```
 
-The browser script checks every content route at six viewport widths, unique page metadata, local links and fragments, image loading, accessibility, menu keyboard behavior, FAQ behavior, enquiry download and simulated provider responses. It uses synthetic input only. Evidence is written to `output/audit/`.
-
-Read `IMPLEMENTATION-REPORT.md` for the content decisions, verification results and remaining launch requirements.
-
-## Implementation references
-
-Astro's [project structure](https://docs.astro.build/en/basics/project-structure/), [static asset imports](https://docs.astro.build/en/guides/imports/) and [sitemap integration](https://docs.astro.build/en/guides/integrations-guide/sitemap/) informed the static routing, asset handling and SEO setup.
+The verification run covers every route at 360–1920px, axe WCAG A/AA checks, internal links and anchors, menu, FAQ and enquiry-form behaviour, carousel controls and the no-JavaScript fallback. Results are written to `output/audit/`.

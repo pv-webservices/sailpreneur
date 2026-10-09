@@ -1,0 +1,9 @@
+---
+import { brand, tel } from '../data/site';
+import Icon from './Icon.astro';
+const applyHref = Astro.url.pathname.startsWith('/contact') ? '#enquiry' : '/contact/';
+---
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a href={tel(brand.phones[0])}><Icon name="phone" size={18} /><span>Call Us</span></a>
+  <a href={applyHref} class="mobile-bar-primary"><span>Apply Now</span><Icon name="arrow" size={18} /></a>
+</nav>

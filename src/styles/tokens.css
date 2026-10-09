@@ -1,0 +1,65 @@
+/* AKMICS design tokens — navy, champagne gold and ivory, drawn from the Sailpreneur logo card. */
+:root {
+  --navy-950: #030d1a;
+  --navy-900: #061529;
+  --navy-850: #081c36;
+  --navy-800: #0b2443;
+  --navy-700: #123359;
+  --navy-600: #1d4672;
+  --gold-700: #8e6a26;
+  --gold-600: #a8822f;
+  --gold-500: #c49a45;
+  --gold-400: #d6b467;
+  --gold-300: #e7d19c;
+  --gold-200: #f3e6c4;
+  --gold-text: #7a5a1c; /* small gold text on light backgrounds (WCAG AA) */
+  --ivory-50: #fffcf6;
+  --ivory-100: #faf5ea;
+  --ivory-200: #f3ead8;
+  --ivory-300: #e9dcc2;
+  --ink: #0d1b2c;
+  --ink-soft: #3b4859;
+  --muted: #5d6877;
+  --line: rgba(13, 27, 44, 0.12);
+  --line-gold: rgba(196, 154, 69, 0.35);
+  --on-dark: #f6f1e7;
+  --on-dark-soft: rgba(246, 241, 231, 0.74);
+  --on-dark-line: rgba(231, 209, 156, 0.22);
+
+  --gold-gradient: linear-gradient(135deg, #e9d29a 0%, #c9a04b 45%, #a8822f 100%);
+  --navy-gradient: linear-gradient(160deg, var(--navy-800) 0%, var(--navy-900) 55%, var(--navy-950) 100%);
+
+  --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fs-display: clamp(2.6rem, 1.2rem + 4.3vw, 5.6rem);
+  --fs-h2: clamp(2.1rem, 1.35rem + 3vw, 4rem);
+  --fs-h3: clamp(1.3rem, 1.1rem + 0.7vw, 1.65rem);
+  --fs-lead: clamp(1.02rem, 0.96rem + 0.3vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.75rem;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(6, 21, 41, 0.06);
+  --shadow: 0 14px 40px -12px rgba(6, 21, 41, 0.18);
+  --shadow-lg: 0 30px 70px -20px rgba(6, 21, 41, 0.35);
+  --shadow-gold: 0 14px 30px -12px rgba(168, 130, 47, 0.55);
+
+  --wrap: min(1560px, 88%);
+  --section-y: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --header-h: 84px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur: 0.45s;
+}
+
+@media (max-width: 640px) {
+  :root { --wrap: calc(100% - 36px); --header-h: 70px; }
+}

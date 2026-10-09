@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "akmics-preview", "runtimeExecutable": "npx", "runtimeArgs": ["astro", "preview", "--host", "127.0.0.1", "--port", "4321"], "port": 4321 }
+  ]
+}

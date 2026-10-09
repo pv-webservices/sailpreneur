@@ -1,0 +1,44 @@
+---
+import { journey } from '../data/site';
+import Icon from './Icon.astro';
+interface Props { expanded?: boolean }
+const { expanded = false } = Astro.props;
+---
+{expanded ? (
+  <div class="journey-detailed">
+    <span class="journey-detailed-line" aria-hidden="true"><span></span></span>
+    <ol>
+    {journey.map((step, i) => (
+      <li class="journey-detailed-step" id={`step-${i + 1}`} data-reveal>
+        <div class="journey-node"><Icon name={step.icon} size={26} /></div>
+        <div class="journey-card">
+          <span class="journey-num">Step {String(i + 1).padStart(2, '0')}</span>
+          <h2>{step.name}</h2>
+          <p class="journey-short">{step.text}</p>
+          <p>{step.detail}</p>
+          <p class="journey-takeaway"><Icon name="check-circle" size={20} /><span><strong>Outcome:</strong> {step.takeaway}</span></p>
+        </div>
+      </li>
+    ))}
+    </ol>
+  </div>
+) : (
+  <div class="journey-timeline">
+    <svg class="journey-curve" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+      <path class="journey-curve-base" d="M10 120 C 150 120, 170 40, 300 60 S 470 130, 600 90 S 800 20, 900 50 S 1080 120, 1190 70" />
+      <path class="journey-curve-draw" pathLength="1" d="M10 120 C 150 120, 170 40, 300 60 S 470 130, 600 90 S 800 20, 900 50 S 1080 120, 1190 70" />
+    </svg>
+    <ol>
+      {journey.map((step, i) => (
+        <li class="journey-step" data-reveal style={`--i:${i}`}>
+          <a href={`/cruise-career-journey/#step-${i + 1}`} aria-label={`Step ${i + 1}: ${step.name} — read more`}>
+            <span class="journey-node"><Icon name={step.icon} size={24} /></span>
+            <span class="journey-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{step.name}</h3>
+            <p>{step.text}</p>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+)}

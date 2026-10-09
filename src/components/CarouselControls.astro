@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+interface Props { label: string; tone?: 'light' | 'dark' }
+const { label, tone = 'light' } = Astro.props;
+---
+<div class:list={['carousel-controls', tone === 'dark' && 'on-dark']}>
+  <button type="button" class="carousel-btn" data-dir="-1" aria-label={`Previous ${label}`}><Icon name="chevron-left" size={20} /></button>
+  <span class="carousel-progress" aria-hidden="true"><span></span></span>
+  <button type="button" class="carousel-btn" data-dir="1" aria-label={`Next ${label}`}><Icon name="chevron-right" size={20} /></button>
+</div>

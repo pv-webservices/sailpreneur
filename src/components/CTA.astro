@@ -1,0 +1,18 @@
+---
+import Button from './Button.astro';
+import Img from './Img.astro';
+import { brand, tel } from '../data/site';
+---
+<section class="cta" aria-labelledby="cta-title">
+  <Img name="cta-deck" class="cta-bg" sizes="100vw" />
+  <div class="cta-shade" aria-hidden="true"></div>
+  <div class="wrap cta-inner" data-reveal>
+    <p class="eyebrow">Your next chapter starts with a conversation</p>
+    <h2 id="cta-title">Turn Your Land Job <br />Into a <em>Sea Career.</em></h2>
+    <p>Get expert guidance, real industry training and lifetime support with AKMICS — Sailpreneur Academy.</p>
+    <div class="btn-row">
+      <Button href="/contact/">Apply Now</Button>
+      <Button href={tel(brand.phones[0])} variant="ghost" icon="phone">Talk to Our Team</Button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+---
+import { faqs } from '../data/site';
+import Icon from './Icon.astro';
+interface Props { limit?: number }
+const { limit = faqs.length } = Astro.props;
+---
+<div class="faq-list">
+  {faqs.slice(0, limit).map(([question, answer], i) => (
+    <details class="faq-item" open={i === 0}>
+      <summary><span>{question}</span><span class="faq-toggle" aria-hidden="true"><Icon name="plus" size={18} /></span></summary>
+      <div class="faq-answer"><p>{answer}</p></div>
+    </details>
+  ))}
+</div>

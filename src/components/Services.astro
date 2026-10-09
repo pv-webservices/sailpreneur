@@ -1,0 +1,34 @@
+---
+import { services } from '../data/site';
+import Icon from './Icon.astro';
+import Img from './Img.astro';
+interface Props { exclude?: string; withCta?: boolean }
+const { exclude, withCta = true } = Astro.props;
+const list = services.filter((service) => service.slug !== exclude);
+---
+<div class="program-grid">
+  {list.map((service) => (
+    <a class="program-card" href={`/services/${service.slug}/`} data-reveal>
+      <span class="program-thumb">
+        {service.image
+          ? <Img name={service.image} decorative sizes="(max-width: 640px) 34vw, 160px" />
+          : <span class="program-thumb-icon"><Icon name={service.icon} size={34} stroke={1.3} /></span>}
+      </span>
+      <span class="program-body">
+        <span class="program-cat">{service.category}</span>
+        <h3>{service.name}</h3>
+        <p>{service.text}</p>
+        <span class="program-more">Learn more <Icon name="arrow" size={16} /></span>
+      </span>
+    </a>
+  ))}
+  {withCta && (
+    <a class="program-card program-card--cta" href="/contact/" data-reveal>
+      <span class="program-body">
+        <span class="program-cat">Not sure where to start?</span>
+        <h3>Talk to a mentor about your background.</h3>
+        <span class="program-more">Book a conversation <Icon name="arrow" size={16} /></span>
+      </span>
+    </a>
+  )}
+</div>

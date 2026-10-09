@@ -1,0 +1,409 @@
+{
+ "ankur-uniform": [
+  {
+   "width": 760,
+   "height": 900,
+   "file": "/media/ankur-uniform-760.webp",
+   "bytes": 46798
+  },
+  {
+   "width": 420,
+   "height": 497,
+   "file": "/media/ankur-uniform-420.webp",
+   "bytes": 22824
+  }
+ ],
+ "ankur-portrait": [
+  {
+   "width": 893,
+   "height": 1102,
+   "file": "/media/ankur-portrait-893.webp",
+   "bytes": 73948
+  },
+  {
+   "width": 450,
+   "height": 555,
+   "file": "/media/ankur-portrait-450.webp",
+   "bytes": 28074
+  }
+ ],
+ "student-sahil": [
+  {
+   "width": 260,
+   "height": 448,
+   "file": "/media/student-sahil-260.webp",
+   "bytes": 8926
+  }
+ ],
+ "student-anjali": [
+  {
+   "width": 515,
+   "height": 715,
+   "file": "/media/student-anjali-515.webp",
+   "bytes": 25396
+  }
+ ],
+ "student-amit": [
+  {
+   "width": 503,
+   "height": 707,
+   "file": "/media/student-amit-503.webp",
+   "bytes": 20994
+  }
+ ],
+ "expert-ashish": [
+  {
+   "width": 700,
+   "height": 700,
+   "file": "/media/expert-ashish-700.webp",
+   "bytes": 33396
+  },
+  {
+   "width": 400,
+   "height": 400,
+   "file": "/media/expert-ashish-400.webp",
+   "bytes": 16636
+  }
+ ],
+ "expert-sanjay": [
+  {
+   "width": 700,
+   "height": 700,
+   "file": "/media/expert-sanjay-700.webp",
+   "bytes": 39844
+  },
+  {
+   "width": 400,
+   "height": 400,
+   "file": "/media/expert-sanjay-400.webp",
+   "bytes": 19264
+  }
+ ],
+ "expert-anirudh": [
+  {
+   "width": 700,
+   "height": 827,
+   "file": "/media/expert-anirudh-700.webp",
+   "bytes": 30722
+  },
+  {
+   "width": 400,
+   "height": 473,
+   "file": "/media/expert-anirudh-400.webp",
+   "bytes": 15560
+  }
+ ],
+ "expert-kalyani": [
+  {
+   "width": 700,
+   "height": 700,
+   "file": "/media/expert-kalyani-700.webp",
+   "bytes": 25324
+  },
+  {
+   "width": 400,
+   "height": 400,
+   "file": "/media/expert-kalyani-400.webp",
+   "bytes": 11438
+  }
+ ],
+ "expert-mudita": [
+  {
+   "width": 700,
+   "height": 787,
+   "file": "/media/expert-mudita-700.webp",
+   "bytes": 33072
+  },
+  {
+   "width": 400,
+   "height": 450,
+   "file": "/media/expert-mudita-400.webp",
+   "bytes": 12340
+  }
+ ],
+ "emblem": [
+  {
+   "width": 240,
+   "height": 225,
+   "file": "/media/emblem-240.webp"
+  }
+ ],
+ "logo-card": [
+  {
+   "width": 1048,
+   "height": 703,
+   "file": "/media/logo-card-1048.webp",
+   "bytes": 37118
+  }
+ ],
+ "bridge-dusk": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/bridge-dusk-1536.webp",
+   "bytes": 127144
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/bridge-dusk-1200.webp",
+   "bytes": 91230
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/bridge-dusk-720.webp",
+   "bytes": 39526
+  }
+ ],
+ "bridge-dusk:meta": {
+  "model": "gpt-image-2.5-flare",
+  "quality": "medium",
+  "alt": "The navigation bridge of a cruise ship looking out to sea at dusk"
+ },
+ "cta-deck": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/cta-deck-1536.webp",
+   "bytes": 87754
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/cta-deck-1200.webp",
+   "bytes": 67464
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/cta-deck-720.webp",
+   "bytes": 35528
+  }
+ ],
+ "cta-deck:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "high",
+  "alt": "A young professional standing at the railing of a cruise ship deck, looking out over the sea at sunset"
+ },
+ "dehradun-valley": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/dehradun-valley-1536.webp",
+   "bytes": 183008
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/dehradun-valley-1200.webp",
+   "bytes": 134168
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/dehradun-valley-720.webp",
+   "bytes": 56994
+  }
+ ],
+ "dehradun-valley:meta": {
+  "model": "gpt-image-2.5-flare",
+  "quality": "medium",
+  "alt": "Sunrise over the Doon valley with the Himalayan foothills in the distance"
+ },
+ "dept-deck": [
+  {
+   "width": 900,
+   "height": 1350,
+   "file": "/media/dept-deck-900.webp",
+   "bytes": 87392
+  },
+  {
+   "width": 520,
+   "height": 780,
+   "file": "/media/dept-deck-520.webp",
+   "bytes": 43626
+  }
+ ],
+ "dept-deck:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A deck officer in a white uniform on the open deck of a cruise ship at sea"
+ },
+ "dept-fnb": [
+  {
+   "width": 900,
+   "height": 1350,
+   "file": "/media/dept-fnb-900.webp",
+   "bytes": 98774
+  },
+  {
+   "width": 520,
+   "height": 780,
+   "file": "/media/dept-fnb-520.webp",
+   "bytes": 52260
+  }
+ ],
+ "dept-fnb:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A bartender in a waistcoat preparing a drink at an elegant cruise ship bar"
+ },
+ "dept-galley": [
+  {
+   "width": 900,
+   "height": 1350,
+   "file": "/media/dept-galley-900.webp",
+   "bytes": 92534
+  },
+  {
+   "width": 520,
+   "height": 780,
+   "file": "/media/dept-galley-520.webp",
+   "bytes": 48296
+  }
+ ],
+ "dept-galley:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A chef plating a dish in a professional stainless-steel cruise ship galley"
+ },
+ "dept-hotel": [
+  {
+   "width": 900,
+   "height": 1350,
+   "file": "/media/dept-hotel-900.webp",
+   "bytes": 79376
+  },
+  {
+   "width": 520,
+   "height": 780,
+   "file": "/media/dept-hotel-520.webp",
+   "bytes": 42284
+  }
+ ],
+ "dept-hotel:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A smiling guest services crew member at the front desk of a cruise ship lobby"
+ },
+ "dept-housekeeping": [
+  {
+   "width": 900,
+   "height": 1350,
+   "file": "/media/dept-housekeeping-900.webp",
+   "bytes": 78178
+  },
+  {
+   "width": 520,
+   "height": 780,
+   "file": "/media/dept-housekeeping-520.webp",
+   "bytes": 38118
+  }
+ ],
+ "dept-housekeeping:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A housekeeping attendant preparing a bright cruise ship stateroom with an ocean-view balcony"
+ },
+ "hero-ship": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/hero-ship-1536.webp",
+   "bytes": 189890
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/hero-ship-1200.webp",
+   "bytes": 142656
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/hero-ship-720.webp",
+   "bytes": 63970
+  }
+ ],
+ "hero-ship:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "high",
+  "alt": "A large white cruise ship sailing across calm open sea at golden sunset"
+ },
+ "journey-ocean": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/journey-ocean-1536.webp",
+   "bytes": 84236
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/journey-ocean-1200.webp",
+   "bytes": 63360
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/journey-ocean-720.webp",
+   "bytes": 27928
+  }
+ ],
+ "journey-ocean:meta": {
+  "model": "gpt-image-2.5-flare",
+  "quality": "medium",
+  "alt": "Wide open ocean at dusk with a cruise ship on the distant horizon"
+ },
+ "mentorship-session": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/mentorship-session-1536.webp",
+   "bytes": 89968
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/mentorship-session-1200.webp",
+   "bytes": 69794
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/mentorship-session-720.webp",
+   "bytes": 36792
+  }
+ ],
+ "mentorship-session:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A mentor guiding young candidates through a mock interview in a classroom"
+ },
+ "ship-atrium": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/ship-atrium-1536.webp",
+   "bytes": 280844
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/ship-atrium-1200.webp",
+   "bytes": 208836
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/ship-atrium-720.webp",
+   "bytes": 90814
+  }
+ ],
+ "ship-atrium:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "The grand multi-deck atrium of a modern cruise ship with sweeping staircases"
+ }
+}

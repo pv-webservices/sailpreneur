@@ -1,0 +1,65 @@
+---
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import Button from '../components/Button.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Services from '../components/Services.astro';
+import Journey from '../components/Journey.astro';
+import Experts from '../components/Experts.astro';
+const audience = ['Students exploring cruise careers', 'Fresh graduates', 'Hotel-management graduates', 'Hospitality & F&B professionals', 'Career changers with a land job', 'Parents seeking clear guidance'];
+---
+<section class="section">
+  <div class="wrap split">
+    <div class="split-copy" data-reveal>
+      <p class="eyebrow">Who it is for</p>
+      <h2>Start where <em>you are.</em></h2>
+      <p class="lead">Whether you are a fresher or bring years of hospitality experience, the program adapts to your background and target department.</p>
+      <ul class="check-list">{audience.map((item) => <li><Icon name="check-circle" size={20} />{item}</li>)}</ul>
+    </div>
+    <aside class="note-card" data-reveal>
+      <Icon name="clock" size={30} stroke={1.3} />
+      <h3>Fees, duration &amp; batches</h3>
+      <p>Call or visit the academy for the current program fee, duration, batch dates, inclusions and payment terms — and confirm them before you enrol.</p>
+      <p class="note-small">AKMICS prepares you thoroughly; employment, visa and certification decisions rest with employers, authorities and authorised providers.</p>
+      <Button href="/contact/" variant="navy">Ask about the next batch</Button>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--tint" id="programs">
+  <div class="wrap">
+    <SectionHeading eyebrow="Eleven areas of preparation" title="The guidance behind <em>your journey.</em>" text="Open any program to see what it covers and the outcome you can expect." />
+    <Services />
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split split--reverse">
+    <figure class="split-media framed" data-reveal>
+      <Img name="mentorship-session" sizes="(max-width: 900px) 90vw, 45vw" />
+    </figure>
+    <div class="split-copy" data-reveal>
+      <p class="eyebrow">Interview mastery</p>
+      <h2>Practise until the real one <em>feels familiar.</em></h2>
+      <p>Interview preparation brings your profile and communication together. Practise describing your experience, answering department-specific questions and presenting yourself professionally — with feedback from mentors who know what cruise recruiters look for.</p>
+      <p>It’s the step our students credit most: Sahil was rejected three times before AKMICS mock interviews helped him land a bartender role with Norwegian Cruise Line.</p>
+      <a class="text-link" href="/services/interview-preparation/">Explore interview preparation <Icon name="arrow" size={16} /></a>
+    </div>
+  </div>
+</section>
+
+<section class="journey section">
+  <Img name="journey-ocean" class="journey-bg" decorative sizes="100vw" />
+  <div class="wrap">
+    <SectionHeading align="center" tone="dark" eyebrow="The bigger picture" title="Seven steps. <em>One clear journey.</em>" />
+    <Journey />
+    <div class="center-cta"><Button href="/cruise-career-journey/" variant="ghost">Explore every step</Button></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <SectionHeading eyebrow="Meet your guides" title="Learn from <em>different perspectives.</em>" href="/expert-panel/" linkText="Meet all five experts" />
+    <Experts tone="light" />
+  </div>
+</section>
