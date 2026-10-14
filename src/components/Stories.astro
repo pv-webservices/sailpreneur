@@ -13,7 +13,7 @@ const grid = layout === 'grid';
       <li class="story-card" id={story.slug} data-reveal style={`--i:${i}`}>
         <div class="story-media">
           {story.image
-            ? <Img name={story.image} alt={`${story.name} from ${story.from}`} sizes="(max-width: 700px) 80vw, 240px" />
+            ? <Img name={story.image} alt={story.imageAlt ?? `${story.name} from ${story.from}`} sizes="(max-width: 700px) 80vw, 240px" />
             : <span class="story-monogram" aria-hidden="true"><Icon name="ship" size={56} stroke={1.1} /><span>{story.name.charAt(0)}</span></span>}
           <span class="story-line"><Icon name="anchor" size={14} />{story.cruiseLine}</span>
         </div>

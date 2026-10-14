@@ -244,7 +244,8 @@
 @media (max-width: 640px) {
   .story-track.carousel-track { grid-auto-columns: 88%; }
   .story-card { grid-template-columns: 1fr; }
-  .story-media { aspect-ratio: 4 / 3; }
+  /* min-height must reset here: with aspect-ratio it would otherwise widen the photo past the card. */
+  .story-media { min-height: 0; aspect-ratio: 1; }
 }
 
 /* ---------- Trust grid ---------- */

@@ -29,10 +29,10 @@
  ],
  "student-sahil": [
   {
-   "width": 260,
-   "height": 448,
-   "file": "/media/student-sahil-260.webp",
-   "bytes": 8926
+   "width": 295,
+   "height": 368,
+   "file": "/media/student-sahil-295.webp",
+   "bytes": 8084
   }
  ],
  "student-anjali": [
@@ -455,6 +455,25 @@
   "model": "gpt-image-2.5-sunburst",
   "quality": "medium",
   "alt": "The grand multi-deck atrium of a modern cruise ship with sweeping staircases"
+ },
+ "story-rohit": [
+  {
+   "width": 1024,
+   "height": 1024,
+   "file": "/media/story-rohit-1024.webp",
+   "bytes": 132940
+  },
+  {
+   "width": 560,
+   "height": 560,
+   "file": "/media/story-rohit-560.webp",
+   "bytes": 53330
+  }
+ ],
+ "story-rohit:meta": {
+  "model": "gpt-image-2.5-flare",
+  "quality": "medium",
+  "alt": "A large cruise ship sailing on bright blue Caribbean water"
  },
  "program-hospitality": [
   {
