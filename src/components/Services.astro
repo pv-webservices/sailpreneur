@@ -2,9 +2,12 @@
 import { services } from '../data/site';
 import Icon from './Icon.astro';
 import Img from './Img.astro';
+import { firstAvailable } from '../lib/media';
 interface Props { exclude?: string; withCta?: boolean }
 const { exclude, withCta = true } = Astro.props;
-const list = services.filter((service) => service.slug !== exclude);
+const list = services
+  .filter((service) => service.slug !== exclude)
+  .map((service) => ({ ...service, image: firstAvailable(service.image, service.fallbackImage) }));
 ---
 <div class="program-grid">
   {list.map((service) => (

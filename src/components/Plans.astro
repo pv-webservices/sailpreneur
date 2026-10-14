@@ -1,0 +1,30 @@
+---
+import { plans } from '../data/site';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+---
+<section class="plans section" id="fees" aria-label="Fee structure">
+  <div class="wrap">
+    <SectionHeading align="center" tone="dark" eyebrow="Choose your voyage" title="Fee <em>structure.</em>" />
+    <div class="plans-banner" data-reveal>
+      <p><span>Not YouTube theory</span> <span>Not social-media half-knowledge</span></p>
+      <p><span>We are real sea professionals</span> <span>Here to support your voyage</span></p>
+    </div>
+    <ul class="plans-grid">
+      {plans.map((plan, i) => (
+        <li class:list={['plan-card', plan.featured && 'plan-card--featured']} data-reveal style={`--i:${i}`}>
+          <span class="plan-badge">{plan.badge}</span>
+          <p class="plan-price">{plan.price}</p>
+          <h3>{plan.name}</h3>
+          <p class="plan-tagline">{plan.tagline}</p>
+          <ul class="plan-features">
+            {plan.features.map((feature) => <li><Icon name="check-circle" size={20} />{feature}</li>)}
+          </ul>
+          <a class:list={['btn', plan.featured ? 'btn--gold' : 'btn--ghost', 'btn--block']} href="/contact/"><span>Enrol now</span><Icon name="arrow" size={18} /></a>
+        </li>
+      ))}
+    </ul>
+    <p class="plans-foot">100% online <span aria-hidden="true">•</span> Limited seats <span aria-hidden="true">•</span> Experienced maritime professionals</p>
+    <p class="plans-note">Employment, visa and certification decisions rest with employers, authorities and authorised providers. Call or message the academy for batch dates and payment terms.</p>
+  </div>
+</section>

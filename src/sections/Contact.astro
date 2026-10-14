@@ -16,6 +16,10 @@ import { brand, tel, mapsUrl } from '../data/site';
             <span><small>{i === 0 ? 'Call the academy' : 'Alternate number'}</small><strong>{phone}</strong></span>
           </a>
         ))}
+        <a class="contact-tile" href={`mailto:${brand.email}`}>
+          <Icon name="mail" size={24} stroke={1.3} />
+          <span><small>Email the academy</small><strong>{brand.email}</strong></span>
+        </a>
         <a class="contact-tile" href={mapsUrl} target="_blank" rel="noopener noreferrer">
           <Icon name="pin" size={24} stroke={1.3} />
           <span><small>Visit us in Dehradun</small><strong>{brand.address}</strong><em>Open in Google Maps ↗</em></span>
@@ -27,7 +31,7 @@ import { brand, tel, mapsUrl } from '../data/site';
           </a>
         ))}
       </div>
-      <p class="note-small">Please call ahead to confirm an appointment before visiting the academy.</p>
+      <p class="note-small">Please call ahead to book a counselling call with our team.</p>
     </div>
     <div data-reveal><ContactForm /></div>
   </div>

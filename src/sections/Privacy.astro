@@ -6,13 +6,13 @@ import { brand, tel } from '../data/site';
     <h2>Information you provide</h2>
     <p>The enquiry form asks for your name, contact number, education or profession, your message, and optionally your email and career-department interest. Please do not include identity documents, medical records, financial details or other sensitive information.</p>
     <h2>Enquiry preparation and delivery</h2>
-    <p>When online delivery is unavailable, the form prepares a downloadable text enquiry in your browser. That action does not send information to AKMICS. The website does not save that enquiry in a database or browser storage. You can call the academy to discuss your enquiry.</p>
+    <p>When online delivery is unavailable, the form opens your own email application with the enquiry addressed to <a href={`mailto:${brand.email}`}>{brand.email}</a>. Nothing is sent until you press send in your email app, and the website does not save the enquiry in a database or browser storage.</p>
     <p>If online submission is enabled, the form sends the information you enter to the configured enquiry provider for the academy. The page displays a confirmation before delivery should be considered successful. Contact the academy for information about its handling, retention and deletion of received enquiries.</p>
     <h2>Website operation</h2>
     <p>This website does not add analytics, advertising trackers or marketing cookies. Hosting services may process technical request information as part of operating and securing the website. The handling of that information depends on the hosting provider.</p>
     <h2>External links</h2>
     <p>Map and Instagram links open external services with their own privacy terms. Phone links use your device’s calling application. Information shared through those services is governed by their operation and your settings.</p>
     <h2>Questions and requests</h2>
-    <p>For a question about information shared with the academy, call {brand.phones.map((phone, i) => <>{i > 0 && ' or '}<a href={tel(phone)}>{phone}</a></>)}. The academy should confirm its current privacy arrangements before collecting enquiries through a new provider.</p>
+    <p>For a question about information shared with the academy, email <a href={`mailto:${brand.email}`}>{brand.email}</a> or call {brand.phones.map((phone, i) => <>{i > 0 && ' or '}<a href={tel(phone)}>{phone}</a></>)}. The academy should confirm its current privacy arrangements before collecting enquiries through a new provider.</p>
   </div>
 </section>

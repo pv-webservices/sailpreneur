@@ -8,8 +8,9 @@ export const brand = {
   company: 'Ankur Kumar Mishra Institute of Cruise Studies Pvt. Ltd.',
   tagline: 'Navigating Careers, Anchoring Futures',
   logoLine: 'Navigate Your Dream Cruise Career',
-  address: '43, D.A.V. PG College Road, Dehradun, Uttarakhand',
+  address: 'D.A.V. PG College Road, Dehradun, Uttarakhand',
   phones: ['+91 9185282229', '+91 9309469593'],
+  email: 'info@cruisejobmentor.com',
   instagram: [
     { handle: '@akmics.official', url: 'https://www.instagram.com/akmics.official/' },
     { handle: '@ankur.sailpreneur.academy', url: 'https://www.instagram.com/ankur.sailpreneur.academy/' },
@@ -33,7 +34,7 @@ export const nav: [string, string][] = [
 // Founder facts from "Meet Your Mentor — Ankur Mishra" and "Why Join AKMICS?" posters.
 export const stats = [
   { value: 12, suffix: '', label: 'Years at sea', note: 'Real cruise experience' },
-  { value: 50, suffix: '', label: 'Countries travelled', note: 'On cruise ships, as crew' },
+  { value: 50, suffix: '+', label: 'Countries travelled', note: 'On cruise ships, as crew' },
   { value: 65, suffix: '', label: 'Islands explored', note: 'Not a tourist — this was work' },
   { value: 35, suffix: '+', label: 'Years expert panel', note: 'Hospitality & industry mentors' },
   { value: 20, suffix: '+', label: 'Careers launched', note: 'Students now working at sea' },
@@ -56,19 +57,58 @@ export const services = [
   { slug: 'visa-guidance', name: 'Visa Guidance', icon: 'globe', image: null, label: 'Understand the process', text: 'Step-by-step guidance through the visa process for cruise employment.', topics: ['Understand employment-related travel documentation', 'Organise your documents and questions for each stage', 'Follow the current instructions of the relevant authority'], outcome: 'A prepared, organised visa process. Approval rests with the issuing authority.', category: '04 · Joining preparation' },
   { slug: 'documentation-joining-guidance', name: 'Documentation & Joining Guidance', icon: 'folder', image: null, label: 'Prepare with clarity', text: 'Complete document preparation, verification support and joining guidance.', topics: ['Build and verify your document checklist, including CDC', 'Understand medical and joining expectations', 'Pre-embarkation briefing before you join your ship'], outcome: 'Documents in order and a calm, organised joining process.', category: '05 · Joining preparation' },
   { slug: 'stcw-maritime-knowledge', name: 'STCW & Maritime Knowledge', icon: 'shield', image: 'dept-deck', label: 'Know the shipboard context', text: 'STCW certification guidance and essential maritime safety knowledge.', topics: ['Understand STCW safety training and why it matters', 'Learn how requirements differ across roles', 'Get connected with the right authorised training providers'], outcome: 'Clarity on maritime requirements. Certificates are issued by authorised providers.', category: '06 · Maritime knowledge' },
-  { slug: 'usph-shipboard-hygiene', name: 'USPH & Hygiene Knowledge', icon: 'sparkle', image: 'dept-galley', label: 'Understand service standards', text: 'Health, safety and onboard hygiene standards for shipboard hospitality.', topics: ['Build awareness of USPH shipboard hygiene expectations', 'Understand safe food and service practices', 'Connect hygiene knowledge with your department'], outcome: 'A strong foundation in the standards every cruise department follows.', category: '07 · Hospitality knowledge' },
-  { slug: 'hospitality-knowledge', name: 'Food & Beverage / Hospitality', icon: 'glass', image: 'dept-fnb', label: 'Build your service foundation', text: 'Practical hospitality training and F&B skill development.', topics: ['Food & Beverage and hospitality fundamentals', 'Guest service, etiquette and teamwork', 'Department-focused interview preparation'], outcome: 'The service knowledge international cruise guests expect.', category: '08 · Hospitality knowledge' },
-  { slug: 'life-onboard', name: 'Understanding Life Onboard', icon: 'ship', image: 'ship-atrium', label: 'Look beyond the destination', text: 'Real insights about onboard life, routines and crew culture.', topics: ['Shipboard routines, shared cabins and crew life', 'Working in a multicultural team', 'Adaptability and professional expectations at sea'], outcome: 'A realistic, first-hand perspective on living and working onboard.', category: '09 · Life at sea' },
-  { slug: 'personal-development', name: 'Personal Development', icon: 'user', image: null, label: 'Grow into your next chapter', text: 'Grooming, communication and confidence building.', topics: ['Professional grooming and presentation', 'Clear, confident communication', 'Build confidence through preparation and feedback'], outcome: 'The confidence and professional mindset recruiters notice.', category: '10 · Personal growth' },
-  { slug: 'career-growth', name: 'Career Growth & Promotion Guidance', icon: 'trend', image: null, label: 'Think beyond your first role', text: 'Long-term career planning and progression after you join.', topics: ['Reflect on feedback and learning needs', 'Develop leadership and communication skills', 'Plan your long-term growth with alumni support'], outcome: 'A plan for growth, with lifetime alumni guidance. Promotions are decided by the employer.', category: '11 · Long-term development' },
+  { slug: 'hospitality-knowledge', name: 'Hospitality Knowledge', icon: 'users', image: 'program-hospitality', label: 'Know every hotel department', text: 'The core hospitality operations onboard cruise ships.', topics: ['Food & Beverage service and Culinary / Galley operations', 'Housekeeping standards and stateroom care', 'Front Office and guest services'], outcome: 'A complete picture of the hospitality operations that run a cruise ship.', category: '07 · Hospitality' },
+  { slug: 'deck-security', name: 'Deck & Security Department', icon: 'shield', image: 'program-deck-security', fallbackImage: 'dept-deck', label: 'Keep the ship safe at sea', text: 'Ensuring safe navigation and security while at sea.', topics: ['Navigation, seamanship and mooring', 'Deck operations onboard', 'Shipboard security and safety protocols'], outcome: 'A clear understanding of deck and security roles and what each one requires. Maritime certificates are issued by authorised providers.', category: '08 · Deck & Security' },
+  { slug: 'spa-wellness', name: 'Spa & Beautician / Wellness', icon: 'sparkle', image: 'program-spa-wellness', label: 'Bring wellness to sea', text: 'Relaxation and wellness services for crew and guests.', topics: ['Spa therapies onboard', 'Salon and beautician services', 'Wellness services and guest care'], outcome: 'A focused path into the spa, salon and wellness teams of a cruise ship.', category: '09 · Wellness' },
+  { slug: 'usph-shipboard-hygiene', name: 'USPH & Hygiene Knowledge', icon: 'sparkle', image: 'dept-galley', label: 'Understand service standards', text: 'Health, safety and onboard hygiene standards for shipboard hospitality.', topics: ['Build awareness of USPH shipboard hygiene expectations', 'Understand safe food and service practices', 'Connect hygiene knowledge with your department'], outcome: 'A strong foundation in the standards every cruise department follows.', category: '10 · Hygiene & safety' },
+  { slug: 'food-beverage', name: 'Food & Beverage', icon: 'glass', image: 'dept-fnb', label: 'Build your service foundation', text: 'Practical F&B training and skill development.', topics: ['Food & Beverage service fundamentals', 'Guest service, etiquette and teamwork', 'Department-focused interview preparation'], outcome: 'The service knowledge international cruise guests expect.', category: '11 · Food & Beverage' },
+  { slug: 'life-onboard', name: 'Understanding Life Onboard', icon: 'ship', image: 'ship-atrium', label: 'Look beyond the destination', text: 'Real insights about onboard life, routines and crew culture.', topics: ['Shipboard routines, shared cabins and crew life', 'Working in a multicultural team', 'Adaptability and professional expectations at sea'], outcome: 'A realistic, first-hand perspective on living and working onboard.', category: '12 · Life at sea' },
+  { slug: 'personal-development', name: 'Personal Development', icon: 'user', image: null, label: 'Grow into your next chapter', text: 'Grooming, communication and confidence building.', topics: ['Professional grooming and presentation', 'Clear, confident communication', 'Build confidence through preparation and feedback'], outcome: 'The confidence and professional mindset recruiters notice.', category: '13 · Personal growth' },
+  { slug: 'career-growth', name: 'Career Growth & Promotion Guidance', icon: 'trend', image: null, label: 'Think beyond your first role', text: 'Long-term career planning and progression after you join.', topics: ['Reflect on feedback and learning needs', 'Develop leadership and communication skills', 'Plan your long-term growth with alumni support'], outcome: 'A plan for growth, with lifetime alumni guidance. Promotions are decided by the employer.', category: '14 · Long-term development' },
 ];
 
-export const experts = [
-  { slug: 'ashish-sharma', name: 'Ashish Sharma', role: 'Cruise Ship Food & Beverage Director', image: 'expert-ashish', focus: 'Cruise hospitality & F&B', text: 'Cruise hospitality, Food & Beverage operations, service standards, shipboard professionalism and leadership.', contribution: 'Connects hospitality preparation with the service standards and teamwork of a shipboard Food & Beverage environment.' },
-  { slug: 'sanjay-mamgain', name: 'Sanjay Mamgain', role: 'Hospitality Professional & Academic Mentor', image: 'expert-sanjay', focus: 'Hospitality & career development', text: 'Hospitality fundamentals, Food & Beverage, academic guidance and career development.', contribution: 'Strengthens the hospitality foundations that support interview preparation and professional growth.' },
-  { slug: 'anirudh-prakash-mishra', name: 'Anirudh Prakash Mishra', role: 'Hospitality & Academic Expert', image: 'expert-anirudh', focus: 'Hotel operations & leadership', text: 'Hospitality management, rooms division, hotel operations, leadership and professional standards.', contribution: 'Helps candidates connect their hospitality knowledge with the expectations of professional hotel and rooms operations.' },
-  { slug: 'kalyani-mishra', name: 'Kalyani Mishra', role: 'French Language Mentor', image: 'expert-kalyani', focus: 'French & guest communication', text: 'French communication, hospitality vocabulary, pronunciation and guest interactions.', contribution: 'Supports language preparation and clearer communication in guest-facing hospitality situations.' },
-  { slug: 'mudita-mittal', name: 'Mudita Mittal', role: 'Personal Development & Career Coach', image: 'expert-mudita', focus: 'Confidence & professional mindset', text: 'Confidence, career planning, personal development, communication and professional mindset.', contribution: 'Helps candidates reflect on their goals and strengthen the confidence and communication behind professional preparation.' },
+export interface Expert {
+  slug: string; name: string; role: string; image: string; focus: string;
+  /** Years of industry experience, shown as a badge. Null until the client confirms a figure. */
+  years: number | null;
+  headline: string; text: string; story: string[]; gives: string;
+}
+
+// Profiles as supplied by the client for the Expert Panel page.
+export const experts: Expert[] = [
+  { slug: 'ashish-sharma', name: 'Ashish Sharma', role: 'Food & Beverage Director, International Cruise Line', image: 'expert-ashish', focus: 'Cruise F&B & leadership', years: null,
+    headline: 'The man who sailed from Taj to the world’s biggest cruise ships.',
+    text: 'From the kitchens and halls of Taj Hotels to Food & Beverage Director with one of the world’s biggest cruise brands.',
+    story: ['His story started in the kitchens and halls of Taj Hotels — where hospitality is not a job, but a culture. From there, he sailed across oceans, working with multiple cruise liners, and today serves as Food & Beverage Director with one of the biggest cruise brands in the world.', 'He has seen what it takes to go from a 5-star hotel in India to a 5-star floating city at sea. When he teaches you F&B, he is not teaching theory — he is sharing what actually works on board when 6,000 guests are dining.'],
+    gives: 'Real cruise F&B standards, leadership at sea, and how Taj hospitality can take you to global cruise lines.' },
+  { slug: 'sanjay-mamgain', name: 'Sanjay Mamgain', role: 'Hospitality Professional & F&B Academic Mentor', image: 'expert-sanjay', focus: 'F&B · industry & classroom', years: 30,
+    headline: '30 years of hospitality — on the floor and in the classroom.',
+    text: 'Three decades in top hotel operations and hospitality education, specialising in Food & Beverage.',
+    story: ['30 years. That’s how long he has lived hospitality. He has worked in top hotel operations and then dedicated his life to teaching it. He is the bridge between industry and education.', 'He knows both sides — what hotels and ships want, and why students fail to get it. His specialisation in Food & Beverage is not just about service; it’s about understanding quality, cost and guest psychology.'],
+    gives: 'Academic clarity with industry reality — the F&B knowledge that recruiters actually test in interviews.' },
+  { slug: 'anirudh-prakash', name: 'Anirudh Prakash', role: 'Former General Manager · IHM Trainer · NCVT Expert', image: 'expert-anirudh', focus: 'All 4 hotel departments', years: 35,
+    headline: '35 years, 4 departments, countless General Manager chairs.',
+    text: 'Former General Manager and IHM trainer with experience across Front Office, Housekeeping, F&B and Culinary.',
+    story: ['If hospitality had a legend, it would be him. 35 years of experience covering all four major departments — Front Office, Housekeeping, Food & Beverage and Culinary. He has led hotels as General Manager and has trained thousands at the Institute of Hotel Management (IHM). He is an NCVT Expert, a certified professor and an assessor.', 'He has seen the industry change for three decades. He knows what never changes.'],
+    gives: '360-degree hospitality. No matter which department you dream of, he has led it — learn the complete picture, not just one piece.' },
+  { slug: 'kalyani', name: 'Kalyani', role: 'French Language Expert & Business Development Manager', image: 'expert-kalyani', focus: 'French for cruise careers', years: null,
+    headline: 'Where French meets hospitality — and your career takes off.',
+    text: 'A French Institute-trained language expert and Business Development Manager with one of India’s best brands.',
+    story: ['She is not just a French expert — she is a Business Development Manager with one of India’s best brands, trained at a French institute. She brings something no one else in cruise training offers.', 'On international cruise ships, knowing French is not extra — it’s an advantage that puts you in guest-facing, premium positions. She teaches you how to use hospitality, French and English together to earn better, grow faster and be remembered by guests.'],
+    gives: 'The language edge. Learn how French can become your salary growth hack on board.' },
+  { slug: 'mudita-mittal', name: 'Mudita Mittal', role: 'HR Expert — US Staffing & Cruise HR', image: 'expert-mudita', focus: 'Resume, English & interviews', years: 15,
+    headline: 'The HR who has been on both sides of the interview table.',
+    text: '15 years in US Staffing and Cruise HR — she knows why one resume is rejected in six seconds and another gets the call.',
+    story: ['15 years in HR — US Staffing and Cruise HR. She has hired for cruises; she has rejected, and she has selected. She knows exactly why a resume goes into the dustbin in six seconds and why another one gets a call.', 'She doesn’t just teach English. She teaches you how to speak, how to present, how to build a resume that cruise recruiters trust, and the right step-by-step process so you don’t get scammed by fake agents.'],
+    gives: 'Your personality, your resume, your spoken English and your complete career roadmap — guided by a real HR insider.' },
+];
+
+// From the client's "Choose Your Voyage — Fee Structure" poster.
+export const plans = [
+  { id: 'starter', badge: 'Starter', price: '₹9,999', name: 'Starter Sailor Program', tagline: 'Step-by-step guidance for beginners — everything you need to start.', featured: false,
+    features: ['Step-by-step cruise career roadmap', 'Complete document guidance — CDC | Passport | STCW', 'Professional resume & cover letter building', 'Interview preparation & mock Q&A', 'Personality & grooming development', 'VISA process guidance', 'Genuine information — no fake promises', 'Lifetime community access', 'Study materials & resources'] },
+  { id: 'complete', badge: 'Most Popular', price: '₹11,999', name: 'Complete Sailpreneur Program', tagline: 'Everything in Starter + advanced career support.', featured: true,
+    features: ['Advanced interview Q&A preparation', 'Direct recruiter connect & placement support', '1:1 mentorship with Ankur Kumar Mishra', 'USPH training complete guide', 'STCW | SID | PCC | CDC full process support', 'VISA | Medical | LOE complete process', 'Offer letter verification support — fraud protection', 'Lifetime guidance & job updates', 'Resume blast to top cruise recruiters', 'Onboard life | salary & promotion guidance'] },
 ];
 
 export const departments = [
@@ -111,7 +151,7 @@ export const faqs: [string, string][] = [
   ['Does AKMICS issue maritime certificates?', 'No. We guide you on STCW, CDC and medical requirements and help you through the process; the certificates themselves are issued by authorised training providers and authorities.'],
   ['Do you help with the visa process?', 'Yes, we guide you step by step through visa preparation and documentation. Visa decisions are made by the relevant issuing authority.'],
   ['What documents may be required?', 'Typically a passport, CDC, STCW certificates, a medical certificate and a visa — but requirements vary by role, employer and joining arrangements. We help you build the right checklist.'],
-  ['How do I find out about fees and duration?', 'Call or visit the academy in Dehradun for the current program fee, duration, batch dates, inclusions and payment terms.'],
+  ['How do I find out about fees and duration?', 'AKMICS offers two fully online programs: the Starter Sailor Program (₹9,999) and the Complete Sailpreneur Program (₹11,999). Call or message the academy for batch dates and payment terms.'],
   ['Can experienced hospitality professionals join?', 'Yes. Hospitality professionals can enrol for department-focused preparation, interview practice and career-growth guidance.'],
 ];
 

@@ -8,11 +8,13 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import Services from '../../components/Services.astro';
 import CTA from '../../components/CTA.astro';
 import { services, brand, tel } from '../../data/site';
+import { firstAvailable } from '../../lib/media';
 export function getStaticPaths() {
   return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
 }
 const { service } = Astro.props;
-const heroImage = service.image ?? 'mentorship-session';
+const image = firstAvailable(service.image, service.fallbackImage);
+const heroImage = image ?? 'mentorship-session';
 ---
 <Layout title={service.name} description={`${service.text} ${service.name} with AKMICS — Sailpreneur Academy, Dehradun.`} preload={heroImage}>
   <PageHero title={service.name} eyebrow={service.name} intro={service.text} image={heroImage} crumbs={[['/mentorship-program/', 'Programs']]} compact>
@@ -30,7 +32,7 @@ const heroImage = service.image ?? 'mentorship-session';
         <p class="service-scope">Part of the wider AKMICS mentorship — your mentor connects this area with your profile, department and the rest of your preparation.</p>
       </div>
       <aside class="service-aside" data-reveal>
-        {service.image && <Img name={service.image} class="service-aside-img" decorative sizes="(max-width: 900px) 90vw, 30vw" />}
+        {image && <Img name={image} class="service-aside-img" decorative sizes="(max-width: 900px) 90vw, 30vw" />}
         <div class="service-aside-body">
           <p class="eyebrow">Your next step</p>
           <h2>Bring your questions. <em>Build your direction.</em></h2>

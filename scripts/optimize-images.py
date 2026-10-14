@@ -85,6 +85,23 @@ if GENERATED.exists():
         if png.stem in meta:
             manifest[png.stem + ':meta'] = {k: meta[png.stem][k] for k in ('model', 'quality', 'alt')}
 
+
+def hospitality_collage() -> None:
+    """2x2 collage of the department photos for the Hospitality Knowledge program."""
+    tiles = ['dept-fnb', 'dept-galley', 'dept-housekeeping', 'dept-hotel']
+    if not all((GENERATED / f'{t}.png').exists() for t in tiles):
+        return
+    cell_w, cell_h, gap = 768, 512, 8
+    canvas = Image.new('RGB', (cell_w * 2 + gap, cell_h * 2 + gap), (6, 21, 41))
+    for i, tile in enumerate(tiles):
+        image = ImageOps.fit(Image.open(GENERATED / f'{tile}.png').convert('RGB'), (cell_w, cell_h), Image.LANCZOS, centering=(0.5, 0.3))
+        canvas.paste(image, ((i % 2) * (cell_w + gap), (i // 2) * (cell_h + gap)))
+    save_variants('program-hospitality', canvas, GENERATED_WIDTHS['landscape'], quality=78)
+    manifest['program-hospitality:meta'] = {'model': 'collage', 'quality': 'n/a', 'alt': 'Cruise hospitality departments: a bartender, a chef, a housekeeping attendant and a guest services officer'}
+
+
+hospitality_collage()
+
 (ROOT / 'src' / 'data' / 'media.json').write_text(json.dumps(manifest, indent=1))
 total = sum(v['bytes'] for k, vs in manifest.items() if not k.endswith(':meta') for v in vs if 'bytes' in v)
 print(f'{len(manifest)} assets, {total / 1024:.0f} KB of WebP variants')

@@ -4,11 +4,35 @@ import Icon from '../components/Icon.astro';
 import Button from '../components/Button.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Stories from '../components/Stories.astro';
+// Founder story as supplied by the client.
 const timeline = [
-  { icon: 'pin', title: 'Dehradun', text: 'Where the journey began — and where the academy is today.' },
-  { icon: 'wheel', title: '12 years at sea', text: 'Real experience onboard international cruise ships.' },
-  { icon: 'globe', title: '50 countries · 65 islands', text: 'Travelled as crew — not as a tourist. This was work.' },
-  { icon: 'compass', title: 'Now guiding you', text: 'Founder & mentor of AKMICS — Sailpreneur Academy.' },
+  { icon: 'graduation', title: 'Hotel Management', text: 'Where the dream found its starting point.' },
+  { icon: 'star', title: 'The Grand, New Delhi', text: 'One of India’s most iconic luxury 5-star hotels.' },
+  { icon: 'globe', title: 'Dubai', text: 'International exposure in the global capital of hospitality.' },
+  { icon: 'ship', title: '11+ years · Royal Caribbean', text: 'Various positions on the world’s largest cruise ships — 50+ countries, 60+ islands.' },
+  { icon: 'compass', title: 'Now guiding you', text: 'Founder of AKMICS Sailpreneur Academy.' },
+];
+const chapters = [
+  { label: 'The beginning', title: 'Hospitality is in his blood.', paras: [
+    'His passion for hospitality started long before the classroom — in childhood itself. Ankur comes from India, from a culture where we say “Atithi Devo Bhava — Guest is God.” For him, hospitality is not a profession. Since childhood he has lived it: welcoming people, respecting guests, taking care of them as family. He knows hospitality because he was born in it.',
+    'After completing his Hotel Management studies, Ankur Kumar Mishra didn’t chase shortcuts. He chose the hard path — excellence.',
+  ] },
+  { label: 'The Grand, New Delhi', title: 'Learning what real hospitality means.', paras: [
+    'His first chapter was written at The Grand, New Delhi — one of India’s most iconic luxury 5-star hotels. There, he learned what real hospitality means: precision, discipline, guest obsession and the standard of true luxury.',
+  ] },
+  { label: 'Dubai', title: 'Hospitality is a global language.', paras: [
+    'But he wanted to see the world. He moved to Dubai, the global capital of hospitality, and gained international exposure — working with diverse cultures, international guests and global hospitality standards.',
+    'It changed his perspective forever. He realised hospitality is not a local skill. It’s a global language.',
+  ] },
+  { label: 'Royal Caribbean International', title: 'The dream job at sea — for 11+ years.', paras: [
+    'Then came the dream he had been waiting for: Royal Caribbean International, the world’s leading cruise line. He stayed for more than 11 years — not in one position, but in many. Growing, learning, leading, failing and rising again, from a junior role to handling responsibilities on one of the largest floating cities in the world.',
+    'Six months at sea, thousands of guests, 16-hour shifts, promotions, challenges — the real sea life that no YouTube video can ever teach. He travelled to 50+ countries and 60+ islands, from Europe to the Caribbean and from Alaska to Asia, and saw hospitality in every culture: how the Japanese welcome, how Europeans serve, how Americans celebrate and how Indians care.',
+    'He learnt from the best — General Managers, Hotel Directors and Cruise Directors who have managed 6,000+ guests and 2,000+ crew at sea. This is the experience no book, no video and no fake agent can ever give.',
+  ] },
+  { label: 'Coming home', title: 'What about the students back home?', paras: [
+    'After 11+ years at sea, he had everything — but one question was left. He saw hospitality graduates getting scammed by fake agents. He saw students with dreams but no right guidance. He saw half-knowledge from social media ruining careers.',
+    'He decided to come back — not to retire, but to rebuild. That’s why he created AKMICS Sailpreneur Academy. Not a coaching centre. Not a content channel. A real academy by a real sailor.',
+  ] },
 ];
 const areas = [
   { icon: 'compass', title: 'Career direction', text: 'Profile assessment, department choice and a personal roadmap built on how ships really work.' },
@@ -21,14 +45,13 @@ const areas = [
   <div class="wrap split split--reverse">
     <figure class="split-media framed" data-reveal>
       <Img name="ankur-uniform" alt="Ankur Kumar Mishra in uniform on a cruise ship deck" sizes="(max-width: 900px) 90vw, 40vw" />
-      <figcaption>“Your mentor has actually done it.”</figcaption>
+      <figcaption>“If your dream is real, your mentor should be real too.”</figcaption>
     </figure>
     <div class="split-copy" data-reveal>
-      <p class="eyebrow">From Dehradun to Miami</p>
+      <p class="eyebrow">Founder — AKMICS Sailpreneur Academy</p>
       <h2>Ankur Kumar Mishra — <em>your career captain.</em></h2>
-      <p class="lead">Cruise Career Specialist · Mentor · Industry Guide</p>
-      <p>Ankur spent twelve years working onboard international cruise ships, travelling to fifty countries and sixty-five islands. Not as a tourist — this was his work: the routines, the guests, the teams and the standards that make a ship run.</p>
-      <p>Today he brings that first-hand experience to every student at AKMICS — helping them choose the right department, present themselves with confidence, prepare for interviews and understand exactly what life at sea involves.</p>
+      <p class="lead">11+ Years Royal Caribbean Veteran · From The Grand, New Delhi to the world’s largest cruise ships</p>
+      <p>Every dream has a starting point. His started in a Hotel Management classroom — and took him through a 5-star hotel in New Delhi, the hospitality capital of Dubai and more than eleven years with Royal Caribbean International.</p>
       <ol class="mentor-timeline">
         {timeline.map((item) => <li><span><Icon name={item.icon} size={20} /></span><div><strong>{item.title}</strong><p>{item.text}</p></div></li>)}
       </ol>
@@ -38,6 +61,28 @@ const areas = [
 
 <section class="section section--tint">
   <div class="wrap">
+    <SectionHeading eyebrow="The founder’s story" title="From a classroom <em>to the world’s oceans.</em>" />
+    <ol class="story-chapters">
+      {chapters.map((chapter, i) => (
+        <li data-reveal>
+          <p class="story-chapter-label"><span>{String(i + 1).padStart(2, '0')}</span>{chapter.label}</p>
+          <div>
+            <h3>{chapter.title}</h3>
+            {chapter.paras.map((para) => <p>{para}</p>)}
+          </div>
+        </li>
+      ))}
+    </ol>
+    <div class="mission-card" data-reveal>
+      <p class="eyebrow">His mission</p>
+      <p class="mission-text">Give everything he learnt in 11+ years at Royal Caribbean — from The Grand to Dubai to 50+ countries and 60+ islands — to the next generation. No fake promises. No YouTube theory. Only real, step-by-step guidance from someone who has actually lived it.</p>
+      <blockquote><p>“If your dream is real, your mentor should be real too.”</p><cite>Ankur Kumar Mishra</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
     <SectionHeading eyebrow="How Ankur mentors" title="A profile. A plan. <em>A professional mindset.</em>" href="/mentorship-program/" linkText="See all programs" />
     <ul class="feature-grid">
       {areas.map((area, i) => <li data-reveal style={`--i:${i}`}><Icon name={area.icon} size={30} stroke={1.3} /><h3>{area.title}</h3><p>{area.text}</p></li>)}
@@ -45,7 +90,7 @@ const areas = [
   </div>
 </section>
 
-<section class="section">
+<section class="section section--tint">
   <div class="wrap">
     <SectionHeading eyebrow="Students he has guided" title="Proof in <em>every journey.</em>" href="/success-stories/" linkText="All success stories" />
     <Stories />

@@ -6,6 +6,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import Services from '../components/Services.astro';
 import Journey from '../components/Journey.astro';
 import Experts from '../components/Experts.astro';
+import Plans from '../components/Plans.astro';
 const audience = ['Students exploring cruise careers', 'Fresh graduates', 'Hotel-management graduates', 'Hospitality & F&B professionals', 'Career changers with a land job', 'Parents seeking clear guidance'];
 ---
 <section class="section">
@@ -18,17 +19,20 @@ const audience = ['Students exploring cruise careers', 'Fresh graduates', 'Hotel
     </div>
     <aside class="note-card" data-reveal>
       <Icon name="clock" size={30} stroke={1.3} />
-      <h3>Fees, duration &amp; batches</h3>
-      <p>Call or visit the academy for the current program fee, duration, batch dates, inclusions and payment terms — and confirm them before you enrol.</p>
+      <h3>Two ways to set sail</h3>
+      <p>Starter Sailor Program — <strong>₹9,999</strong><br />Complete Sailpreneur Program — <strong>₹11,999</strong></p>
+      <p>Both programs are 100% online, so you can learn from anywhere. Call or message the academy for batch dates and payment terms.</p>
       <p class="note-small">AKMICS prepares you thoroughly; employment, visa and certification decisions rest with employers, authorities and authorised providers.</p>
-      <Button href="/contact/" variant="navy">Ask about the next batch</Button>
+      <Button href="#fees" variant="navy">Compare plans</Button>
     </aside>
   </div>
 </section>
 
+<Plans />
+
 <section class="section section--tint" id="programs">
   <div class="wrap">
-    <SectionHeading eyebrow="Eleven areas of preparation" title="The guidance behind <em>your journey.</em>" text="Open any program to see what it covers and the outcome you can expect." />
+    <SectionHeading eyebrow="Fourteen areas of preparation" title="The guidance behind <em>your journey.</em>" text="Open any program to see what it covers and the outcome you can expect." />
     <Services />
   </div>
 </section>

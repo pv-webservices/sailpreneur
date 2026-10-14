@@ -13,6 +13,7 @@ import Stories from '../components/Stories.astro';
 import Trust from '../components/Trust.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
+import Plans from '../components/Plans.astro';
 import { brand, tel, mapsUrl, departments, services } from '../data/site';
 const marquee = [...departments.map((d) => d.name), ...services.slice(0, 7).map((s) => s.name)];
 const milestones = [
@@ -94,10 +95,10 @@ const milestones = [
         <p class="eyebrow">Meet our founder &amp; mentor</p>
         <h2 id="founder-title">Ankur Kumar Mishra</h2>
         <p class="founder-role">Cruise Career Specialist · Mentor · Industry Guide</p>
-        <p>From Dehradun to Miami: twelve years working at sea, fifty countries and sixty-five islands — not as a tourist, but as crew. Today Ankur brings that first-hand experience to every student he mentors.</p>
+        <p>From Dehradun to Miami: twelve years working at sea, 50+ countries and sixty-five islands — not as a tourist, but as crew. Today Ankur brings that first-hand experience to every student he mentors.</p>
         <ul class="founder-facts">
           <li><Icon name="wheel" size={26} stroke={1.2} /><strong>12+</strong><span>Years at sea</span></li>
-          <li><Icon name="globe" size={26} stroke={1.2} /><strong>50</strong><span>Countries</span></li>
+          <li><Icon name="globe" size={26} stroke={1.2} /><strong>50+</strong><span>Countries</span></li>
           <li><Icon name="map" size={26} stroke={1.2} /><strong>65</strong><span>Islands</span></li>
           <li><Icon name="users" size={26} stroke={1.2} /><strong>35+</strong><span>Yrs expert panel</span></li>
           <li><Icon name="infinity" size={26} stroke={1.2} /><strong>For life</strong><span>Mentor support</span></li>
@@ -125,10 +126,13 @@ const milestones = [
   <!-- PROGRAMS -->
   <section class="programs section" aria-labelledby="programs-heading">
     <div class="wrap">
-      <SectionHeading eyebrow="Our cruise career programs" title="Everything you need to <em>get onboard.</em>" text="Structured guidance for a successful and fulfilling career at sea — eleven focused areas, one mentor-led journey." href="/mentorship-program/" linkText="View all programs" />
+      <SectionHeading eyebrow="Our cruise career programs" title="Everything you need to <em>get onboard.</em>" text="Structured guidance for a successful and fulfilling career at sea — fourteen focused areas, one mentor-led journey." href="/mentorship-program/" linkText="View all programs" />
       <Services />
     </div>
   </section>
+
+  <!-- FEE STRUCTURE -->
+  <Plans />
 
   <!-- DEPARTMENTS -->
   <section class="departments section section--tint" aria-label="Cruise career departments">
@@ -171,7 +175,7 @@ const milestones = [
       <div class="faq-home-intro" data-reveal>
         <p class="eyebrow">Before you set sail</p>
         <h2 id="faq-title">Good questions. <br /><em>Honest answers.</em></h2>
-        <p class="lead">Still deciding? Visit the academy or call us — parents are always welcome to join the conversation.</p>
+        <p class="lead">Still deciding? Talk to our team or call us — parents are always welcome to join the conversation.</p>
         <div class="contact-card">
           {brand.phones.map((phone) => <a href={tel(phone)}><Icon name="phone" size={20} /><span><small>Call the academy</small>{phone}</span></a>)}
           <a href={mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" size={20} /><span><small>Visit us</small>{brand.address}</span></a>

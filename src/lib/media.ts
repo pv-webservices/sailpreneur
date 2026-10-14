@@ -29,3 +29,8 @@ export function generatedAlt(name: string): string {
   const meta = (manifest as Manifest)[`${name}:meta`];
   return meta && !Array.isArray(meta) ? meta.alt : '';
 }
+
+/** First of the given asset names that has been published, or null. Lets data reference images that are generated later. */
+export function firstAvailable(...names: (string | null | undefined)[]): string | null {
+  return names.find((name): name is string => !!name && Array.isArray((manifest as Manifest)[name])) ?? null;
+}

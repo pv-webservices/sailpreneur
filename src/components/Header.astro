@@ -19,6 +19,7 @@ const applyHref = Astro.url.pathname.startsWith('/contact') ? '#enquiry' : '/con
       <div class="nav-drawer-extra">
         <p class="eyebrow">Talk to our team</p>
         {brand.phones.map((phone) => <a class="drawer-phone" href={tel(phone)}><Icon name="phone" size={18} />{phone}</a>)}
+        <a class="drawer-phone" href={`mailto:${brand.email}`}><Icon name="mail" size={18} />{brand.email}</a>
         <a class="btn btn--gold" href={applyHref}><span>Apply Now</span><Icon name="arrow" size={18} /></a>
       </div>
     </nav>

@@ -381,6 +381,56 @@
   "quality": "medium",
   "alt": "A mentor guiding young candidates through a mock interview in a classroom"
  },
+ "program-deck-security": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/program-deck-security-1536.webp",
+   "bytes": 130290
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/program-deck-security-1200.webp",
+   "bytes": 98240
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/program-deck-security-720.webp",
+   "bytes": 52124
+  }
+ ],
+ "program-deck-security:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A deck officer and a security officer working together on the navigation bridge of a cruise ship"
+ },
+ "program-spa-wellness": [
+  {
+   "width": 1536,
+   "height": 1024,
+   "file": "/media/program-spa-wellness-1536.webp",
+   "bytes": 86348
+  },
+  {
+   "width": 1200,
+   "height": 800,
+   "file": "/media/program-spa-wellness-1200.webp",
+   "bytes": 66726
+  },
+  {
+   "width": 720,
+   "height": 480,
+   "file": "/media/program-spa-wellness-720.webp",
+   "bytes": 36248
+  }
+ ],
+ "program-spa-wellness:meta": {
+  "model": "gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "alt": "A spa therapist giving a relaxing facial treatment in a calm cruise ship spa"
+ },
  "ship-atrium": [
   {
    "width": 1536,
@@ -405,5 +455,30 @@
   "model": "gpt-image-2.5-sunburst",
   "quality": "medium",
   "alt": "The grand multi-deck atrium of a modern cruise ship with sweeping staircases"
+ },
+ "program-hospitality": [
+  {
+   "width": 1544,
+   "height": 1032,
+   "file": "/media/program-hospitality-1544.webp",
+   "bytes": 141994
+  },
+  {
+   "width": 1200,
+   "height": 802,
+   "file": "/media/program-hospitality-1200.webp",
+   "bytes": 109652
+  },
+  {
+   "width": 720,
+   "height": 481,
+   "file": "/media/program-hospitality-720.webp",
+   "bytes": 59612
+  }
+ ],
+ "program-hospitality:meta": {
+  "model": "collage",
+  "quality": "n/a",
+  "alt": "Cruise hospitality departments: a bartender, a chef, a housekeeping attendant and a guest services officer"
  }
 }

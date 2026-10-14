@@ -102,6 +102,18 @@ export const IMAGES = [
     prompt: `A small professional training room in India: an experienced male mentor in a smart suit conducting a mock job interview with a young South Asian candidate in formal attire across a table, two other young trainees with notebooks observing, a framed cruise ship photograph on the wall, warm daylight, encouraging and focused atmosphere. ${STYLE}`,
   },
   {
+    key: 'program-deck-security', tier: 'sunburst', quality: 'default', orientation: 'landscape',
+    placement: 'Programs — Deck & Security Department card and detail page',
+    alt: 'A deck officer and a security officer working together on the navigation bridge of a cruise ship',
+    prompt: `Two South Asian male cruise ship officers on a modern navigation bridge: a deck officer in a white uniform with epaulettes studying a glowing radar and navigation console, and a security officer in a dark navy uniform beside him reviewing safety procedures, wide panoramic windows showing the open sea, focused professional teamwork, the two men centred in the frame. ${STYLE}`,
+  },
+  {
+    key: 'program-spa-wellness', tier: 'sunburst', quality: 'default', orientation: 'landscape',
+    placement: 'Programs — Spa & Beautician / Wellness card and detail page',
+    alt: 'A spa therapist giving a relaxing facial treatment in a calm cruise ship spa',
+    prompt: `A young South Asian woman spa therapist in a crisp white uniform giving a calm facial treatment to a relaxed guest lying on a treatment bed with a white towel headband, inside a serene luxury cruise ship spa with soft candles, orchids, folded towels and a porthole-style window to the sea, warm gentle light, the therapist and guest centred in the frame. ${STYLE}`,
+  },
+  {
     key: 'ship-atrium', tier: 'sunburst', quality: 'default', orientation: 'landscape',
     placement: 'About page editorial image & "Life onboard" storytelling',
     alt: 'The grand multi-deck atrium of a modern cruise ship with sweeping staircases',

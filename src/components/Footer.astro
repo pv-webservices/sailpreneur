@@ -27,6 +27,7 @@ const quick: [string, string][] = [['/', 'Home'], ['/about/', 'About Us'], ['/me
       <h2>Visit &amp; Connect</h2>
       <a class="footer-contact" href={mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" size={18} /><span>{brand.address}</span></a>
       {brand.phones.map((phone) => <a class="footer-contact" href={tel(phone)}><Icon name="phone" size={18} /><span>{phone}</span></a>)}
+      <a class="footer-contact" href={`mailto:${brand.email}`}><Icon name="mail" size={18} /><span>{brand.email}</span></a>
       <h2 class="footer-follow">Follow Us</h2>
       {brand.instagram.map((account) => <a class="footer-contact" href={account.url} target="_blank" rel="noopener noreferrer"><Icon name="instagram" size={18} /><span>{account.handle}</span></a>)}
     </div>

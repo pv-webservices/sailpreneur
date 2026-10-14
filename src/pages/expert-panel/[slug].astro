@@ -13,25 +13,23 @@ export function getStaticPaths() {
 const { expert } = Astro.props;
 ---
 <Layout title={`${expert.name} — ${expert.focus}`} description={`Meet ${expert.name}, ${expert.role}, on the AKMICS expert panel. ${expert.text}`}>
-  <PageHero title={expert.name} eyebrow={expert.name} intro={expert.role} image="bridge-dusk" portrait={expert.image} portraitAlt={`${expert.name}, ${expert.role}`} crumbs={[['/expert-panel/', 'Expert Panel']]}>
+  <PageHero title={expert.name} eyebrow={expert.years ? `${expert.years}+ years experience` : 'AKMICS expert panel'} intro={expert.role} image="bridge-dusk" portrait={expert.image} portraitAlt={`${expert.name}, ${expert.role}`} crumbs={[['/expert-panel/', 'Expert Panel']]}>
     <div class="btn-row"><Button href="/contact/">Learn with our experts</Button></div>
   </PageHero>
 
   <section class="section">
-    <div class="wrap two-cards">
-      <article class="info-card" data-reveal>
-        <Icon name="compass" size={30} stroke={1.3} />
-        <p class="eyebrow">Areas of focus</p>
-        <h2>{expert.focus}</h2>
-        <p>{expert.text}</p>
-      </article>
-      <article class="info-card" data-reveal>
-        <Icon name="users" size={30} stroke={1.3} />
-        <p class="eyebrow">Mentorship contribution</p>
-        <h2>A perspective to learn from.</h2>
-        <p>{expert.contribution}</p>
-        <p>Contact the academy to discuss how these focus areas relate to your goals and the current panel-session arrangements.</p>
-      </article>
+    <div class="wrap expert-profile">
+      <div class="expert-profile-copy" data-reveal>
+        <p class="eyebrow">{expert.focus}</p>
+        <h2>{expert.headline}</h2>
+        {expert.story.map((para) => <p>{para}</p>)}
+      </div>
+      <aside class="expert-gives" data-reveal>
+        {expert.years && <p class="expert-gives-years"><strong>{expert.years}+</strong><span>years of industry experience</span></p>}
+        <Icon name="star" size={30} stroke={1.3} />
+        <h3>What you gain</h3>
+        <p>{expert.gives}</p>
+      </aside>
     </div>
   </section>
 

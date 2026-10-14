@@ -6,7 +6,11 @@
   transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), height 0.4s var(--ease);
 }
 .site-header::after { content: ''; position: absolute; inset: auto 0 0; height: 1px; background: linear-gradient(90deg, transparent, var(--on-dark-line), transparent); }
-.site-header.is-scrolled { background: rgba(6, 21, 41, 0.92); backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6); --header-h: 72px; }
+/* The blur lives on a pseudo-element: backdrop-filter on the header itself would become the
+   containing block for the fixed mobile drawer and clip it to the header's height. */
+.site-header::before { content: ''; position: absolute; inset: 0; z-index: -2; opacity: 0; background: rgba(6, 21, 41, 0.92); backdrop-filter: blur(14px) saturate(140%); transition: opacity 0.4s var(--ease); }
+.site-header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6); --header-h: 72px; }
+.site-header.is-scrolled::before { opacity: 1; }
 .header-inner { height: 100%; display: flex; align-items: center; gap: 1.5rem; }
 .brand { display: inline-flex; align-items: center; gap: 0.75rem; flex: none; }
 .brand img { width: 46px; height: auto; transition: transform 0.6s var(--ease); }
@@ -43,6 +47,8 @@
 
 @media (max-width: 1199px) {
   .menu-toggle { display: grid; }
+  /* The drawer is out of flow here, so push the actions (and the toggle) to the right edge. */
+  .header-actions { margin-left: auto; }
   .main-nav {
     position: fixed; inset: var(--header-h) 0 0; z-index: -1; padding: 2rem max(6vw, 18px) 7rem; overflow-y: auto;
     background: var(--navy-gradient); display: flex; flex-direction: column; gap: 2rem;
@@ -193,7 +199,9 @@
 .expert-card a { display: flex; flex-direction: column; height: 100%; border-radius: var(--radius); overflow: hidden; background: var(--ivory-50); border: 1px solid var(--line); transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.4s; }
 .expert-track.on-dark .expert-card a { background: rgba(8, 28, 54, 0.72); border-color: var(--on-dark-line); backdrop-filter: blur(10px); }
 .expert-card a:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--gold-500); }
-.expert-photo { display: block; aspect-ratio: 4 / 4.4; overflow: hidden; background: var(--navy-800); }
+.expert-photo { position: relative; display: block; aspect-ratio: 4 / 4.4; overflow: hidden; background: var(--navy-800); }
+.expert-years { position: absolute; z-index: 1; left: 10px; bottom: 10px; display: inline-flex; align-items: baseline; gap: 0.35rem; padding: 0.4rem 0.8rem; border-radius: var(--radius-pill); background: rgba(6, 21, 41, 0.88); backdrop-filter: blur(6px); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; color: var(--on-dark); }
+.expert-years strong { font-family: var(--serif); font-variant-numeric: lining-nums; font-size: 1.15rem; line-height: 1; color: var(--gold-300); }
 .expert-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; transition: transform 1s var(--ease); }
 .expert-card a:hover .expert-photo img { transform: scale(1.06); }
 .expert-body { display: flex; flex-direction: column; flex: 1; padding: 1.2rem 1.3rem 1.4rem; }
@@ -368,3 +376,28 @@
 .to-top { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--gold-400); }
 @media (max-width: 1100px) { .footer-top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* ---------- Fee structure / plans ---------- */
+.plans { overflow: hidden; background: radial-gradient(ellipse at 50% 0%, var(--navy-700), transparent 60%), var(--navy-gradient); color: var(--on-dark); }
+.plans::before { content: ''; position: absolute; inset: clamp(10px, 1.6vw, 22px); border: 1px solid var(--on-dark-line); border-radius: var(--radius-lg); pointer-events: none; }
+.plans-banner { max-width: 860px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); padding: 1rem clamp(1rem, 3vw, 2rem); border-radius: var(--radius-sm); background: var(--gold-gradient); box-shadow: var(--shadow-gold); text-align: center; }
+.plans-banner p { margin: 0; font-size: clamp(0.78rem, 0.7rem + 0.4vw, 1rem); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy-900); }
+.plans-banner span { display: inline-block; }
+.plans-banner span + span::before { content: '•'; margin: 0 0.6em; opacity: 0.6; }
+@media (max-width: 600px) { .plans-banner span { display: block; } .plans-banner span + span::before { content: none; } .plans-banner p + p { margin-top: 0.5rem; } }
+.plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 36px); max-width: 1180px; margin-inline: auto; align-items: stretch; }
+.plan-card { position: relative; display: flex; flex-direction: column; padding: clamp(2.4rem, 4vw, 3.2rem) clamp(1.4rem, 3vw, 2.6rem) clamp(1.6rem, 3vw, 2.4rem); border: 1px solid var(--on-dark-line); border-radius: var(--radius-lg); background: rgba(8, 28, 54, 0.7); text-align: center; transition: transform 0.5s var(--ease), border-color 0.4s, box-shadow 0.5s var(--ease); }
+.plan-card:hover { transform: translateY(-6px); border-color: var(--gold-500); box-shadow: var(--shadow-lg); }
+.plan-card--featured { border-color: var(--gold-500); background: linear-gradient(180deg, rgba(29, 70, 114, 0.55), rgba(8, 28, 54, 0.85)); box-shadow: 0 0 0 1px var(--gold-500), var(--shadow-lg); }
+.plan-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); padding: 0.45rem 1.3rem; border-radius: var(--radius-pill); background: var(--gold-gradient); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; color: var(--navy-900); box-shadow: var(--shadow-gold); }
+.plan-price { margin: 0; font-family: var(--serif); font-size: clamp(3.2rem, 2.4rem + 3vw, 5rem); font-weight: 700; font-variant-numeric: lining-nums; line-height: 1; color: var(--gold-300); }
+.plan-card h3 { margin: 0.6rem 0 0.4rem; font-family: var(--sans); font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-400); }
+.plan-tagline { margin-bottom: 1.6rem; font-family: var(--serif); font-size: 1.15rem; font-style: italic; color: var(--on-dark-soft); }
+.plan-features { display: grid; gap: 0.75rem; margin-bottom: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--on-dark-line); text-align: left; }
+.plan-features li { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.95rem; font-weight: 600; line-height: 1.45; color: var(--on-dark); }
+.plan-features svg { flex: none; margin-top: 1px; color: var(--gold-400); }
+.plan-card .btn { margin-top: auto; }
+.plans-foot { margin: clamp(2rem, 4vw, 3rem) 0 0.6rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-align: center; color: var(--gold-300); }
+.plans-foot span { margin: 0 0.5em; color: var(--gold-500); }
+.plans-note { max-width: 70ch; margin-inline: auto; font-size: var(--fs-small); text-align: center; color: var(--on-dark-soft); }
+@media (max-width: 860px) { .plans-grid { grid-template-columns: 1fr; gap: 2.6rem; } }

@@ -1,25 +1,40 @@
 // Enquiry form: validates input, then either posts to a configured HTTPS endpoint
-// (PUBLIC_FORM_ENDPOINT) or prepares a local text download when no endpoint exists.
+// (PUBLIC_FORM_ENDPOINT) or opens the visitor's email app with the enquiry addressed to the academy.
 const FIELDS = ['name', 'phone', 'email', 'profession', 'department', 'message'] as const;
+const LABELS: Record<(typeof FIELDS)[number], string> = { name: 'Name', phone: 'Phone', email: 'Email', profession: 'Education / profession', department: 'Interested department', message: 'Message' };
 const PHONE_DIGITS = { min: 7, max: 15 };
 const TIMEOUT_MS = 15000;
+
+/** Form providers differ: some acknowledge with `true`, others (e.g. FormSubmit) with the string "true". */
+function isConfirmed(result: unknown): boolean {
+  if (typeof result !== 'object' || result === null) return false;
+  const success = (result as { success?: unknown }).success;
+  return success === true || success === 'true';
+}
+
+function mailtoHref(address: string, data: FormData, department: HTMLSelectElement | null): string {
+  const departmentName = department?.selectedOptions[0]?.textContent?.trim();
+  const value = (key: (typeof FIELDS)[number]) =>
+    key === 'department' ? departmentName || 'Still exploring' : String(data.get(key) || '').trim() || 'Not supplied';
+  const body = FIELDS.map((key) => `${LABELS[key]}: ${value(key)}`).join('\n');
+  const subject = `Cruise career enquiry — ${value('name')}`;
+  return `mailto:${address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 export function initContactForm(): void {
   const form = document.querySelector<HTMLFormElement>('#contact-form');
   if (!form) return;
   const button = form.querySelector<HTMLButtonElement>('button[type=submit]');
   const status = form.querySelector<HTMLElement>('#form-status');
-  const download = form.querySelector<HTMLAnchorElement>('#download-enquiry');
   const phone = form.querySelector<HTMLInputElement>('#phone');
   const department = form.querySelector<HTMLSelectElement>('#department');
-  if (!button || !status || !download || !phone) return;
+  if (!button || !status || !phone) return;
   button.disabled = false;
 
   const requested = new URLSearchParams(location.search).get('department');
   if (department && requested && [...department.options].some((option) => option.value === requested)) department.value = requested;
 
   phone.addEventListener('input', () => phone.setCustomValidity(''));
-  let enquiryUrl: string | undefined;
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -28,20 +43,16 @@ export function initContactForm(): void {
     if (!form.reportValidity()) return;
     const data = new FormData(form);
     if (data.get('website')) { status.textContent = 'Please leave the website field empty.'; return; }
-    const endpoint = form.dataset.endpoint;
+    const { endpoint, email } = form.dataset;
 
     if (!endpoint) {
-      const text = ['AKMICS mentorship enquiry', ...FIELDS.map((key) => `${key}: ${String(data.get(key) || 'Not supplied')}`)].join('\n');
-      if (enquiryUrl) URL.revokeObjectURL(enquiryUrl);
-      enquiryUrl = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-      download.href = enquiryUrl;
-      download.hidden = false;
-      status.textContent = 'Your enquiry is ready to download. It has not been sent — call +91 9185282229 or +91 9309469593 to discuss your goals.';
+      if (!email) { status.textContent = 'Please call our team to make your enquiry.'; return; }
+      location.href = mailtoHref(email, data, department);
+      status.textContent = `Your email app should now be open with your enquiry addressed to ${email}. Press send to deliver it — if nothing opened, email us directly or call +91 9185282229.`;
       return;
     }
 
     button.disabled = true;
-    download.hidden = true;
     status.textContent = 'Sending your enquiry…';
     try {
       if (!endpoint.startsWith('https://')) throw new Error('Invalid endpoint');
@@ -49,12 +60,11 @@ export function initContactForm(): void {
       data.forEach((value, key) => body.set(key, String(value)));
       const response = await fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(TIMEOUT_MS) });
       const result: unknown = await response.json();
-      const confirmed = typeof result === 'object' && result !== null && (result as { success?: unknown }).success === true;
-      if (!response.ok || !confirmed) throw new Error('Submission not confirmed');
+      if (!response.ok || !isConfirmed(result)) throw new Error('Submission not confirmed');
       status.textContent = 'Thank you — your enquiry has been received. Our team will contact you soon.';
       form.reset();
     } catch {
-      status.textContent = 'We could not confirm delivery. Please call our team — your information is still in the form.';
+      status.textContent = `We could not confirm delivery. Please email ${email ?? 'us'} or call our team — your information is still in the form.`;
     } finally {
       button.disabled = false;
     }

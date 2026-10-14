@@ -28,7 +28,8 @@ const schema = {
   '@context': 'https://schema.org', '@type': 'EducationalOrganization', name: brand.name, legalName: brand.company, alternateName: brand.academy,
   description: 'Cruise career mentorship, interview preparation and joining guidance in Dehradun.',
   telephone: brand.phones[0],
-  address: { '@type': 'PostalAddress', streetAddress: '43, D.A.V. PG College Road', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
+  email: brand.email,
+  address: { '@type': 'PostalAddress', streetAddress: 'D.A.V. PG College Road', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
   sameAs: brand.instagram.map((account) => account.url),
   ...(site ? { url: site, logo: new URL(media('logo-card').src, site).href } : {}),
 };

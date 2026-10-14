@@ -4,31 +4,72 @@ import Icon from '../components/Icon.astro';
 import Button from '../components/Button.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Stats from '../components/Stats.astro';
-import Trust from '../components/Trust.astro';
 import Experts from '../components/Experts.astro';
 import { brand } from '../data/site';
-const principles = [
-  { icon: 'compass', title: 'Start with your background.', text: 'Every journey begins with a profile assessment — your education, experience, interests and questions — before choosing a department.' },
-  { icon: 'chat', title: 'Prepare for what matters.', text: 'A clearer CV, realistic mock interviews, hospitality and USPH knowledge, and guidance through STCW, CDC, medical and visa steps.' },
-  { icon: 'shield', title: 'Keep it honest.', text: 'No fake promises. We prepare you thoroughly and transparently — employers, recruiters and authorities make the final decisions.' },
+// About-us copy as supplied by the client.
+const services = [
+  { icon: 'document', title: 'Documents & clearances', text: 'CDC, STCW, SID, PCC, USPH, VISA, Medical and LOE — every step explained and supported.' },
+  { icon: 'chat', title: 'Profile & interviews', text: 'Resume building, profile creation, interview training and grooming.' },
+  { icon: 'shield', title: 'Fraud protection', text: 'Offer-letter and agent verification — complete protection from fake agents.' },
 ];
+const reasons = ['100% online & flexible', 'Real mentorship from real sailors', '100% transparent — no fake promises', 'Complete fraud protection', 'Lifetime support, community & job updates'];
 ---
 <section class="section">
   <div class="wrap split">
     <div class="split-copy" data-reveal>
-      <p class="eyebrow">The academy</p>
-      <h2>Real sea experience, <em>shared from Dehradun.</em></h2>
-      <p class="lead">AKMICS — Sailpreneur Academy is the cruise-career mentorship brand of {brand.company}.</p>
-      <p>For anyone dreaming of a cruise career, the hardest part is often knowing where to begin. AKMICS brings career guidance, hospitality knowledge, interview preparation, documentation guidance and personal development into one mentor-led journey.</p>
-      <p>The academy was founded by Ankur Kumar Mishra after twelve years working at sea — across fifty countries and sixty-five islands. His mission is simple: give young people from Dehradun and across India the honest guidance he wished he had.</p>
-      <div class="btn-row"><Button href="/our-mentor/" variant="navy">Meet the founder</Button><Button href="/mentorship-program/" variant="outline">Explore programs</Button></div>
+      <p class="eyebrow">Who we are</p>
+      <h2>India’s first premium <em>online cruise career academy.</em></h2>
+      <p class="lead">Built by real sailors, for future sailors.</p>
+      <p>AKMICS is a 100% online premium academy — learn from anywhere, anytime, on your phone. We are real people with real sea experience, here to support your voyage from the classroom to the cruise deck.</p>
+      <p>AKMICS — Sailpreneur Academy is the cruise-career academy of {brand.company}, founded by Ankur Kumar Mishra after more than eleven years with Royal Caribbean International.</p>
+      <div class="btn-row"><Button href="/mentorship-program/#fees" variant="navy">Choose your voyage</Button><Button href="/our-mentor/" variant="outline">Meet the founder</Button></div>
     </div>
     <div class="collage" data-reveal>
-      <figure class="collage-main"><Img name="dehradun-valley" sizes="(max-width: 900px) 90vw, 40vw" /></figure>
+      <figure class="collage-main"><Img name="ship-atrium" sizes="(max-width: 900px) 90vw, 40vw" /></figure>
       <figure class="collage-logo"><Img name="logo-card" alt="Ankur Kumar Mishra Sailpreneur logo — Navigate Your Dream Cruise Career" sizes="(max-width: 900px) 50vw, 18vw" /></figure>
-      <p class="collage-note"><Icon name="pin" size={18} /><span>43, D.A.V. PG College Road, Dehradun</span></p>
+      <p class="collage-note"><Icon name="globe" size={18} /><span>100% online · Learn from anywhere</span></p>
     </div>
   </div>
+</section>
+
+<section class="section section--tint">
+  <div class="wrap">
+    <SectionHeading eyebrow="What we do" title="Complete A–Z <em>online guidance.</em>" />
+    <ol class="principles">
+      {services.map((item, i) => <li data-reveal style={`--i:${i}`}><Icon name={item.icon} size={30} stroke={1.3} /><h3>{item.title}</h3><p>{item.text}</p></li>)}
+    </ol>
+  </div>
+</section>
+
+<section class="section section--navy">
+  <div class="wrap split">
+    <div class="on-dark" data-reveal>
+      <p class="eyebrow">Why our online platform?</p>
+      <h2>Premium guidance, <em>wherever you are.</em></h2>
+      <ul class="check-list check-list--dark">{reasons.map((item) => <li><Icon name="check-circle" size={20} />{item}</li>)}</ul>
+    </div>
+    <div class="on-dark" data-reveal>
+      <p class="eyebrow">Our mission</p>
+      <p class="mission-lead">To rebuild trust in cruise career guidance in India, and to make honest, premium guidance accessible to every student — even in the smallest town.</p>
+      <p class="lead">We don’t just want you to get onboard — we want you to grow onboard, earn in dollars and build a life your family will be proud of.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap invest">
+    <div data-reveal>
+      <p class="eyebrow">Your investment, not your expense</p>
+      <h2>At AKMICS, you don’t pay a fee — <em>you invest in yourself.</em></h2>
+    </div>
+    <div class="invest-copy" data-reveal>
+      <p>This is not an expense. An expense is gone. An investment returns in dollars.</p>
+      <p>Fake agents will take your money. We will help you make your money.</p>
+      <p>Don’t think of it as a cost. Think of it as an asset — <strong>you</strong>.</p>
+      <p class="invest-sign">Invest once. Sail for a lifetime.</p>
+    </div>
+  </div>
+  <p class="invest-motto" data-reveal>Train <span aria-hidden="true">•</span> Mentor <span aria-hidden="true">•</span> Sail <span aria-hidden="true">•</span> Succeed</p>
 </section>
 
 <section class="section section--navy">
@@ -40,23 +81,7 @@ const principles = [
 
 <section class="section">
   <div class="wrap">
-    <SectionHeading eyebrow="The way we guide" title="Practical. Personal. <em>Transparent.</em>" />
-    <ol class="principles">
-      {principles.map((item, i) => <li data-reveal style={`--i:${i}`}><Icon name={item.icon} size={30} stroke={1.3} /><h3>{item.title}</h3><p>{item.text}</p></li>)}
-    </ol>
-  </div>
-</section>
-
-<section class="section section--tint">
-  <div class="wrap">
-    <SectionHeading align="center" eyebrow="Building careers at sea · Building trust at home" title="Why students &amp; parents <em>trust AKMICS.</em>" />
-    <Trust />
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <SectionHeading eyebrow="People behind the preparation" title="Our expert <em>panel.</em>" text="Cruise hospitality, hotel operations, language and personal development — five perspectives, one shared purpose." href="/expert-panel/" linkText="Meet the panel" />
+    <SectionHeading eyebrow="People behind the preparation" title="Our expert <em>panel.</em>" text="Cruise F&amp;B, hotel operations, French and cruise HR — five perspectives, one shared purpose." href="/expert-panel/" linkText="Meet the panel" />
     <Experts tone="light" />
   </div>
 </section>
