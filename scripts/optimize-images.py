@@ -21,9 +21,10 @@ OUT.mkdir(parents=True, exist_ok=True)
 CLIENT = {
     'ankur-uniform': ('image-6.jpeg', (0, 0, 760, 900), [760, 420]),
     'ankur-portrait': ('Ankur kumar Mishra.jpeg', None, [893, 450]),
-    'student-sahil': ('success story image-1.jpeg', (160, 388, 455, 756), [295]),
-    'student-anjali': ('success story image-2.jpeg', (45, 285, 560, 1000), [515]),
-    'student-amit': ('success story image-3.jpeg', (45, 428, 548, 1135), [503]),
+    'student-sahil': ('Sahil.webp', None, [720, 420]),
+    'student-anjali': ('Anjali Rawat.webp', None, [720, 420]),
+    'student-amit': ('Amit Kumar.webp', None, [720, 420]),
+    'student-rohit': ('Rohit.webp', None, [720, 420]),
     'expert-ashish': ('Ashish Sharma.jpeg', None, [700, 400]),
     'expert-sanjay': ('Sanjay Mamgain.jpeg', (134, 0, 1045, 911), [700, 400]),
     'expert-anirudh': ('Anirudh Prakash Mishra.jpeg', (0, 0, 1100, 1300), [700, 400]),

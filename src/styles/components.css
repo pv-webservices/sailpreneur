@@ -243,9 +243,11 @@
 @media (max-width: 1100px) { .story-track.carousel-track { grid-auto-columns: 82%; } }
 @media (max-width: 640px) {
   .story-track.carousel-track { grid-auto-columns: 88%; }
-  .story-card { grid-template-columns: 1fr; }
-  /* min-height must reset here: with aspect-ratio it would otherwise widen the photo past the card. */
+  /* minmax(0, 1fr) pins the column to the card width; with a plain 1fr, a carousel card stretched
+     taller than its content grows the square photo row and its aspect-ratio pushes the column wider. */
+  .story-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-content: start; }
   .story-media { min-height: 0; aspect-ratio: 1; }
+  .story-media img { object-position: center 15%; }
 }
 
 /* ---------- Trust grid ---------- */

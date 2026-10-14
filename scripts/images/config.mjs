@@ -114,12 +114,6 @@ export const IMAGES = [
     prompt: `A young South Asian woman spa therapist in a crisp white uniform giving a calm facial treatment to a relaxed guest lying on a treatment bed with a white towel headband, inside a serene luxury cruise ship spa with soft candles, orchids, folded towels and a porthole-style window to the sea, warm gentle light, the therapist and guest centred in the frame. ${STYLE}`,
   },
   {
-    key: 'story-rohit', tier: 'flare', quality: 'default', orientation: 'square',
-    placement: 'Success stories — Rohit card (no student photo supplied)',
-    alt: 'A large cruise ship sailing on bright blue Caribbean water',
-    prompt: `A large modern white cruise ship sailing on bright turquoise Caribbean water on a sunny day, seen from a low angle off the bow, small tropical island with palm trees in the distance, a few white clouds, vivid and optimistic, no people visible, ship centred in the frame. ${STYLE}`,
-  },
-  {
     key: 'ship-atrium', tier: 'sunburst', quality: 'default', orientation: 'landscape',
     placement: 'About page editorial image & "Life onboard" storytelling',
     alt: 'The grand multi-deck atrium of a modern cruise ship with sweeping staircases',
