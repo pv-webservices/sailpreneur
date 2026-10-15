@@ -16,7 +16,7 @@ const { service } = Astro.props;
 const image = firstAvailable(service.image, service.fallbackImage);
 const heroImage = image ?? 'mentorship-session';
 ---
-<Layout title={service.name} description={`${service.text} ${service.name} with AKMICS — Sailpreneur Academy, Dehradun.`} preload={heroImage}>
+<Layout title={service.name} description={`${service.text} ${service.name} with AKMICS — Sailpreneur Academy.`} preload={heroImage}>
   <PageHero title={service.name} eyebrow={service.name} intro={service.text} image={heroImage} crumbs={[['/mentorship-program/', 'Programs']]} compact>
     <div class="btn-row"><Button href="/contact/">Enquire about this program</Button></div>
   </PageHero>

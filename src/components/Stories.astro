@@ -23,7 +23,6 @@ const grid = layout === 'grid';
           <p class="story-dept">{story.department}</p>
           <ul class="story-points">{story.points.map((point) => <li><Icon name="check-circle" size={18} /><span>{point}</span></li>)}</ul>
           {story.quote && <blockquote><p>“{story.quote}”</p></blockquote>}
-          {story.meta && <p class="story-meta">— {story.meta}</p>}
         </div>
       </li>
     ))}

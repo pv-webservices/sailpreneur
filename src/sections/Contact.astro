@@ -1,12 +1,12 @@
 ---
 import Icon from '../components/Icon.astro';
 import ContactForm from '../components/ContactForm.astro';
-import { brand, tel, mapsUrl } from '../data/site';
+import { brand, tel } from '../data/site';
 ---
 <section class="section contact-section">
   <div class="wrap contact-grid">
     <div class="contact-info" data-reveal>
-      <p class="eyebrow">Dehradun to your next horizon</p>
+      <p class="eyebrow">From wherever you are to your next horizon</p>
       <h2>A conversation can change <em>your direction.</em></h2>
       <p class="lead">Talk to our team about your background and the cruise career you’re dreaming of.</p>
       <div class="contact-tiles">
@@ -20,10 +20,10 @@ import { brand, tel, mapsUrl } from '../data/site';
           <Icon name="mail" size={24} stroke={1.3} />
           <span><small>Email the academy</small><strong>{brand.email}</strong></span>
         </a>
-        <a class="contact-tile" href={mapsUrl} target="_blank" rel="noopener noreferrer">
+        <div class="contact-tile">
           <Icon name="pin" size={24} stroke={1.3} />
-          <span><small>Visit us in Dehradun</small><strong>{brand.address}</strong><em>Open in Google Maps ↗</em></span>
-        </a>
+          <span><small>Our address</small><strong>{brand.address}</strong></span>
+        </div>
         {brand.instagram.map((account) => (
           <a class="contact-tile" href={account.url} target="_blank" rel="noopener noreferrer">
             <Icon name="instagram" size={24} stroke={1.3} />

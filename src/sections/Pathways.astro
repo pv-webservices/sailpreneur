@@ -13,7 +13,7 @@ import { departments } from '../data/site';
         <article class:list={['dept-row', i % 2 === 1 && 'dept-row--flip']} id={dept.slug}>
           <figure class="dept-row-media" data-reveal><Img name={dept.image} sizes="(max-width: 900px) 90vw, 36vw" /></figure>
           <div class="dept-row-copy" data-reveal>
-            <span class="dept-row-num">0{i + 1} / 05</span>
+            <span class="dept-row-num">{String(i + 1).padStart(2, '0')} / {String(departments.length).padStart(2, '0')}</span>
             <h2>{dept.name}</h2>
             <p class="lead">{dept.short}</p>
             <dl>

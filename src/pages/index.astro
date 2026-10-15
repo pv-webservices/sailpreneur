@@ -14,7 +14,7 @@ import Trust from '../components/Trust.astro';
 import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import Plans from '../components/Plans.astro';
-import { brand, tel, mapsUrl, departments, services } from '../data/site';
+import { brand, tel, departments, services } from '../data/site';
 const marquee = [...departments.map((d) => d.name), ...services.slice(0, 7).map((s) => s.name)];
 const milestones = [
   { icon: 'book', title: 'Learn & Prepare', text: 'Profile assessment and a personal plan' },
@@ -23,7 +23,7 @@ const milestones = [
   { icon: 'ship', title: 'Step Onboard Your Dream Ship', text: 'Joining guidance & lifetime support' },
 ];
 ---
-<Layout home preload="hero-ship" title="Cruise Career Mentorship in Dehradun" description="From dreaming on land to thriving at sea. AKMICS — Sailpreneur Academy in Dehradun prepares you for a career on international cruise ships with mentorship, interview training and joining guidance.">
+<Layout home preload="hero-ship" title="Online Cruise Career Mentorship" description="From dreaming on land to thriving at sea. AKMICS — Sailpreneur Academy, 100% online, prepares you for a career on international cruise ships with mentorship, interview training and joining guidance.">
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
@@ -31,7 +31,7 @@ const milestones = [
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <div class="hero-copy">
-        <p class="hero-kicker"><span></span>AKMICS — Sailpreneur Academy · Dehradun</p>
+        <p class="hero-kicker"><span></span>AKMICS — Sailpreneur Academy · 100% Online</p>
         <h1 id="hero-title"><span class="hero-line">From Dreaming on Land</span><span class="hero-line">to <em>Thriving at Sea.</em></span></h1>
         <p class="hero-sub">Guidance. Training. Mentorship.<br />For your global cruise career.</p>
         <p class="hero-desc">AKMICS — Sailpreneur Academy, under {brand.company}, helps you build a career on international cruise ships with expert guidance, real industry experience and lifetime support.</p>
@@ -57,19 +57,19 @@ const milestones = [
     </div>
   </div>
 
-  <!-- DEHRADUN TO THE WORLD -->
+  <!-- ANYWHERE TO THE WORLD -->
   <section class="world section" aria-labelledby="world-title">
     <div class="wrap">
       <div class="world-head" data-reveal>
         <p class="eyebrow">It starts here</p>
-        <h2 id="world-title">From Dehradun <em>to the World.</em></h2>
-        <p class="lead">A journey of guidance, growth and global opportunities — the same road our founder travelled, from Dehradun to Miami.</p>
+        <h2 id="world-title">From Anywhere <em>to the World.</em></h2>
+        <p class="lead">A journey of guidance, growth and global opportunities — 100% online, so you can learn from wherever you are and build a career that takes you across the oceans.</p>
       </div>
     </div>
     <div class="world-stage">
       <figure class="world-photo world-photo--home" data-reveal>
-        <Img name="dehradun-valley" sizes="(max-width: 900px) 100vw, 34vw" />
-        <figcaption><Icon name="pin" size={18} /><span><small>Your point of departure</small>Dehradun, India</span></figcaption>
+        <Img name="dehradun-valley" alt="Sunrise over a misty valley and distant mountains — the start of the journey" sizes="(max-width: 900px) 100vw, 34vw" />
+        <figcaption><Icon name="pin" size={18} /><span><small>Your point of departure</small>Learn from anywhere</span></figcaption>
       </figure>
       <div class="world-route">
         <ol>
@@ -95,14 +95,7 @@ const milestones = [
         <p class="eyebrow">Meet our founder &amp; mentor</p>
         <h2 id="founder-title">Ankur Kumar Mishra</h2>
         <p class="founder-role">Cruise Career Specialist · Mentor · Industry Guide</p>
-        <p>From Dehradun to Miami: twelve years working at sea, 50+ countries and sixty-five islands — not as a tourist, but as crew. Today Ankur brings that first-hand experience to every student he mentors.</p>
-        <ul class="founder-facts">
-          <li><Icon name="wheel" size={26} stroke={1.2} /><strong>12+</strong><span>Years at sea</span></li>
-          <li><Icon name="globe" size={26} stroke={1.2} /><strong>50+</strong><span>Countries</span></li>
-          <li><Icon name="map" size={26} stroke={1.2} /><strong>65</strong><span>Islands</span></li>
-          <li><Icon name="users" size={26} stroke={1.2} /><strong>35+</strong><span>Yrs expert panel</span></li>
-          <li><Icon name="infinity" size={26} stroke={1.2} /><strong>For life</strong><span>Mentor support</span></li>
-        </ul>
+        <p>From The Grand, New Delhi to Dubai and on to Royal Caribbean International — not as a tourist, but as crew. Today Ankur brings that first-hand experience to every student he mentors.</p>
         <blockquote class="founder-quote"><p>“Not a tourist — this was my work. Now I’m guiding your cruise career.”</p><cite>Ankur Kumar Mishra</cite></blockquote>
         <div class="btn-row"><Button href="/our-mentor/">Meet Your Mentor</Button><Button href={tel(brand.phones[0])} variant="ghost" icon="phone">{brand.phones[0]}</Button></div>
       </div>
@@ -126,7 +119,7 @@ const milestones = [
   <!-- PROGRAMS -->
   <section class="programs section" aria-labelledby="programs-heading">
     <div class="wrap">
-      <SectionHeading eyebrow="Our cruise career programs" title="Everything you need to <em>get onboard.</em>" text="Structured guidance for a successful and fulfilling career at sea — fourteen focused areas, one mentor-led journey." href="/mentorship-program/" linkText="View all programs" />
+      <SectionHeading eyebrow="Our cruise career programs" title="Everything you need to <em>get onboard.</em>" text="Structured guidance for a successful and fulfilling career at sea — sixteen focused areas, one mentor-led journey." href="/mentorship-program/" linkText="View all programs" />
       <Services />
     </div>
   </section>
@@ -178,7 +171,7 @@ const milestones = [
         <p class="lead">Still deciding? Talk to our team or call us — parents are always welcome to join the conversation.</p>
         <div class="contact-card">
           {brand.phones.map((phone) => <a href={tel(phone)}><Icon name="phone" size={20} /><span><small>Call the academy</small>{phone}</span></a>)}
-          <a href={mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" size={20} /><span><small>Visit us</small>{brand.address}</span></a>
+          <div><Icon name="pin" size={20} /><span><small>Our address</small>{brand.address}</span></div>
         </div>
         <a class="text-link" href="/faq/">Read all FAQs <Icon name="arrow" size={16} /></a>
       </div>

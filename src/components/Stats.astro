@@ -1,11 +1,13 @@
 ---
 import { stats } from '../data/site';
+import Icon from './Icon.astro';
 interface Props { tone?: 'glass' | 'plain' }
 const { tone = 'glass' } = Astro.props;
 ---
 <ul class:list={['stats', `stats--${tone}`]}>
   {stats.map((stat) => (
     <li>
+      <Icon name={stat.icon} size={26} stroke={1.2} class="stat-icon" />
       <strong><span data-count={stat.value}>{stat.value}</span>{stat.suffix}</strong>
       <span class="stat-label">{stat.label}</span>
       <span class="stat-note">{stat.note}</span>

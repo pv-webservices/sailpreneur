@@ -1,5 +1,5 @@
 ---
-import { brand, tel, mapsUrl, services } from '../data/site';
+import { brand, tel, services } from '../data/site';
 import Icon from './Icon.astro';
 const quick: [string, string][] = [['/', 'Home'], ['/about/', 'About Us'], ['/mentorship-program/', 'Our Programs'], ['/career-pathways/', 'Cruise Departments'], ['/success-stories/', 'Success Stories'], ['/our-mentor/', 'Our Mentor'], ['/expert-panel/', 'Expert Panel'], ['/faq/', 'FAQs'], ['/contact/', 'Contact']];
 ---
@@ -24,8 +24,8 @@ const quick: [string, string][] = [['/', 'Home'], ['/about/', 'About Us'], ['/me
       <ul>{services.slice(0, 7).map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}<li><a href="/mentorship-program/">All programs →</a></li></ul>
     </div>
     <div class="footer-col">
-      <h2>Visit &amp; Connect</h2>
-      <a class="footer-contact" href={mapsUrl} target="_blank" rel="noopener noreferrer"><Icon name="pin" size={18} /><span>{brand.address}</span></a>
+      <h2>Connect</h2>
+      <p class="footer-contact"><Icon name="pin" size={18} /><span>{brand.address}</span></p>
       {brand.phones.map((phone) => <a class="footer-contact" href={tel(phone)}><Icon name="phone" size={18} /><span>{phone}</span></a>)}
       <a class="footer-contact" href={`mailto:${brand.email}`}><Icon name="mail" size={18} /><span>{brand.email}</span></a>
       <h2 class="footer-follow">Follow Us</h2>
