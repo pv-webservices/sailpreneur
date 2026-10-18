@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Button from '../../components/Button.astro';
+import HelpfulLinks from '../../components/HelpfulLinks.astro';
+import { brand, tel } from '../../data/site';
+---
+<Layout noindex title="Thank You – Enquiry Received" description="Thank you for contacting AKMICS Sailpreneur Academy. Your cruise career enquiry has been received and our team will be in touch.">
+  <PageHero title="Thank you — your enquiry <em>is on its way.</em>" eyebrow="Enquiry received" intro={`Our team has received your details and will contact you on the phone number or email you shared. If your question is urgent, call ${brand.phones[0]}.`} image="cta-deck" compact>
+    <div class="btn-row"><Button href="/">Back to home</Button><Button href={tel(brand.phones[0])} variant="ghost" icon="phone">Call {brand.phones[0]}</Button></div>
+  </PageHero>
+  <HelpfulLinks heading="While you wait, explore" />
+</Layout>

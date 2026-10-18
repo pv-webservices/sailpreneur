@@ -5,5 +5,6 @@ dist/
 .env.*
 !.env.example
 output/
-assets-src/generated/
+source-files/generated/*.png
+assets-src/
 .playwright-mcp/

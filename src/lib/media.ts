@@ -1,16 +1,18 @@
 import manifest from '../data/media.json';
 
-interface Variant { width: number; height: number; file: string }
+interface Variant { width: number; height: number; file: string; avif?: string }
 type Manifest = Record<string, Variant[] | { model: string; quality: string; alt: string }>;
 
 export interface ResponsiveImage {
   src: string;
   srcset: string;
+  /** AVIF srcset, when the pipeline produced AVIF variants. */
+  avifSrcset?: string;
   width: number;
   height: number;
 }
 
-/** Look up an optimised image produced by scripts/optimize-images.py. Throws at build time if missing. */
+/** Look up an optimised image produced by scripts/optimize-images.py (AVIF + WebP). Throws at build time if missing. */
 export function media(name: string): ResponsiveImage {
   const variants = (manifest as Manifest)[name];
   if (!Array.isArray(variants) || !variants.length) throw new Error(`Missing media asset: ${name}`);
@@ -19,6 +21,7 @@ export function media(name: string): ResponsiveImage {
   return {
     src: largest.file,
     srcset: sorted.map((v) => `${v.file} ${v.width}w`).join(', '),
+    avifSrcset: sorted.every((v) => v.avif) ? sorted.map((v) => `${v.avif} ${v.width}w`).join(', ') : undefined,
     width: largest.width,
     height: largest.height,
   };

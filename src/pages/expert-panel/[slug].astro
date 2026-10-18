@@ -7,12 +7,16 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import Experts from '../../components/Experts.astro';
 import CTA from '../../components/CTA.astro';
 import { experts } from '../../data/site';
+import { media } from '../../lib/media';
+import { person } from '../../lib/seo';
 export function getStaticPaths() {
   return experts.map((expert) => ({ params: { slug: expert.slug }, props: { expert } }));
 }
 const { expert } = Astro.props;
+const path = `/expert-panel/${expert.slug}/`;
+const description = `Meet ${expert.name}, ${expert.role}, on the AKMICS cruise career expert panel.`;
 ---
-<Layout title={`${expert.name} — ${expert.focus}`} description={`Meet ${expert.name}, ${expert.role}, on the AKMICS expert panel. ${expert.text}`}>
+<Layout title={`${expert.name}: ${expert.focus}`} description={description} crumbs={[['/', 'Home'], ['/expert-panel/', 'Expert Panel'], [path, expert.name]]} pageType="ProfilePage" schema={[person(Astro.site!, path, expert.name, expert.role, media(expert.image).src, expert.text)]}>
   <PageHero title={expert.name} eyebrow={expert.years ? `${expert.years}+ years experience` : 'AKMICS expert panel'} intro={expert.role} image="bridge-dusk" portrait={expert.image} portraitAlt={`${expert.name}, ${expert.role}`} crumbs={[['/expert-panel/', 'Expert Panel']]}>
     <div class="btn-row"><Button href="/contact/">Learn with our experts</Button></div>
   </PageHero>

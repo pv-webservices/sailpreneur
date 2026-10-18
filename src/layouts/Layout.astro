@@ -15,52 +15,75 @@ import '@fontsource/manrope/latin-400.css';
 import '@fontsource/manrope/latin-500.css';
 import '@fontsource/manrope/latin-600.css';
 import '@fontsource/manrope/latin-700.css';
-import { brand } from '../data/site';
-import { media } from '../lib/media';
-interface Props { title: string; description: string; home?: boolean; preload?: string }
-const { title, description, home = false, preload } = Astro.props;
-const site = import.meta.env.PUBLIC_SITE_URL;
-const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
-const shareImage = media('hero-ship');
-const ogImage = site ? new URL(shareImage.src, site).href : undefined;
-const preloadImage = preload ? media(preload) : undefined;
-const schema = {
-  '@context': 'https://schema.org', '@type': 'EducationalOrganization', name: brand.name, legalName: brand.company, alternateName: brand.academy,
-  description: 'Online cruise career mentorship, interview preparation and joining guidance — learn from anywhere.',
-  telephone: brand.phones[0],
-  email: brand.email,
-  address: { '@type': 'PostalAddress', streetAddress: 'D.A.V. PG College Road', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
-  sameAs: brand.instagram.map((account) => account.url),
-  ...(site ? { url: site, logo: new URL(media('logo-card').src, site).href } : {}),
-};
+import serif600 from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2?url';
+import serif500Italic from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2?url';
+import sans400 from '@fontsource/manrope/files/manrope-latin-400-normal.woff2?url';
+import { SITE_NAME, pageTitle, organization, website, founder, breadcrumbList, webPage, jsonLd, type Crumb } from '../lib/seo';
+interface Props {
+  title: string;
+  description: string;
+  home?: boolean;
+  /** Utility pages (404, thank-you): "noindex, follow", no canonical, not in the sitemap. */
+  noindex?: boolean;
+  /** Breadcrumb trail ending with the current page; also emitted as BreadcrumbList JSON-LD. */
+  crumbs?: Crumb[];
+  /** Extra JSON-LD nodes for this page (FAQPage, Service, Person…). */
+  schema?: Record<string, unknown>[];
+  pageType?: string;
+}
+const { title, description, home = false, noindex: utilityPage = false, crumbs, schema = [], pageType } = Astro.props;
+// Astro.site defaults to the live domain (astro.config.mjs). Deploy previews build with PUBLIC_NOINDEX=true.
+const site = Astro.site!;
+const noindex = utilityPage || import.meta.env.PUBLIC_NOINDEX === 'true';
+const path = Astro.url.pathname;
+const canonical = new URL(path, site).href;
+const fullTitle = pageTitle(title, home);
+const ogImage = { url: new URL('/images/brand/og-default.jpg', site).href, width: 1200, height: 630, alt: 'A cruise ship at sunset with the AKMICS Sailpreneur Academy emblem' };
+const graph = noindex ? [] : [
+  organization(site), website(site), ...(home ? [founder(site)] : []),
+  webPage(site, path, fullTitle, description, crumbs, pageType),
+  ...(crumbs ? [breadcrumbList(site, crumbs)] : []),
+  ...schema,
+];
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script is:inline>document.documentElement.classList.add('js');</script>
-  <title>{title} | AKMICS · Sailpreneur Academy</title>
+  <title>{fullTitle}</title>
   <meta name="description" content={description} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+  {!noindex && <link rel="canonical" href={canonical} />}
+  <!-- Critical fonts only: every H1 uses serif 600 with an italic 500 <em>; body text is sans 400. -->
+  <link rel="preload" href={serif600} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={serif500Italic} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={sans400} as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#071a30" />
-  <meta name="robots" content={site ? 'index,follow' : 'noindex,nofollow'} />
-  {canonical && <link rel="canonical" href={canonical} />}
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:site_name" content={SITE_NAME} />
+  <meta property="og:locale" content="en_IN" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content={`${title} | AKMICS`} />
+  <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:site_name" content="AKMICS · Sailpreneur Academy" />
-  {canonical && <meta property="og:url" content={canonical} />}
-  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage.url} />
+  <meta property="og:image:width" content={String(ogImage.width)} />
+  <meta property="og:image:height" content={String(ogImage.height)} />
+  <meta property="og:image:alt" content={ogImage.alt} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} | AKMICS`} />
+  <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
-  {ogImage && <meta name="twitter:image" content={ogImage} />}
-  {preloadImage && <link rel="preload" as="image" imagesrcset={preloadImage.srcset} imagesizes="100vw" fetchpriority="high" />}
-  <script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
+  <meta name="twitter:image" content={ogImage.url} />
+  <meta name="twitter:image:alt" content={ogImage.alt} />
+  {graph.length > 0 && <script type="application/ld+json" set:html={jsonLd(graph)} />}
 </head>
 <body class:list={[home && 'is-home']}>
-  {home && <div class="loader" aria-hidden="true"><img src="/media/emblem-120.webp" width="120" height="113" alt="" /></div>}
   <Header />
   <main id="main" tabindex="-1"><slot /></main>
   <Footer />

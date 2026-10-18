@@ -21,7 +21,7 @@ export const SIZES = {
 export const GENERATION = {
   endpoint: 'https://api.openai.com/v1/images/generations',
   outputFormat: 'png',
-  rawDir: 'assets-src/generated', // lossless originals (not published)
+  rawDir: 'source-files/generated', // lossless originals (not published)
   concurrency: 3,
   timeoutMs: 240_000,
 };

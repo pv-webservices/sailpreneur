@@ -7,16 +7,20 @@ import Img from '../../components/Img.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import Services from '../../components/Services.astro';
 import CTA from '../../components/CTA.astro';
-import { services, brand, tel } from '../../data/site';
+import { services, departments, brand, tel } from '../../data/site';
 import { firstAvailable } from '../../lib/media';
+import { service as serviceSchema } from '../../lib/seo';
 export function getStaticPaths() {
   return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
 }
 const { service } = Astro.props;
 const image = firstAvailable(service.image, service.fallbackImage);
 const heroImage = image ?? 'mentorship-session';
+const path = `/services/${service.slug}/`;
+const relatedDepartments = departments.filter((dept) => dept.program === service.slug);
+const description = `${service.text.replace(/\.?$/, '.')} Mentor-led online guidance from AKMICS Sailpreneur Academy.`;
 ---
-<Layout title={service.name} description={`${service.text} ${service.name} with AKMICS — Sailpreneur Academy.`} preload={heroImage}>
+<Layout title={service.name} description={description} crumbs={[['/', 'Home'], ['/mentorship-program/', 'Programs'], [path, service.name]]} schema={[serviceSchema(Astro.site!, path, service.name, description)]}>
   <PageHero title={service.name} eyebrow={service.name} intro={service.text} image={heroImage} crumbs={[['/mentorship-program/', 'Programs']]} compact>
     <div class="btn-row"><Button href="/contact/">Enquire about this program</Button></div>
   </PageHero>
@@ -30,6 +34,9 @@ const heroImage = image ?? 'mentorship-session';
         <ul class="topic-list">{service.topics.map((topic, i) => <li><span>0{i + 1}</span><p>{topic}</p></li>)}</ul>
         <div class="outcome"><Icon name="award" size={28} stroke={1.3} /><div><strong>Outcome</strong><p>{service.outcome}</p></div></div>
         <p class="service-scope">Part of the wider AKMICS mentorship — your mentor connects this area with your profile, department and the rest of your preparation.</p>
+        {relatedDepartments.length > 0 && (
+          <p class="service-related">Explore the department onboard: {relatedDepartments.map((dept, i) => <>{i > 0 && ' · '}<a class="text-link" href={`/career-pathways/#${dept.slug}`}>{dept.name}</a></>)}</p>
+        )}
       </div>
       <aside class="service-aside" data-reveal>
         {image && <Img name={image} class="service-aside-img" decorative sizes="(max-width: 900px) 90vw, 30vw" />}

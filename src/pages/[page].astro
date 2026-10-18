@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Button from '../components/Button.astro';
 import CTA from '../components/CTA.astro';
-import { routeTitles, brand, tel } from '../data/site';
+import { routeTitles, brand, tel, faqs } from '../data/site';
+import { faqPage, founder } from '../lib/seo';
 import About from '../sections/About.astro';
 import Mentor from '../sections/Mentor.astro';
 import Program from '../sections/Program.astro';
@@ -16,34 +17,34 @@ import Contact from '../sections/Contact.astro';
 import Privacy from '../sections/Privacy.astro';
 import Terms from '../sections/Terms.astro';
 
-interface PageConfig { title: string; intro: string; image: string; portrait?: string; portraitAlt?: string; actions?: boolean; cta?: boolean; compact?: boolean; body: unknown }
+interface PageConfig { title: string; meta: string; description: string; intro: string; image: string; portrait?: string; portraitAlt?: string; actions?: boolean; cta?: boolean; compact?: boolean; body: unknown }
 
 export function getStaticPaths() {
   return Object.keys(routeTitles).map((page) => ({ params: { page } }));
 }
 
 const pages: Record<string, PageConfig> = {
-  about: { title: 'Navigating careers. <em>Anchoring futures.</em>', image: 'ship-atrium', actions: true, body: About,
+  about: { meta: "About Our Cruise Career Academy", description: "AKMICS Sailpreneur Academy is an online cruise career academy from Dehradun, built by real sailors to guide students from classroom to cruise deck.", title: 'Navigating careers. <em>Anchoring futures.</em>', image: 'ship-atrium', actions: true, body: About,
     intro: 'India’s first premium online cruise career academy. Built by real sailors, for future sailors — learn from anywhere, from classroom to cruise deck.' },
-  'our-mentor': { title: 'A mentor who has <em>actually done it.</em>', image: 'bridge-dusk', portrait: 'ankur-portrait', portraitAlt: 'Ankur Kumar Mishra, founder and cruise career mentor', actions: true, body: Mentor,
+  'our-mentor': { meta: "Ankur Kumar Mishra, Cruise Mentor", description: "Meet Ankur Kumar Mishra, founder of AKMICS Sailpreneur Academy and an 11+ year Royal Caribbean veteran who now mentors students for cruise careers.", title: 'A mentor who has <em>actually done it.</em>', image: 'bridge-dusk', portrait: 'ankur-portrait', portraitAlt: 'Ankur Kumar Mishra, founder and cruise career mentor', actions: true, body: Mentor,
     intro: 'Meet Ankur Kumar Mishra — founder of AKMICS Sailpreneur Academy and an 11+ year Royal Caribbean veteran. From The Grand, New Delhi to the world’s largest cruise ships, and now guiding your cruise career.' },
-  'mentorship-program': { title: 'Cruise career programs, <em>mentor-led.</em>', image: 'mentorship-session', actions: true, body: Program,
+  'mentorship-program': { meta: "Cruise Career Programs & Fees", description: "Sixteen mentor-led areas of cruise career guidance: roadmap, CV, interviews, F&B, front office, housekeeping, galley, STCW, visa and joining support.", title: 'Cruise career programs, <em>mentor-led.</em>', image: 'mentorship-session', actions: true, body: Program,
     intro: 'Sixteen focused areas of guidance — from your career roadmap and CV to interviews, F&B, front office, housekeeping, culinary, deck & security, wellness, STCW, visa and joining — brought together in one structured mentorship.' },
-  'career-pathways': { title: 'Many roles. <em>One incredible world.</em>', image: 'ship-atrium', body: Pathways,
+  'career-pathways': { meta: "Cruise Ship Jobs by Department", description: "Explore cruise ship departments: hotel, F&B, housekeeping, galley, deck, security and spa. See what each role involves and how AKMICS prepares you.", title: 'Many roles. <em>One incredible world.</em>', image: 'ship-atrium', body: Pathways,
     intro: 'A cruise ship is a floating city. Discover the departments onboard, what each role involves and how AKMICS prepares you for it.' },
-  'expert-panel': { title: 'Learn from <em>industry experts.</em>', image: 'bridge-dusk', body: ExpertPanel,
+  'expert-panel': { meta: "Cruise & Hospitality Expert Panel", description: "Learn from five specialists: a cruise Food & Beverage Director, a 35-year hotel General Manager, F&B and French language experts, and a cruise HR expert.", title: 'Learn from <em>industry experts.</em>', image: 'bridge-dusk', body: ExpertPanel,
     intro: 'Five specialists — from a cruise Food & Beverage Director to a 35-year hotel General Manager — covering cruise F&B, hotel operations, French and cruise HR.' },
-  'success-stories': { title: 'Real people. <em>Real journeys.</em>', image: 'hero-ship', body: SuccessStories,
+  'success-stories': { meta: "Student Success Stories", description: "Read how AKMICS students from Delhi, Dehradun and Himachal prepared for and joined Norwegian, Princess, MSC and Carnival cruise lines.", title: 'Real people. <em>Real journeys.</em>', image: 'hero-ship', body: SuccessStories,
     intro: 'From Delhi, Dehradun and Himachal to Norwegian, Princess, MSC and Carnival — meet students who turned a dream into a career at sea.' },
-  'cruise-career-journey': { title: 'Seven steps to a <em>global career.</em>', image: 'journey-ocean', body: JourneyPage,
+  'cruise-career-journey': { meta: "7-Step Cruise Career Journey", description: "A structured seven-step path from your first questions to stepping onboard: discover, prepare, develop, interview, get ready, step onboard and grow.", title: 'Seven steps to a <em>global career.</em>', image: 'journey-ocean', body: JourneyPage,
     intro: 'A structured, proven path from your first questions to stepping onboard — and growing long after you join.' },
-  faq: { title: 'Good questions. <em>Honest answers.</em>', image: 'ship-atrium', compact: true, body: FaqPage,
+  faq: { meta: "Cruise Career FAQs", description: "Answers to common questions from students and parents about cruise careers, freshers, interviews, STCW, CDC, visas, fees and how AKMICS mentorship works.", title: 'Good questions. <em>Honest answers.</em>', image: 'ship-atrium', compact: true, body: FaqPage,
     intro: 'Everything students and parents usually ask before starting a cruise career with AKMICS.' },
-  contact: { title: 'Start your <em>cruise journey.</em>', image: 'dehradun-valley', cta: false, compact: true, body: Contact,
+  contact: { meta: "Contact & Cruise Career Enquiry", description: "Call +91 9185282229 or send an enquiry to AKMICS Sailpreneur Academy to discuss your background and start your cruise career journey.", title: 'Start your <em>cruise journey.</em>', image: 'dehradun-valley', cta: false, compact: true, body: Contact,
     intro: 'A good next step starts with a conversation. Call us or send your enquiry below.' },
-  'privacy-policy': { title: 'Privacy Policy', image: 'journey-ocean', cta: false, compact: true, body: Privacy,
+  'privacy-policy': { meta: "Privacy Policy", description: "How the AKMICS Sailpreneur Academy website handles enquiry form data: what is collected, how it is emailed to the academy, and how to request deletion.", title: 'Privacy Policy', image: 'journey-ocean', cta: false, compact: true, body: Privacy,
     intro: 'How this website handles enquiry information and what to consider when contacting the academy.' },
-  'terms-and-conditions': { title: 'Terms &amp; Conditions', image: 'journey-ocean', cta: false, compact: true, body: Terms,
+  'terms-and-conditions': { meta: "Terms & Conditions", description: "Terms for using the AKMICS Sailpreneur Academy website, including the scope of cruise career guidance and the limits of what any mentor can promise.", title: 'Terms &amp; Conditions', image: 'journey-ocean', cta: false, compact: true, body: Terms,
     intro: 'The scope of this website and the cruise career guidance presented here.' },
 };
 
@@ -51,8 +52,10 @@ const { page } = Astro.params as { page: string };
 const config = pages[page];
 const Body = config.body as typeof About;
 const plainTitle = routeTitles[page];
+const path = `/${page}/`;
+const schema = page === 'faq' ? [faqPage(Astro.site!, path, faqs)] : page === 'our-mentor' ? [founder(Astro.site!)] : [];
 ---
-<Layout title={plainTitle} description={config.intro} preload={config.portrait ? undefined : config.image}>
+<Layout title={config.meta} description={config.description} crumbs={[['/', 'Home'], [path, plainTitle]]} schema={schema} pageType={page === 'our-mentor' ? 'ProfilePage' : page === 'faq' ? 'FAQPage' : page === 'about' ? 'AboutPage' : page === 'contact' ? 'ContactPage' : 'WebPage'}>
   <PageHero title={config.title} eyebrow={plainTitle} intro={config.intro} image={config.image} portrait={config.portrait} portraitAlt={config.portraitAlt} compact={config.compact}>
     {config.actions && (
       <div class="btn-row">

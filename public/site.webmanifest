@@ -1,0 +1,14 @@
+{
+  "name": "AKMICS Sailpreneur Academy",
+  "short_name": "AKMICS",
+  "description": "Online cruise career mentorship, interview preparation and joining guidance.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "theme_color": "#071a30",
+  "background_color": "#071a30",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

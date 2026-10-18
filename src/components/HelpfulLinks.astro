@@ -1,0 +1,31 @@
+---
+// Wayfinding block for utility pages (404, thank-you): main sections plus direct contact options.
+import Icon from './Icon.astro';
+import { brand, tel, whatsappHref } from '../data/site';
+interface Props { heading: string }
+const { heading } = Astro.props;
+const links: [string, string, string][] = [
+  ['/', 'Home', 'Start from the beginning'],
+  ['/mentorship-program/', 'Programs & fees', 'Mentor-led cruise career programs'],
+  ['/career-pathways/', 'Cruise departments', 'Roles onboard and how to prepare'],
+  ['/success-stories/', 'Success stories', 'Students now working at sea'],
+  ['/our-mentor/', 'Our mentor', 'Meet Ankur Kumar Mishra'],
+  ['/faq/', 'FAQs', 'Answers for students and parents'],
+];
+---
+<section class="section" aria-labelledby="helpful-links-title">
+  <div class="wrap">
+    <h2 id="helpful-links-title" class="helpful-title">{heading}</h2>
+    <ul class="helpful-grid">
+      {links.map(([href, label, note]) => (
+        <li><a class="helpful-card" href={href}><strong>{label}</strong><span>{note}</span><Icon name="arrow" size={18} /></a></li>
+      ))}
+    </ul>
+    <div class="helpful-contact">
+      <a class="btn btn--gold" href="/contact/"><span>Contact us</span><Icon name="arrow" size={18} /></a>
+      <a class="btn btn--outline" href={tel(brand.phones[0])}><Icon name="phone" size={18} /><span>Call {brand.phones[0]}</span></a>
+      <a class="btn btn--outline" href={whatsappHref('Hello AKMICS, I have a question about cruise careers.')} target="_blank" rel="noopener noreferrer"><span>WhatsApp us</span></a>
+      <a class="btn btn--outline" href={`mailto:${brand.email}`}><Icon name="mail" size={18} /><span>{brand.email}</span></a>
+    </div>
+  </div>
+</section>

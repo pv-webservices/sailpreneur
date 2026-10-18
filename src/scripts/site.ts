@@ -40,7 +40,8 @@ function onScroll(): void {
   ticking = false;
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-onScroll();
+// First read after the browser's own layout, not during script evaluation (avoids a forced reflow).
+requestAnimationFrame(onScroll);
 
 /* ---------- Reveal on scroll ---------- */
 const reveals = document.querySelectorAll<HTMLElement>('[data-reveal]');
@@ -105,8 +106,8 @@ document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((carousel) => 
   prev.addEventListener('click', () => scrollByCard(-1));
   next.addEventListener('click', () => scrollByCard(1));
   track.addEventListener('scroll', update, { passive: true });
+  // ResizeObserver reports once after the first layout, so no synchronous (reflow-forcing) initial call is needed.
   new ResizeObserver(update).observe(track);
-  update();
 });
 
 initContactForm();

@@ -27,16 +27,15 @@
 .hero-stats { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
 
 /* staged hero entrance */
-.hero-kicker, .hero-line, .hero-sub, .hero-desc, .hero-copy .btn-row, .hero-aside, .hero-stats { animation: rise 1.1s var(--ease) both; }
-.hero-line:nth-child(1) { animation-delay: 0.45s; }
-.hero-line:nth-child(2) { animation-delay: 0.58s; }
-.hero-kicker { animation-delay: 0.35s; }
-.hero-sub { animation-delay: 0.72s; }
-.hero-desc { animation-delay: 0.82s; }
-.hero-copy .btn-row { animation-delay: 0.92s; }
-.hero-aside { animation-delay: 1.05s; }
-.hero-stats { animation-delay: 1.15s; }
-@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+.hero-kicker, .hero-sub, .hero-desc, .hero-copy .btn-row, .hero-aside, .hero-stats { animation: rise 1.1s var(--ease) both; }
+.hero-line { animation: lift 1s var(--ease) both; }
+.hero-line:nth-child(2) { animation-delay: 0.08s; }
+.hero-kicker { animation-delay: 0.1s; }
+.hero-sub { animation-delay: 0.3s; }
+.hero-desc { animation-delay: 0.4s; }
+.hero-copy .btn-row { animation-delay: 0.5s; }
+.hero-aside { animation-delay: 0.6s; }
+.hero-stats { animation-delay: 0.7s; }
 
 @media (max-width: 1100px) { .hero-aside { display: none; } }
 @media (max-width: 760px) {

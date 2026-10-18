@@ -3,189 +3,249 @@
   {
    "width": 760,
    "height": 900,
-   "file": "/media/ankur-uniform-760.webp",
-   "bytes": 46798
+   "file": "/images/founder/ankur-uniform-760.webp",
+   "avif": "/images/founder/ankur-uniform-760.avif",
+   "bytes": 42824,
+   "avifBytes": 37464
   },
   {
    "width": 420,
    "height": 497,
-   "file": "/media/ankur-uniform-420.webp",
-   "bytes": 22824
+   "file": "/images/founder/ankur-uniform-420.webp",
+   "avif": "/images/founder/ankur-uniform-420.avif",
+   "bytes": 21094,
+   "avifBytes": 16751
   }
  ],
  "ankur-portrait": [
   {
    "width": 893,
    "height": 1102,
-   "file": "/media/ankur-portrait-893.webp",
-   "bytes": 73948
+   "file": "/images/founder/ankur-portrait-893.webp",
+   "avif": "/images/founder/ankur-portrait-893.avif",
+   "bytes": 66152,
+   "avifBytes": 68155
   },
   {
    "width": 450,
    "height": 555,
-   "file": "/media/ankur-portrait-450.webp",
-   "bytes": 28074
+   "file": "/images/founder/ankur-portrait-450.webp",
+   "avif": "/images/founder/ankur-portrait-450.avif",
+   "bytes": 25750,
+   "avifBytes": 21397
   }
  ],
  "student-sahil": [
   {
    "width": 720,
    "height": 768,
-   "file": "/media/student-sahil-720.webp",
-   "bytes": 24698
+   "file": "/images/students/student-sahil-720.webp",
+   "avif": "/images/students/student-sahil-720.avif",
+   "bytes": 22732,
+   "avifBytes": 19498
   },
   {
    "width": 420,
    "height": 448,
-   "file": "/media/student-sahil-420.webp",
-   "bytes": 13814
+   "file": "/images/students/student-sahil-420.webp",
+   "avif": "/images/students/student-sahil-420.avif",
+   "bytes": 12690,
+   "avifBytes": 10454
   }
  ],
  "student-anjali": [
   {
    "width": 720,
    "height": 900,
-   "file": "/media/student-anjali-720.webp",
-   "bytes": 37056
+   "file": "/images/students/student-anjali-720.webp",
+   "avif": "/images/students/student-anjali-720.avif",
+   "bytes": 34120,
+   "avifBytes": 29358
   },
   {
    "width": 420,
    "height": 525,
-   "file": "/media/student-anjali-420.webp",
-   "bytes": 20058
+   "file": "/images/students/student-anjali-420.webp",
+   "avif": "/images/students/student-anjali-420.avif",
+   "bytes": 18734,
+   "avifBytes": 15008
   }
  ],
  "student-amit": [
   {
    "width": 720,
    "height": 900,
-   "file": "/media/student-amit-720.webp",
-   "bytes": 44176
+   "file": "/images/students/student-amit-720.webp",
+   "avif": "/images/students/student-amit-720.avif",
+   "bytes": 41216,
+   "avifBytes": 35722
   },
   {
    "width": 420,
    "height": 525,
-   "file": "/media/student-amit-420.webp",
-   "bytes": 25038
+   "file": "/images/students/student-amit-420.webp",
+   "avif": "/images/students/student-amit-420.avif",
+   "bytes": 23370,
+   "avifBytes": 18570
   }
  ],
  "student-rohit": [
   {
    "width": 720,
    "height": 900,
-   "file": "/media/student-rohit-720.webp",
-   "bytes": 33266
+   "file": "/images/students/student-rohit-720.webp",
+   "avif": "/images/students/student-rohit-720.avif",
+   "bytes": 31062,
+   "avifBytes": 26097
   },
   {
    "width": 420,
    "height": 525,
-   "file": "/media/student-rohit-420.webp",
-   "bytes": 18330
+   "file": "/images/students/student-rohit-420.webp",
+   "avif": "/images/students/student-rohit-420.avif",
+   "bytes": 16872,
+   "avifBytes": 13448
   }
  ],
  "expert-ashish": [
   {
    "width": 700,
    "height": 700,
-   "file": "/media/expert-ashish-700.webp",
-   "bytes": 33396
+   "file": "/images/experts/expert-ashish-700.webp",
+   "avif": "/images/experts/expert-ashish-700.avif",
+   "bytes": 30934,
+   "avifBytes": 27903
   },
   {
    "width": 400,
    "height": 400,
-   "file": "/media/expert-ashish-400.webp",
-   "bytes": 16636
+   "file": "/images/experts/expert-ashish-400.webp",
+   "avif": "/images/experts/expert-ashish-400.avif",
+   "bytes": 15196,
+   "avifBytes": 13325
   }
  ],
  "expert-sanjay": [
   {
    "width": 700,
    "height": 700,
-   "file": "/media/expert-sanjay-700.webp",
-   "bytes": 39844
+   "file": "/images/experts/expert-sanjay-700.webp",
+   "avif": "/images/experts/expert-sanjay-700.avif",
+   "bytes": 36748,
+   "avifBytes": 27439
   },
   {
    "width": 400,
    "height": 400,
-   "file": "/media/expert-sanjay-400.webp",
-   "bytes": 19264
+   "file": "/images/experts/expert-sanjay-400.webp",
+   "avif": "/images/experts/expert-sanjay-400.avif",
+   "bytes": 18058,
+   "avifBytes": 13545
   }
  ],
  "expert-anirudh": [
   {
    "width": 700,
    "height": 827,
-   "file": "/media/expert-anirudh-700.webp",
-   "bytes": 30722
+   "file": "/images/experts/expert-anirudh-700.webp",
+   "avif": "/images/experts/expert-anirudh-700.avif",
+   "bytes": 27868,
+   "avifBytes": 23797
   },
   {
    "width": 400,
    "height": 473,
-   "file": "/media/expert-anirudh-400.webp",
-   "bytes": 15560
+   "file": "/images/experts/expert-anirudh-400.webp",
+   "avif": "/images/experts/expert-anirudh-400.avif",
+   "bytes": 14176,
+   "avifBytes": 11948
   }
  ],
  "expert-kalyani": [
   {
    "width": 700,
    "height": 700,
-   "file": "/media/expert-kalyani-700.webp",
-   "bytes": 25324
+   "file": "/images/experts/expert-kalyani-700.webp",
+   "avif": "/images/experts/expert-kalyani-700.avif",
+   "bytes": 22926,
+   "avifBytes": 21433
   },
   {
    "width": 400,
    "height": 400,
-   "file": "/media/expert-kalyani-400.webp",
-   "bytes": 11438
+   "file": "/images/experts/expert-kalyani-400.webp",
+   "avif": "/images/experts/expert-kalyani-400.avif",
+   "bytes": 10392,
+   "avifBytes": 9629
   }
  ],
  "expert-mudita": [
   {
    "width": 700,
    "height": 787,
-   "file": "/media/expert-mudita-700.webp",
-   "bytes": 33072
+   "file": "/images/experts/expert-mudita-700.webp",
+   "avif": "/images/experts/expert-mudita-700.avif",
+   "bytes": 29188,
+   "avifBytes": 28063
   },
   {
    "width": 400,
    "height": 450,
-   "file": "/media/expert-mudita-400.webp",
-   "bytes": 12340
+   "file": "/images/experts/expert-mudita-400.webp",
+   "avif": "/images/experts/expert-mudita-400.avif",
+   "bytes": 11342,
+   "avifBytes": 10392
   }
  ],
  "emblem": [
   {
-   "width": 240,
-   "height": 225,
-   "file": "/media/emblem-240.webp"
+   "width": 120,
+   "height": 118,
+   "file": "/images/brand/emblem-120.webp"
   }
  ],
  "logo-card": [
   {
    "width": 1048,
    "height": 703,
-   "file": "/media/logo-card-1048.webp",
-   "bytes": 37118
+   "file": "/images/brand/logo-card-1048.webp",
+   "avif": "/images/brand/logo-card-1048.avif",
+   "bytes": 42226,
+   "avifBytes": 28628
+  },
+  {
+   "width": 520,
+   "height": 349,
+   "file": "/images/brand/logo-card-520.webp",
+   "avif": "/images/brand/logo-card-520.avif",
+   "bytes": 18730,
+   "avifBytes": 11696
   }
  ],
  "bridge-dusk": [
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/bridge-dusk-1536.webp",
-   "bytes": 127144
+   "file": "/images/editorial/bridge-dusk-1536.webp",
+   "avif": "/images/editorial/bridge-dusk-1536.avif",
+   "bytes": 94426,
+   "avifBytes": 52171
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/bridge-dusk-1200.webp",
-   "bytes": 91230
+   "file": "/images/editorial/bridge-dusk-1200.webp",
+   "avif": "/images/editorial/bridge-dusk-1200.avif",
+   "bytes": 68236,
+   "avifBytes": 36735
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/bridge-dusk-720.webp",
-   "bytes": 39526
+   "file": "/images/editorial/bridge-dusk-720.webp",
+   "avif": "/images/editorial/bridge-dusk-720.avif",
+   "bytes": 29406,
+   "avifBytes": 15863
   }
  ],
  "bridge-dusk:meta": {
@@ -197,20 +257,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/cta-deck-1536.webp",
-   "bytes": 87754
+   "file": "/images/editorial/cta-deck-1536.webp",
+   "avif": "/images/editorial/cta-deck-1536.avif",
+   "bytes": 66304,
+   "avifBytes": 38188
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/cta-deck-1200.webp",
-   "bytes": 67464
+   "file": "/images/editorial/cta-deck-1200.webp",
+   "avif": "/images/editorial/cta-deck-1200.avif",
+   "bytes": 50878,
+   "avifBytes": 28989
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/cta-deck-720.webp",
-   "bytes": 35528
+   "file": "/images/editorial/cta-deck-720.webp",
+   "avif": "/images/editorial/cta-deck-720.avif",
+   "bytes": 27006,
+   "avifBytes": 15263
   }
  ],
  "cta-deck:meta": {
@@ -222,20 +288,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/dehradun-valley-1536.webp",
-   "bytes": 183008
+   "file": "/images/editorial/dehradun-valley-1536.webp",
+   "avif": "/images/editorial/dehradun-valley-1536.avif",
+   "bytes": 132026,
+   "avifBytes": 70285
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/dehradun-valley-1200.webp",
-   "bytes": 134168
+   "file": "/images/editorial/dehradun-valley-1200.webp",
+   "avif": "/images/editorial/dehradun-valley-1200.avif",
+   "bytes": 98134,
+   "avifBytes": 50297
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/dehradun-valley-720.webp",
-   "bytes": 56994
+   "file": "/images/editorial/dehradun-valley-720.webp",
+   "avif": "/images/editorial/dehradun-valley-720.avif",
+   "bytes": 41434,
+   "avifBytes": 19996
   }
  ],
  "dehradun-valley:meta": {
@@ -247,14 +319,18 @@
   {
    "width": 900,
    "height": 1350,
-   "file": "/media/dept-deck-900.webp",
-   "bytes": 87392
+   "file": "/images/departments/dept-deck-900.webp",
+   "avif": "/images/departments/dept-deck-900.avif",
+   "bytes": 65020,
+   "avifBytes": 37550
   },
   {
    "width": 520,
    "height": 780,
-   "file": "/media/dept-deck-520.webp",
-   "bytes": 43626
+   "file": "/images/departments/dept-deck-520.webp",
+   "avif": "/images/departments/dept-deck-520.avif",
+   "bytes": 32486,
+   "avifBytes": 17585
   }
  ],
  "dept-deck:meta": {
@@ -266,14 +342,18 @@
   {
    "width": 900,
    "height": 1350,
-   "file": "/media/dept-fnb-900.webp",
-   "bytes": 98774
+   "file": "/images/departments/dept-fnb-900.webp",
+   "avif": "/images/departments/dept-fnb-900.avif",
+   "bytes": 75254,
+   "avifBytes": 40752
   },
   {
    "width": 520,
    "height": 780,
-   "file": "/media/dept-fnb-520.webp",
-   "bytes": 52260
+   "file": "/images/departments/dept-fnb-520.webp",
+   "avif": "/images/departments/dept-fnb-520.avif",
+   "bytes": 40532,
+   "avifBytes": 20290
   }
  ],
  "dept-fnb:meta": {
@@ -285,14 +365,18 @@
   {
    "width": 900,
    "height": 1350,
-   "file": "/media/dept-galley-900.webp",
-   "bytes": 92534
+   "file": "/images/departments/dept-galley-900.webp",
+   "avif": "/images/departments/dept-galley-900.avif",
+   "bytes": 72768,
+   "avifBytes": 39891
   },
   {
    "width": 520,
    "height": 780,
-   "file": "/media/dept-galley-520.webp",
-   "bytes": 48296
+   "file": "/images/departments/dept-galley-520.webp",
+   "avif": "/images/departments/dept-galley-520.avif",
+   "bytes": 37644,
+   "avifBytes": 19875
   }
  ],
  "dept-galley:meta": {
@@ -304,14 +388,18 @@
   {
    "width": 900,
    "height": 1350,
-   "file": "/media/dept-hotel-900.webp",
-   "bytes": 79376
+   "file": "/images/departments/dept-hotel-900.webp",
+   "avif": "/images/departments/dept-hotel-900.avif",
+   "bytes": 60986,
+   "avifBytes": 34632
   },
   {
    "width": 520,
    "height": 780,
-   "file": "/media/dept-hotel-520.webp",
-   "bytes": 42284
+   "file": "/images/departments/dept-hotel-520.webp",
+   "avif": "/images/departments/dept-hotel-520.avif",
+   "bytes": 32798,
+   "avifBytes": 17572
   }
  ],
  "dept-hotel:meta": {
@@ -323,14 +411,18 @@
   {
    "width": 900,
    "height": 1350,
-   "file": "/media/dept-housekeeping-900.webp",
-   "bytes": 78178
+   "file": "/images/departments/dept-housekeeping-900.webp",
+   "avif": "/images/departments/dept-housekeeping-900.avif",
+   "bytes": 59142,
+   "avifBytes": 32036
   },
   {
    "width": 520,
    "height": 780,
-   "file": "/media/dept-housekeeping-520.webp",
-   "bytes": 38118
+   "file": "/images/departments/dept-housekeeping-520.webp",
+   "avif": "/images/departments/dept-housekeeping-520.avif",
+   "bytes": 28366,
+   "avifBytes": 15010
   }
  ],
  "dept-housekeeping:meta": {
@@ -342,20 +434,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/hero-ship-1536.webp",
-   "bytes": 189890
+   "file": "/images/editorial/hero-ship-1536.webp",
+   "avif": "/images/editorial/hero-ship-1536.avif",
+   "bytes": 143048,
+   "avifBytes": 69684
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/hero-ship-1200.webp",
-   "bytes": 142656
+   "file": "/images/editorial/hero-ship-1200.webp",
+   "avif": "/images/editorial/hero-ship-1200.avif",
+   "bytes": 108170,
+   "avifBytes": 51636
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/hero-ship-720.webp",
-   "bytes": 63970
+   "file": "/images/editorial/hero-ship-720.webp",
+   "avif": "/images/editorial/hero-ship-720.avif",
+   "bytes": 47876,
+   "avifBytes": 22162
   }
  ],
  "hero-ship:meta": {
@@ -367,20 +465,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/journey-ocean-1536.webp",
-   "bytes": 84236
+   "file": "/images/editorial/journey-ocean-1536.webp",
+   "avif": "/images/editorial/journey-ocean-1536.avif",
+   "bytes": 62612,
+   "avifBytes": 31487
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/journey-ocean-1200.webp",
-   "bytes": 63360
+   "file": "/images/editorial/journey-ocean-1200.webp",
+   "avif": "/images/editorial/journey-ocean-1200.avif",
+   "bytes": 45924,
+   "avifBytes": 22717
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/journey-ocean-720.webp",
-   "bytes": 27928
+   "file": "/images/editorial/journey-ocean-720.webp",
+   "avif": "/images/editorial/journey-ocean-720.avif",
+   "bytes": 20388,
+   "avifBytes": 10157
   }
  ],
  "journey-ocean:meta": {
@@ -392,20 +496,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/mentorship-session-1536.webp",
-   "bytes": 89968
+   "file": "/images/editorial/mentorship-session-1536.webp",
+   "avif": "/images/editorial/mentorship-session-1536.avif",
+   "bytes": 69792,
+   "avifBytes": 38803
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/mentorship-session-1200.webp",
-   "bytes": 69794
+   "file": "/images/editorial/mentorship-session-1200.webp",
+   "avif": "/images/editorial/mentorship-session-1200.avif",
+   "bytes": 53008,
+   "avifBytes": 29333
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/mentorship-session-720.webp",
-   "bytes": 36792
+   "file": "/images/editorial/mentorship-session-720.webp",
+   "avif": "/images/editorial/mentorship-session-720.avif",
+   "bytes": 27750,
+   "avifBytes": 15077
   }
  ],
  "mentorship-session:meta": {
@@ -417,20 +527,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/program-deck-security-1536.webp",
-   "bytes": 130290
+   "file": "/images/departments/program-deck-security-1536.webp",
+   "avif": "/images/departments/program-deck-security-1536.avif",
+   "bytes": 99506,
+   "avifBytes": 53047
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/program-deck-security-1200.webp",
-   "bytes": 98240
+   "file": "/images/departments/program-deck-security-1200.webp",
+   "avif": "/images/departments/program-deck-security-1200.avif",
+   "bytes": 75976,
+   "avifBytes": 40053
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/program-deck-security-720.webp",
-   "bytes": 52124
+   "file": "/images/departments/program-deck-security-720.webp",
+   "avif": "/images/departments/program-deck-security-720.avif",
+   "bytes": 39766,
+   "avifBytes": 19900
   }
  ],
  "program-deck-security:meta": {
@@ -442,20 +558,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/program-spa-wellness-1536.webp",
-   "bytes": 86348
+   "file": "/images/departments/program-spa-wellness-1536.webp",
+   "avif": "/images/departments/program-spa-wellness-1536.avif",
+   "bytes": 65438,
+   "avifBytes": 39420
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/program-spa-wellness-1200.webp",
-   "bytes": 66726
+   "file": "/images/departments/program-spa-wellness-1200.webp",
+   "avif": "/images/departments/program-spa-wellness-1200.avif",
+   "bytes": 50276,
+   "avifBytes": 29541
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/program-spa-wellness-720.webp",
-   "bytes": 36248
+   "file": "/images/departments/program-spa-wellness-720.webp",
+   "avif": "/images/departments/program-spa-wellness-720.avif",
+   "bytes": 27242,
+   "avifBytes": 15409
   }
  ],
  "program-spa-wellness:meta": {
@@ -467,20 +589,26 @@
   {
    "width": 1536,
    "height": 1024,
-   "file": "/media/ship-atrium-1536.webp",
-   "bytes": 280844
+   "file": "/images/editorial/ship-atrium-1536.webp",
+   "avif": "/images/editorial/ship-atrium-1536.avif",
+   "bytes": 216186,
+   "avifBytes": 103044
   },
   {
    "width": 1200,
    "height": 800,
-   "file": "/media/ship-atrium-1200.webp",
-   "bytes": 208836
+   "file": "/images/editorial/ship-atrium-1200.webp",
+   "avif": "/images/editorial/ship-atrium-1200.avif",
+   "bytes": 162174,
+   "avifBytes": 76488
   },
   {
    "width": 720,
    "height": 480,
-   "file": "/media/ship-atrium-720.webp",
-   "bytes": 90814
+   "file": "/images/editorial/ship-atrium-720.webp",
+   "avif": "/images/editorial/ship-atrium-720.avif",
+   "bytes": 71698,
+   "avifBytes": 32865
   }
  ],
  "ship-atrium:meta": {
@@ -490,22 +618,28 @@
  },
  "program-hospitality": [
   {
-   "width": 1544,
-   "height": 1032,
-   "file": "/media/program-hospitality-1544.webp",
-   "bytes": 141994
+   "width": 1536,
+   "height": 1027,
+   "file": "/images/departments/program-hospitality-1536.webp",
+   "avif": "/images/departments/program-hospitality-1536.avif",
+   "bytes": 113638,
+   "avifBytes": 61443
   },
   {
    "width": 1200,
    "height": 802,
-   "file": "/media/program-hospitality-1200.webp",
-   "bytes": 109652
+   "file": "/images/departments/program-hospitality-1200.webp",
+   "avif": "/images/departments/program-hospitality-1200.avif",
+   "bytes": 84080,
+   "avifBytes": 44863
   },
   {
    "width": 720,
    "height": 481,
-   "file": "/media/program-hospitality-720.webp",
-   "bytes": 59612
+   "file": "/images/departments/program-hospitality-720.webp",
+   "avif": "/images/departments/program-hospitality-720.avif",
+   "bytes": 45982,
+   "avifBytes": 23045
   }
  ],
  "program-hospitality:meta": {

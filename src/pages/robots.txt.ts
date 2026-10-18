@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
-export const GET: APIRoute = () => {
- const site=import.meta.env.PUBLIC_SITE_URL;
- return new Response(site?`User-agent: *\nAllow: /\nSitemap: ${new URL('/sitemap-index.xml',site).href}\n`:'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8'}});
-};
+
+// Allow everything. Utility pages are kept out of search with "noindex" meta, which crawlers must be able to read.
+export const GET: APIRoute = ({ site }) =>
+  new Response(`User-agent: *\nAllow: /\n\nSitemap: ${new URL('/sitemap-index.xml', site).href}\n`, {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+  });

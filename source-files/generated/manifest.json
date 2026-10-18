@@ -1,0 +1,122 @@
+{
+  "dehradun-valley": {
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "Homepage \"From Dehradun to the World\" section",
+    "alt": "Sunrise over the Doon valley with the Himalayan foothills in the distance",
+    "generatedAt": "2026-10-09T20:52:05.910Z"
+  },
+  "journey-ocean": {
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "Seven-step journey section background",
+    "alt": "Wide open ocean at dusk with a cruise ship on the distant horizon",
+    "generatedAt": "2026-10-09T20:52:17.558Z"
+  },
+  "cta-deck": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high",
+    "size": "1536x1024",
+    "placement": "Closing call-to-action banner (sitewide)",
+    "alt": "A young professional standing at the railing of a cruise ship deck, looking out over the sea at sunset",
+    "generatedAt": "2026-10-09T20:52:29.423Z"
+  },
+  "bridge-dusk": {
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "Expert panel section background",
+    "alt": "The navigation bridge of a cruise ship looking out to sea at dusk",
+    "generatedAt": "2026-10-09T20:52:29.463Z"
+  },
+  "hero-ship": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "high",
+    "size": "1536x1024",
+    "placement": "Homepage hero (full-bleed background)",
+    "alt": "A large white cruise ship sailing across calm open sea at golden sunset",
+    "generatedAt": "2026-10-09T20:52:29.982Z"
+  },
+  "dept-hotel": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1024x1536",
+    "placement": "Career departments — Hotel & Guest Services card",
+    "alt": "A smiling guest services crew member at the front desk of a cruise ship lobby",
+    "generatedAt": "2026-10-09T20:52:47.276Z"
+  },
+  "dept-fnb": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1024x1536",
+    "placement": "Career departments — Food & Beverage card",
+    "alt": "A bartender in a waistcoat preparing a drink at an elegant cruise ship bar",
+    "generatedAt": "2026-10-09T20:52:48.196Z"
+  },
+  "dept-housekeeping": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1024x1536",
+    "placement": "Career departments — Housekeeping card",
+    "alt": "A housekeeping attendant preparing a bright cruise ship stateroom with an ocean-view balcony",
+    "generatedAt": "2026-10-09T20:52:48.744Z"
+  },
+  "dept-deck": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1024x1536",
+    "placement": "Career departments — Deck card",
+    "alt": "A deck officer in a white uniform on the open deck of a cruise ship at sea",
+    "generatedAt": "2026-10-09T20:53:05.967Z"
+  },
+  "dept-galley": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1024x1536",
+    "placement": "Career departments — Galley & Culinary card",
+    "alt": "A chef plating a dish in a professional stainless-steel cruise ship galley",
+    "generatedAt": "2026-10-09T20:53:05.995Z"
+  },
+  "mentorship-session": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "Homepage programs intro & Mentorship Program page",
+    "alt": "A mentor guiding young candidates through a mock interview in a classroom",
+    "generatedAt": "2026-10-09T20:53:06.720Z"
+  },
+  "ship-atrium": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "About page editorial image & \"Life onboard\" storytelling",
+    "alt": "The grand multi-deck atrium of a modern cruise ship with sweeping staircases",
+    "generatedAt": "2026-10-09T20:53:26.358Z"
+  },
+  "program-spa-wellness": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "Programs — Spa & Beautician / Wellness card and detail page",
+    "alt": "A spa therapist giving a relaxing facial treatment in a calm cruise ship spa",
+    "generatedAt": "2026-10-14T18:52:22.398Z"
+  },
+  "program-deck-security": {
+    "model": "gpt-image-2.5-sunburst",
+    "quality": "medium",
+    "size": "1536x1024",
+    "placement": "Programs — Deck & Security Department card and detail page",
+    "alt": "A deck officer and a security officer working together on the navigation bridge of a cruise ship",
+    "generatedAt": "2026-10-14T18:52:23.149Z"
+  },
+  "story-rohit": {
+    "model": "gpt-image-2.5-flare",
+    "quality": "medium",
+    "size": "1024x1024",
+    "placement": "Success stories — Rohit card (no student photo supplied)",
+    "alt": "A large cruise ship sailing on bright blue Caribbean water",
+    "generatedAt": "2026-10-14T19:13:44.597Z"
+  }
+}

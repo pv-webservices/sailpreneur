@@ -1,7 +1,8 @@
 ---
 import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
-import { departments } from '../data/site';
+import { departments, services } from '../data/site';
+const programFor = (slug: string) => services.find((service) => service.slug === slug);
 ---
 <section class="section">
   <div class="wrap">
@@ -21,7 +22,10 @@ import { departments } from '../data/site';
               <div><dt><Icon name="ship" size={20} />The working environment</dt><dd>{dept.text}</dd></div>
               <div><dt><Icon name="compass" size={20} />How AKMICS prepares you</dt><dd>{dept.prepare}</dd></div>
             </dl>
-            <a class="btn btn--navy" href={`/contact/?department=${dept.slug}`}><span>Discuss this pathway</span><Icon name="arrow" size={18} /></a>
+            <div class="btn-row">
+              <a class="btn btn--navy" href={`/contact/?department=${dept.slug}`}><span>Discuss this pathway</span><Icon name="arrow" size={18} /></a>
+              {programFor(dept.program) && <a class="text-link" href={`/services/${dept.program}/`}>{programFor(dept.program)!.name} program <Icon name="arrow" size={16} /></a>}
+            </div>
           </div>
         </article>
       ))}

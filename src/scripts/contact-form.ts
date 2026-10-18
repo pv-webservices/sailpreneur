@@ -1,72 +1,184 @@
-// Enquiry form: validates input, then either posts to a configured HTTPS endpoint
-// (PUBLIC_FORM_ENDPOINT) or opens the visitor's email app with the enquiry addressed to the academy.
-const FIELDS = ['name', 'phone', 'email', 'profession', 'department', 'message'] as const;
-const LABELS: Record<(typeof FIELDS)[number], string> = { name: 'Name', phone: 'Phone', email: 'Email', profession: 'Education / profession', department: 'Interested department', message: 'Message' };
-const PHONE_DIGITS = { min: 7, max: 15 };
-const TIMEOUT_MS = 15000;
+// Enquiry form enhancement. Without JavaScript the form still posts to /api/enquiry and the
+// function answers 303 → /thank-you/. With JavaScript: inline validation (shared rules), a JSON
+// send in the background with a 20s timeout, clear failure messages, and the visitor's answers
+// are never cleared until the enquiry has been accepted.
+import { ENQUIRY_FIELDS, normaliseEnquiry, validateEnquiry, validateField, type EnquiryField, type FieldErrors } from '../lib/enquiry-validation';
 
-/** Form providers differ: some acknowledge with `true`, others (e.g. FormSubmit) with the string "true". */
-function isConfirmed(result: unknown): boolean {
-  if (typeof result !== 'object' || result === null) return false;
-  const success = (result as { success?: unknown }).success;
-  return success === true || success === 'true';
-}
+const ENDPOINT = '/api/enquiry';
+const THANK_YOU = '/thank-you/';
+const TIMEOUT_MS = 20_000;
+const DRAFT_KEY = 'akmics-enquiry-draft';
+const CONTACT = 'call <a href="tel:+919185282229">+91 9185282229</a>, <a class="js-whatsapp" href="#">message us on WhatsApp</a> or email <a href="mailto:info@cruisejobmentor.com">info@cruisejobmentor.com</a>';
 
-function mailtoHref(address: string, data: FormData, department: HTMLSelectElement | null): string {
-  const departmentName = department?.selectedOptions[0]?.textContent?.trim();
-  const value = (key: (typeof FIELDS)[number]) =>
-    key === 'department' ? departmentName || 'Still exploring' : String(data.get(key) || '').trim() || 'Not supplied';
-  const body = FIELDS.map((key) => `${LABELS[key]}: ${value(key)}`).join('\n');
-  const subject = `Cruise career enquiry — ${value('name')}`;
-  return `mailto:${address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+const FAILURES: Record<string, string> = {
+  offline: `You appear to be offline. Your answers are still here: reconnect and press Send again, or ${CONTACT}.`,
+  timeout: `The server took too long to respond, so we stopped waiting. Your answers are still here: try again in a moment, or ${CONTACT}.`,
+  network: `We couldn’t reach the server. Check your connection and try again, or ${CONTACT}.`,
+  rate_limited: `You’ve sent several enquiries in a short time. Please wait about ten minutes, or ${CONTACT}.`,
+  delivery_failed: `Your enquiry could not be delivered just now. Your answers are still here. Please ${CONTACT}.`,
+  not_configured: `Online enquiries are temporarily unavailable. Your answers are still here. Please ${CONTACT}.`,
+  default: `Something went wrong and your enquiry was not sent. Your answers are still here. Please try again, or ${CONTACT}.`,
+};
+
+const escapeHtml = (value: string): string => value.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`);
+
+type Controls = Record<EnquiryField, HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+
+const readDraft = (): Record<string, string> => {
+  try { return JSON.parse(sessionStorage.getItem(DRAFT_KEY) ?? '{}') as Record<string, string>; } catch { return {}; }
+};
+const writeDraft = (draft: Record<string, string> | null): void => {
+  try { draft ? sessionStorage.setItem(DRAFT_KEY, JSON.stringify(draft)) : sessionStorage.removeItem(DRAFT_KEY); } catch { /* storage unavailable: the form still works */ }
+};
 
 export function initContactForm(): void {
   const form = document.querySelector<HTMLFormElement>('#contact-form');
   if (!form) return;
-  const button = form.querySelector<HTMLButtonElement>('button[type=submit]');
-  const status = form.querySelector<HTMLElement>('#form-status');
-  const phone = form.querySelector<HTMLInputElement>('#phone');
-  const department = form.querySelector<HTMLSelectElement>('#department');
-  if (!button || !status || !phone) return;
-  button.disabled = false;
+  const submit = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+  const whatsapp = form.querySelector<HTMLButtonElement>('.form-whatsapp')!;
+  const status = form.querySelector<HTMLElement>('#form-status')!;
+  const summary = form.querySelector<HTMLElement>('#form-summary')!;
+  const controls = Object.fromEntries(ENQUIRY_FIELDS.map((name) => [name, form.elements.namedItem(name)])) as Controls;
+  const allowedDepartments = [...(controls.department as HTMLSelectElement).options].map((option) => option.value).filter(Boolean);
+  let attempted = false;
 
+  form.noValidate = true; // our messages replace the browser's bubbles
+  (form.elements.namedItem('started') as HTMLInputElement).value = String(Date.now());
+  (form.elements.namedItem('page') as HTMLInputElement).value = location.href;
+  whatsapp.hidden = false;
+
+  // Restore an unsent draft (e.g. after a reload), then any department requested in the URL.
+  const draft = readDraft();
+  for (const name of ENQUIRY_FIELDS) {
+    const control = controls[name];
+    if (draft[name] === undefined) continue;
+    if (control instanceof HTMLInputElement && control.type === 'checkbox') control.checked = draft[name] === 'yes';
+    else control.value = draft[name];
+  }
   const requested = new URLSearchParams(location.search).get('department');
-  if (department && requested && [...department.options].some((option) => option.value === requested)) department.value = requested;
+  if (requested && allowedDepartments.includes(requested)) controls.department.value = requested;
 
-  phone.addEventListener('input', () => phone.setCustomValidity(''));
+  const values = () => {
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+    return { data, input: normaliseEnquiry(data) };
+  };
+
+  function showFieldError(name: EnquiryField, message: string | undefined): void {
+    const control = controls[name];
+    const slot = form!.querySelector<HTMLElement>(`#${name}-error`)!;
+    slot.textContent = message ?? '';
+    slot.hidden = !message;
+    if (message) control.setAttribute('aria-invalid', 'true');
+    else control.removeAttribute('aria-invalid');
+  }
+
+  function showErrors(errors: FieldErrors): void {
+    for (const name of ENQUIRY_FIELDS) showFieldError(name, errors[name]);
+    const entries = ENQUIRY_FIELDS.filter((name) => errors[name]);
+    if (!entries.length) { summary.hidden = true; summary.innerHTML = ''; return; }
+    const count = entries.length === 1 ? '1 field needs' : `${entries.length} fields need`;
+    summary.innerHTML = `<strong>${count} your attention before we can send your enquiry.</strong><ul>${entries.map((name) => `<li><a href="#${name}">${escapeHtml(errors[name]!)}</a></li>`).join('')}</ul>`;
+    summary.hidden = false;
+    controls[entries[0]].focus();
+  }
+
+  function setStatus(message: string, isError = false): void {
+    status.innerHTML = message;
+    status.classList.toggle('is-error', isError);
+    status.querySelectorAll<HTMLAnchorElement>('.js-whatsapp').forEach((link) => { link.href = whatsappLink(); link.target = '_blank'; link.rel = 'noopener noreferrer'; });
+  }
+
+  function whatsappLink(): string {
+    const { input } = values();
+    const department = (controls.department as HTMLSelectElement).selectedOptions[0];
+    const lines = [
+      'Hello AKMICS, I would like to enquire about a cruise career.',
+      input.name && `Name: ${input.name}`,
+      input.phone && `Phone: ${input.phone}`,
+      input.email && `Email: ${input.email}`,
+      input.profession && `Education / profession: ${input.profession}`,
+      input.department && department && `Interested department: ${department.textContent?.trim()}`,
+      input.message && `Message: ${input.message}`,
+    ].filter(Boolean);
+    const base = form!.dataset.whatsapp ?? 'https://wa.me/919185282229';
+    return `${base}?text=${encodeURIComponent(lines.join('\n'))}`;
+  }
+
+  function setBusy(busy: boolean): void {
+    submit.disabled = busy;
+    submit.setAttribute('aria-busy', String(busy));
+  }
+
+  // Keep a draft so nothing typed is lost to a reload or a failed send; validate live after the first attempt.
+  form.addEventListener('input', (event) => {
+    const { data } = values();
+    delete data.website;
+    writeDraft(data);
+    const name = (event.target as HTMLElement).getAttribute('name') as EnquiryField;
+    if (!(ENQUIRY_FIELDS as readonly string[]).includes(name)) return;
+    // Once a field is flagged (or after a send attempt), its message updates as the visitor types.
+    if (attempted || controls[name].getAttribute('aria-invalid') === 'true') showFieldError(name, validateField(name, values().input, allowedDepartments));
+  });
+
+  // Pressing a form button blurs the field first; showing an error then would shift the button
+  // between mousedown and mouseup and swallow the click. The submit handler validates everything anyway.
+  let pressingButton = false;
+  form.addEventListener('pointerdown', (event) => {
+    if ((event.target as HTMLElement).closest('button')) { pressingButton = true; window.setTimeout(() => { pressingButton = false; }, 600); }
+  });
+  form.addEventListener('focusout', (event) => {
+    const name = (event.target as HTMLElement).getAttribute('name') as EnquiryField;
+    if (pressingButton || !(ENQUIRY_FIELDS as readonly string[]).includes(name)) return;
+    if (attempted || (controls[name].value && name !== 'consent')) showFieldError(name, validateField(name, values().input, allowedDepartments));
+  });
+
+  // WhatsApp is a human action: exempt from the bot timer and from validation.
+  whatsapp.addEventListener('click', () => { window.open(whatsappLink(), '_blank', 'noopener'); });
+
+  // Returning with the Back button restores the page from cache with the button still disabled.
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) { setBusy(false); if (!status.classList.contains('is-error')) setStatus(''); }
+  });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const digits = phone.value.replace(/\D/g, '');
-    phone.setCustomValidity(digits.length >= PHONE_DIGITS.min && digits.length <= PHONE_DIGITS.max ? '' : 'Enter a phone number containing 7–15 digits.');
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    if (data.get('website')) { status.textContent = 'Please leave the website field empty.'; return; }
-    const { endpoint, email } = form.dataset;
+    if (submit.disabled) return;
+    attempted = true;
+    const { data, input } = values();
+    const errors = validateEnquiry(input, allowedDepartments);
+    showErrors(errors);
+    if (Object.keys(errors).length) { setStatus(''); return; }
+    if (!navigator.onLine) { setStatus(FAILURES.offline, true); return; }
 
-    if (!endpoint) {
-      if (!email) { status.textContent = 'Please call our team to make your enquiry.'; return; }
-      location.href = mailtoHref(email, data, department);
-      status.textContent = `Your email app should now be open with your enquiry addressed to ${email}. Press send to deliver it — if nothing opened, email us directly or call +91 9185282229.`;
-      return;
-    }
-
-    button.disabled = true;
-    status.textContent = 'Sending your enquiry…';
+    setBusy(true);
+    setStatus('Sending your enquiry…');
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
+    let sent = false;
     try {
-      if (!endpoint.startsWith('https://')) throw new Error('Invalid endpoint');
-      const body = new URLSearchParams();
-      data.forEach((value, key) => body.set(key, String(value)));
-      const response = await fetch(endpoint, { method: 'POST', body, headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(TIMEOUT_MS) });
-      const result: unknown = await response.json();
-      if (!response.ok || !isConfirmed(result)) throw new Error('Submission not confirmed');
-      status.textContent = 'Thank you — your enquiry has been received. Our team will contact you soon.';
-      form.reset();
-    } catch {
-      status.textContent = `We could not confirm delivery. Please email ${email ?? 'us'} or call our team — your information is still in the form.`;
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...data, consent: input.consent, sentAt: Date.now() }),
+        signal: controller.signal,
+      });
+      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string; errors?: FieldErrors; redirect?: string };
+      if (response.ok && result.ok) {
+        sent = true;
+        writeDraft(null);
+        setStatus('Thank you. Your enquiry has been sent.');
+        location.assign(result.redirect ?? THANK_YOU);
+        return;
+      }
+      if (result.errors) { showErrors(result.errors); setStatus(''); }
+      else setStatus(result.error && Object.hasOwn(FAILURES, result.error) ? FAILURES[result.error] : FAILURES.default, true);
+    } catch (error) {
+      const aborted = error instanceof DOMException && error.name === 'AbortError';
+      setStatus(aborted ? FAILURES.timeout : navigator.onLine ? FAILURES.network : FAILURES.offline, true);
     } finally {
-      button.disabled = false;
+      window.clearTimeout(timer);
+      // After a successful send the page is leaving: stay disabled (no double send); pageshow re-enables on Back.
+      if (!sent) setBusy(false);
     }
   });
 }

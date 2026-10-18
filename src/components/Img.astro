@@ -5,15 +5,18 @@ const { name, alt, sizes = '100vw', class: className, priority = false, decorati
 const image = media(name);
 const text = decorative ? '' : alt ?? generatedAlt(name);
 ---
-<img
-  class={className}
-  src={image.src}
-  srcset={image.srcset}
-  sizes={sizes}
-  width={image.width}
-  height={image.height}
-  alt={text}
-  loading={priority ? 'eager' : 'lazy'}
-  decoding={priority ? 'sync' : 'async'}
-  fetchpriority={priority ? 'high' : undefined}
-/>
+<picture>
+  {image.avifSrcset && <source type="image/avif" srcset={image.avifSrcset} sizes={sizes} />}
+  <img
+    class={className}
+    src={image.src}
+    srcset={image.srcset}
+    sizes={sizes}
+    width={image.width}
+    height={image.height}
+    alt={text}
+    loading={priority ? 'eager' : 'lazy'}
+    decoding={priority ? 'sync' : 'async'}
+    fetchpriority={priority ? 'high' : undefined}
+  />
+</picture>
