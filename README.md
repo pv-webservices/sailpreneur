@@ -94,6 +94,10 @@ Netlify → **Site configuration → Environment variables → Add a variable** 
 
 Then **Deploys → Trigger deploy → Deploy site**: functions only see new variables after a redeploy. Without the variables the endpoint answers `500 not_configured` and the form tells visitors to call or email instead. `.env.example` lists every variable with secrets left empty.
 
+## Social links
+
+`src/data/site.ts` configures Instagram as `@sailpreneur` (`https://www.instagram.com/sailpreneur/`) and WhatsApp as `919185282229`. The Instagram profile appears in the footer, contact page and organization metadata. `src/components/WhatsAppWidget.astro` provides a floating chat link on every page, positioned above the mobile contact bar. It opens a prefilled WhatsApp draft; the visitor reviews and sends it in WhatsApp. The widget also works without JavaScript.
+
 ## Images
 
 `npm run images:optimize` reads the masters in `source-files/` and writes responsive AVIF + WebP variants into `public/images/<category>/`, the share image `public/images/brand/og-default.jpg`, the favicon set and `src/data/media.json`. `<Img name="…">` renders a `<picture>` with AVIF, WebP fallback, `srcset`/`sizes`, explicit `width`/`height`, `loading="lazy"` (or `eager` + `fetchpriority="high"` for the hero). `npm run build` removes any variant no page references.

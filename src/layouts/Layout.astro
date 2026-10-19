@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/components.css';
@@ -88,6 +89,7 @@ const graph = noindex ? [] : [
   <main id="main" tabindex="-1"><slot /></main>
   <Footer />
   <MobileBar />
+  <WhatsAppWidget />
   <script src="../scripts/site.ts"></script>
 </body>
 </html>

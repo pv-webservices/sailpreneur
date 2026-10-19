@@ -12,7 +12,7 @@ export const brand = {
   phones: ['+91 9185282229', '+91 9309469593'],
   email: 'info@cruisejobmentor.com',
   instagram: [
-    { handle: '@akmics.official', url: 'https://www.instagram.com/akmics.official/' },
+    { handle: '@sailpreneur', url: 'https://www.instagram.com/sailpreneur/' },
   ],
 };
 
