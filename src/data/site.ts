@@ -14,6 +14,7 @@ export const brand = {
   instagram: [
     { handle: '@sailpreneur', url: 'https://www.instagram.com/sailpreneur/' },
   ],
+  facebook: 'https://www.facebook.com/share/1HrdNGdyno/?mibextid=wwXIfr',
 };
 
 export const tel = (phone: string): string => `tel:${phone.replace(/\s/g, '')}`;

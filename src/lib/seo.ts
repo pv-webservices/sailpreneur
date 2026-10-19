@@ -40,7 +40,7 @@ export function organization(site: URL): Schema {
     address: { '@type': 'PostalAddress', streetAddress: 'D.A.V. PG College Road', addressLocality: 'Dehradun', addressRegion: 'Uttarakhand', addressCountry: 'IN' },
     contactPoint: brand.phones.map((phone) => ({ '@type': 'ContactPoint', telephone: phone.replace(/\s/g, ''), contactType: 'admissions', email: brand.email })),
     founder: { '@id': id(site, '/our-mentor/#person') },
-    sameAs: brand.instagram.map((account) => account.url),
+    sameAs: [...brand.instagram.map((account) => account.url), brand.facebook],
   };
 }
 

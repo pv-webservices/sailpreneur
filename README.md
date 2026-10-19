@@ -96,6 +96,8 @@ Then **Deploys → Trigger deploy → Deploy site**: functions only see new vari
 
 ## Social links
 
+`brand.facebook` in `src/data/site.ts` stores the supplied Facebook page URL. Facebook appears alongside Instagram in the footer, contact page and organization metadata.
+
 `src/data/site.ts` configures Instagram as `@sailpreneur` (`https://www.instagram.com/sailpreneur/`) and WhatsApp as `919185282229`. The Instagram profile appears in the footer, contact page and organization metadata. `src/components/WhatsAppWidget.astro` provides a floating chat link on every page, positioned above the mobile contact bar. It opens a prefilled WhatsApp draft; the visitor reviews and sends it in WhatsApp. The widget also works without JavaScript.
 
 ## Images
